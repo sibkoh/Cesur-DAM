@@ -1,0 +1,9 @@
+Cursos y apuntes de Algoritmos - Diagramas de flujo y Pseudocódigo
+
+https://www.lawebdelprogramador.com/cursos/Algoritmia/index1.html
+
+
+
+Relaciones entre clases (Relations in UML class diagrams)
+
+https://www.umlboard.com/docs/relations/

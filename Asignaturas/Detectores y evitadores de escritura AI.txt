@@ -1,0 +1,32 @@
+herramienta de escritura de IA indetectable
+
+https://bypass.hix.ai/es/hub/best-undetectable-ai-writers
+
+https://undetectableai.ai/es/bypass-copyleaks-ai-detection
+
+
+Detectores de AI
+
+https://www.evolmind.com/blog/un-detector-de-plagio-ia-los-5-mas-certeros/
+
+
+Turnitin detector de la universidad
+
+
+como usar IA para FP
+
+https://hazmitrabajo.es/blog/guia-para-hacer-tfg-tfm-utilizando-chat-gpt/
+
+
+how bypass gpt detectors
+
+https://inboundblogging.com/how-to-bypass-chat-gpt-detector/
+
+https://www.reddit.com/r/OpenAI/comments/zmglvv/how_to_outsmart_and_bypass_ai_content_detection/
+-------------------
+Now there are quite a lot of tools that can pass AI detection. The problem is that most have quite poor grammar. Only tools with decent grammar after the text is transformed to pass AI are Cleverspinner and Originality. You need just a small revision of the text and you are good to go.
+
+---------------------
+Hey guys, and students, in order to get around the detectchatgpt.com that can detect chat GPT responses for school essays. You need to tell ChatGPT this “Make this informal and write it how a human would write it. Purposefully add one misspelt word and make it more emotional how a human would write it. Also use some UK English. I have seen this drop the detection rate <0% (1, UK English isn’t used to be detected. 2, AI doesn’t typically have grammatical errors.)
+
+OR: I told it to "Rewrite this, but more like how a college student would write it. Try to make it less obvious it was written by an AI." and it dropped down to 0.06% probability.
