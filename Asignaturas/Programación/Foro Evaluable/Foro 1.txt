@@ -1,0 +1,31 @@
+1. ¿Qué significan las siglas API? ¿En qué consisten y qué son las APIs de Java?
+
+API significa "Application Programming Interface" o "Interfaz de Programación de Aplicaciones" en español. Una API es un conjunto de definiciones y protocolos que permite que diferentes programas de software se comuniquen entre sí. Las APIs ofrecen un conjunto de métodos y herramientas que los desarrolladores pueden utilizar para interactuar con las funcionalidades de un sistema, sin necesidad de comprender su implementación interna.
+
+APIs de Java: En el entorno Java, las APIs son bibliotecas de clases estándar que se integran en el entorno de desarrollo. Estas bibliotecas proporcionan funcionalidades esenciales, como la manipulación de datos, operaciones de entrada y salida, gráficos, redes, y mucho más. Las APIs de Java están diseñadas para facilitar el desarrollo, permitiendo que los programadores utilicen funciones predefinidas en lugar de tener que escribir el código desde cero.
+
+2. Diferencia entre las APIs que están en los módulos que empiezan por ‘java’ y las que empiezan por ‘jdk’. ¿A qué están asociadas o dónde se encuentran?
+
+En la documentación de Oracle, las APIs que comienzan con "java" y aquellas que empiezan con "jdk" cumplen funciones diferentes y tienen asociaciones específicas:
+
+APIs de módulos "java": Estas son las bibliotecas estándar del lenguaje Java que ofrecen funcionalidades básicas, como el manejo de colecciones, entrada/salida, interfaces gráficas y redes. Estas APIs se incluyen en el entorno de ejecución de Java (Java Runtime Environment o JRE), por lo que están destinadas a desarrolladores que crean aplicaciones estándar en Java.
+
+APIs de módulos "jdk": Estas APIs son parte del Java Development Kit (JDK) y están más orientadas al desarrollo y administración de aplicaciones. Incluyen herramientas y clases útiles para compilar y depurar, así como soporte para el desarrollo de aplicaciones avanzadas. Estas no están disponibles en el JRE, por lo que solo los desarrolladores que usan el JDK pueden acceder a estas herramientas adicionales para construir software.
+
+3. Busca el paquete java.util. ¿A qué módulo pertenece?
+
+El paquete java.util se encuentra en el módulo java.base. Este módulo contiene las clases y funcionalidades fundamentales del lenguaje Java, como clases de colecciones, manejo de fechas y tiempos, utilidades para manipulación de cadenas, y otras herramientas esenciales para el desarrollo en Java.
+
+4. Busca la clase Scanner y escoge tres métodos de esta clase que empiecen con la letra ‘n’ y explica para qué se utilizan.
+
+Dentro de la clase Scanner, aquí tienes tres métodos que comienzan con la letra ‘n’ y su utilidad:
+
+nextInt(): Este método se utiliza para leer y devolver el siguiente valor entero del input que recibe el Scanner. Es ideal cuando se espera una entrada numérica y permite obtener directamente el número entero.
+
+nextLine(): Este método lee y devuelve la próxima línea completa de entrada como un String. Es útil para leer oraciones o frases completas hasta que se detecta un salto de línea.
+
+nextDouble(): Similar a nextInt(), este método se usa para leer y devolver el siguiente número decimal (de punto flotante) como un double. Es adecuado cuando se requiere capturar datos decimales en lugar de enteros.
+
+5. Busca DayOfWeek e indica a qué módulo y paquete pertenece. Localiza el método getValue() e indica qué devuelve.
+
+La clase DayOfWeek pertenece al módulo java.base y al paquete java.time. El método getValue() de esta clase devuelve un valor entero (de tipo int) que representa el día de la semana, donde el número 1 corresponde al lunes y el número 7 al domingo. Esto permite organizar y manejar los días de la semana de forma estándar.
