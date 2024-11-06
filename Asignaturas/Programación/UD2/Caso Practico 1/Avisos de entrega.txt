@@ -1,0 +1,38 @@
+PAUTAS PARA ENTREGA DE ACTIVIDAD EVALUABLE DE LA UNIDAD 2
+Tienes de fecha límite para realizarla y entregarla hasta el jueves,  29 de noviembre de 2025, 23:59
+
+Lee bien las indicaciones que se indican en el apartado "Contexto" y "Cuestiones a resolver"  .
+
+Se trata de realizar 5 pequeños programas en lenguaje Java y usando el editor Eclipse.
+
+
+
+Para superar esta actividad(mínimo con un 5) es necesario que:
+Se entreguen los programas en el formato indicado .java
+Cada programa se ejecute y no tenga fallos o errores de compilación. 
+Hay errores en la ejecución considerados leves.
+Se empleen las estructuras aprendidas en la unidad.
+La filosofía del algoritmo se acerque como mínimo a lo que se solicita.
+
+
+Se valorará que....;(subirá nota)
+No se repitan líneas de código o estructuras innecesarias.
+Se comente de forma ordenada y limpia (utilizando comentarios) 
+El código realizado sea un código limpio, bien estructurado e indentado
+Cuando se ejecute.. pida y muestre los datos esperados en todo momento y en diferentes ejecuciones tiene un comportamiento igual para mismos datos de entrada.
+Se entrega el correspondiente diagrama de flujo(en formato imagen, .png, etc)  para el ejercicio  número 4 y es acorde a lo realizado en su homologo .java. (Se puede utilizar por ejemplo https://app.diagrams.net/  desde la web y exportar dicho diagrama a imagen)
+
+
+ENTREGA DE LA TAREA
+**Se entregará un SOLO UN ARCHIVO COMPRIMIDO que contiene:
+
+ 5  archivos con extensión .java
+ El diagrama de flujo del ejercicio número 4,  con extensión imagen(.jpg, png, etc) , sube nota y se aplica al último punto de la rúbrica "Uso de recursos adicionales y creatividad". (tiene que presentarse en formato imagen para que puntúe y acorde a su homologo en .java)
+
+
+SOBRE LA RÚBRICA Y FORMA DE EVALUAR
+**LA RÚBRICA que se incluye tanto  en el documento como en la tarea de plataforma "es MUY GENERAL y utilizable por otros módulos" por lo que se deben seguir las indicaciones que acabo de dar anteriormente COMO CRITERIOS DE EVALUACIÓN.
+
+
+
+** Las tareas las iré corrigiendo, verás que cambia el estado de "No calificada" a  "En proceso de calificación", "En revisión", o "Calificación terminada", esta última significará que ya está corregida, pero no se mostrará la nota hasta que cumpla el plazo de entrega Y estén todas las tareas corregidas. En ese momento el estado de la tarea  pasará a "Publicada" y se podrá ver.
