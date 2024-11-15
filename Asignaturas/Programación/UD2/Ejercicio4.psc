@@ -3,7 +3,7 @@ Algoritmo Ejercicio4
     // Variables
     Definir peso, altura, imc Como Real
     Definir niveDePeso Como Cadena
-    Definir pesoNoCorrecto, alturaNoCorrecta Como Booleano
+    Definir pesoNoCorrecto, alturaNoCorrecta Como logico
 	
     peso <- 0
     altura <- 0
