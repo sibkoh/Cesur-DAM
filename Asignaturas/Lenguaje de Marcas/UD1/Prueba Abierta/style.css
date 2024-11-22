@@ -1,0 +1,149 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    /* Elimina el margen predeterminado del body */
+    padding: 0;
+    /* Elimina el padding predeterminado del body */
+    font-family: 'Arial', sans-serif;
+    /* Define la fuente para el texto del body */
+
+    /* Ruta relativa de la imagen de fondo */
+    background-image: url('Background_Image.png');
+    /* Establece la imagen de fondo */
+
+    background-size: cover;
+    /* La imagen de fondo cubrirá toda el área del body */
+    background-position: center;
+    /* Centra la imagen de fondo */
+    background-attachment: fixed;
+    /* Fija la imagen de fondo mientras se hace scroll */
+    color: #e0e0e0;
+    /* Establece el color del texto general */
+}
+
+/* Título Principal */
+h1 {
+    color: #00ff00;
+    /* Color del texto del h1 */
+    text-align: center;
+    /* Centra el texto */
+    font-size: 3em;
+    /* Tamaño de la fuente del título */
+    text-shadow: 2px 2px 5px #000;
+    /* Sombra del texto para darle un efecto de profundidad */
+    margin-top: 20px;
+    /* Espacio arriba del título */
+    background: rgba(190, 109, 234, 0.6);
+    /* Fondo semitransparente para el título */
+    padding: 10px;
+    /* Espaciado interno en el título */
+    border-radius: 10px;
+    /* Bordes redondeados en el título */
+}
+
+/* Segundo Título (similar al h1) */
+h2 {
+    color: #fa3a3eae;
+    /* Color del texto del h2 */
+    text-align: center;
+    /* Centra el texto */
+    font-size: 2em;
+    /* Tamaño de la fuente del h2 */
+    text-shadow: 2px 2px 5px #000;
+    /* Sombra del texto */
+    margin-top: 20px;
+    /* Espacio arriba del título */
+    background: rgba(20, 31, 157, 0.6);
+    /* Fondo semitransparente para el título */
+    padding: 10px;
+    /* Espaciado interno */
+    border-radius: 10px;
+    /* Bordes redondeados */
+}
+
+/* Tercer Título  */
+h3 {
+    color: rgba(220, 245, 94, 0.773);
+    /* Color del texto del h3 */
+}
+
+/* Párrafos */
+p {
+    background: rgba(121, 152, 230, 0.6);
+    /* Fondo semitransparente para los párrafos */
+    padding: 15px;
+    /* Espaciado interno en los párrafos */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    line-height: 1.8;
+    /* Espaciado entre líneas para mejorar la legibilidad */
+    font-size: 1.2em;
+    /* Tamaño de la fuente del párrafo */
+    margin: 20px auto;
+    /* Márgenes automáticos para centrar el párrafo y espacio arriba y abajo */
+    width: 80%;
+    /* Ancho del párrafo, el 80% del contenedor */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    /* Sombra de caja para darle un efecto de profundidad */
+}
+
+/* Estilo específico para el elemento con id="formula" */
+#formula {
+    font-size: 18px;
+    /* Tamaño de la fuente específico */
+    color: rgb(234, 158, 8);
+    /* Color de texto específico */
+    font-weight: bold;
+    /* Texto en negrita */
+    background: rgba(82, 184, 147, 0.6);
+    /* Fondo semitransparente */
+    padding: 15px;
+    /* Espaciado interno */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    margin: 20px auto;
+    /* Márgenes automáticos para centrar y espacio arriba y abajo */
+    width: 250px;
+    /* Ancho fijo de 250px */
+}
+
+/* Estilo de los enlaces */
+.links-container {
+    text-align: center;
+    /* Centra los enlaces */
+    margin: 20px 0;
+    /* Espacio arriba y abajo de los enlaces */
+}
+
+.links-container a {
+    display: inline-block;
+    /* Hace que cada enlace se comporte como un bloque */
+    margin: 10px;
+    /* Espacio entre los enlaces */
+    text-decoration: none;
+    /* Elimina el subrayado predeterminado de los enlaces */
+    color: #e74db6;
+    /* Color de los enlaces */
+    font-size: 1.0em;
+    /* Tamaño de la fuente de los enlaces */
+}
+
+.links-container a:hover {
+    color: #d6e968;
+    /* Cambia el color al pasar el mouse sobre los enlaces */
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+        /* Reduce el tamaño del h1 en pantallas pequeñas */
+    }
+
+    p {
+        font-size: 1em;
+        /* Reduce el tamaño del texto en los párrafos */
+        width: 90%;
+        /* Aumenta el ancho de los párrafos a 90% en pantallas pequeñas */
+    }
+}

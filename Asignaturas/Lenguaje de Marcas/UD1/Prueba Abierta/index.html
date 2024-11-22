@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Definición de la codificación de caracteres para garantizar que se muestren correctamente los caracteres especiales -->
+    <meta charset="UTF-8">
+    <!-- Define el viewport para asegurar que la página sea responsive (adaptada a diferentes tamaños de pantalla) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página que se mostrará en la pestaña del navegador -->
+    <title>Proyecto de Página Web</title>
+
+    <!-- Enlace al archivo CSS externo que contiene los estilos de la página -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Título principal de la página -->
+    <h1>Página de Prueba para HTML</h1>
+
+    <!-- Párrafo que contiene la fórmula de Einstein, con un ID específico para estilizarlo -->
+    <p id="formula"><strong>Fórmula de Einstein:</strong> E=mc<sup>2</sup></p>
+
+    <!-- Artículo con varias secciones -->
+    <article>
+        <!-- Primera sección del artículo, con un subtítulo y un párrafo -->
+        <section>
+            <h2>Noticia</h2>
+            <p>
+                El proyecto FFmpeg es para muchos absolutamente desconocido, pero sus prestaciones a la hora de
+                codificar y descodificar audio y vídeo son sencillamente prodigiosas. Tanto es así que lo usan todas
+                las grandes tecnológicas, desde YouTube hasta Netflix o Spotify.
+            </p>
+        </section>
+        <!-- Segunda sección, con un subtítulo y un párrafo -->
+        <section>
+            <h3>Ensamblador</h3>
+            <p>
+                Lo curioso es que estos días alguien ha descubierto algo sorprendente: FFmpeg puede ir hasta 94 veces
+                más rápido, y todo gracias al uso de ensamblador, un lenguaje de programación de bajo nivel que permite
+                acceder a los recursos del PC de forma mucho más directa en comparación a como lo hacen los lenguajes
+                de alto nivel y los compiladores que generan código ejecutable. En DeepMind lo usaron no hace mucho para
+                crear un algoritmo de ordenación revolucionario, y es también la base de la programación de la Voyager
+                1.
+            </p>
+        </section>
+        <!-- Tercera sección, con un subtítulo y un párrafo que incluye un enlace -->
+        <section>
+            <h3>Los lenguajes perdidos</h3>
+            <p>
+                COBOL, Delphi o FORTRAN siguen siendo críticos, pero no hay quien programe en ellos
+                <a href="https://www.xataka.com" target="_blank">En Xataka</a>
+            </p>
+            <p>
+                Vamos a probar. Un grupo de desarrolladores que contribuyen al proyecto quisieron hacer una prueba
+                implementando ciertas funciones usando el conjunto de instrucciones AVX-512. La ventaja de estas
+                instrucciones es que permiten procesar cadenas de datos más grandes en paralelo usando registros de 512
+                bits, algo que es muy útil para todo tipo de tareas, pero especialmente para procesar audio y vídeo.
+            </p>
+        </section>
+        <!-- Cuarta sección, con un subtítulo y un párrafo -->
+        <section>
+            <h3>Hasta 94 veces más rápido</h3>
+            <p>
+                Las pruebas de rendimiento demostraron que las funciones escritas en ensamblador con el conjunto de
+                instrucciones AVX-512 se ejecutaban considerablemente más rápido que implementaciones tradicionales
+                escritas en el lenguaje de programación C o conjuntos de instrucciones como AVX2 (Advanced Vector
+                Extensions, en este caso manejando 256 bits), y las viejas SSE3 (Streaming SIMD Extension 3) de 2004. En
+                algunos casos el código nuevo llegó a correr 94 veces más rápido que el de sus otras versiones.
+            </p>
+
+        </section>
+        <!-- Quinta sección, con un subtítulo y un párrafo -->
+        <section>
+            <h3>Será difícil aprovechar estas mejoras</h3>
+            <p>
+                Lamentablemente, estas mejoras difícilmente llegarán a ser aprovechadas masivamente. Intel desactivó
+                AVX-512 en sus chips porque los núcleos de alta eficiencia no las soportan, aunque hay formas de
+                aprovecharlas desactivando esos núcleos E.
+            </p>
+            <p>
+                Sí están soportadas por los chips de AMD, pero el verdadero problema está en otro lado: la complejidad
+                de
+                dichas optimizaciones está reservada a aplicaciones muy específicas. Puede no obstante que las Big Tech
+                hayan tomado nota y aprovechen dichas ventajas para procesar audio y vídeo en sus centros de datos.
+            </p>
+        </section>
+    </article>
+
+    <!-- Contenedor de enlaces -->
+    <div class="links-container">
+        <!-- Enlace a una fuente externa que se abrirá en una nueva pestaña -->
+        <a class="enlace"
+            href="https://www.xataka.com/aplicaciones/legendario-software-ffmmpeg-puede-ir-94-veces-rapido-todo-gracias-a-lenguaje-casi-olvidado"
+            target="_blank">Ver fuente</a>
+        <!-- Enlace que lleva al párrafo con la fórmula de Einstein dentro de la misma página -->
+        <a class="enlace" href="#formula">Volver a la fórmula</a>
+        <!-- Enlace para enviar un correo electrónico a la dirección indicada, con asunto y destinatarios predeterminados -->
+        <a class="enlace" href="mailto:prueba@example.com?subject=HTML&cc=supervisor@example.com">Enviar correo</a>
+    </div>
+</body>
+
+</html>
