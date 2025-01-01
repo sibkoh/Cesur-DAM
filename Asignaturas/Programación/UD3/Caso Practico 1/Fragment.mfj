@@ -1,0 +1,182 @@
+{
+	"_type": "UMLClass",
+	"_id": "AAAAAAGTz7qToOTTGcg=",
+	"_parent": {
+		"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+	},
+	"name": "Contable",
+	"attributes": [
+		{
+			"_type": "UMLAttribute",
+			"_id": "AAAAAAGTz7rtVOUAxRY=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "cuentaAsignada : int",
+			"visibility": "private",
+			"type": ""
+		},
+		{
+			"_type": "UMLAttribute",
+			"_id": "AAAAAAGTz7wO9OUID0M=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "tipoDeImpuesto: String",
+			"visibility": "private",
+			"type": ""
+		}
+	],
+	"operations": [
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz7/WpuUoQq0=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "Contable"
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz7xyXuUQaDo=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "Contable",
+			"parameters": [
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz73R0uUX1lc=",
+					"_parent": {
+						"$ref": "AAAAAAGTz7xyXuUQaDo="
+					},
+					"name": "idEmpleado",
+					"type": "int"
+				},
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz73R0uUYA1w=",
+					"_parent": {
+						"$ref": "AAAAAAGTz7xyXuUQaDo="
+					},
+					"name": "nombre",
+					"type": "String"
+				},
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz73R0uUZ2Vw=",
+					"_parent": {
+						"$ref": "AAAAAAGTz7xyXuUQaDo="
+					},
+					"name": "apellidos",
+					"type": "String"
+				},
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz73R0uUan3M=",
+					"_parent": {
+						"$ref": "AAAAAAGTz7xyXuUQaDo="
+					},
+					"name": "salario",
+					"type": "double"
+				},
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz79TWOUjVys=",
+					"_parent": {
+						"$ref": "AAAAAAGTz7xyXuUQaDo="
+					},
+					"name": "cuentaAsignada ",
+					"type": "int"
+				},
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz7+tMuUmaWQ=",
+					"_parent": {
+						"$ref": "AAAAAAGTz7xyXuUQaDo="
+					},
+					"name": "tipoDeImpuesto",
+					"type": "String"
+				}
+			]
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz8A/7+UwI9g=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "getCuentaAsignada "
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz8BFTuU2RJY=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "setCuentaAsignada",
+			"parameters": [
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz8HOhOVMeZQ=",
+					"_parent": {
+						"$ref": "AAAAAAGTz8BFTuU2RJY="
+					},
+					"name": "cuentaAsignada ",
+					"type": "int"
+				}
+			]
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz8BZduU8GEw=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "getTipoDeImpuesto"
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz8BdV+VCds4=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "setTipoDeImpuesto",
+			"parameters": [
+				{
+					"_type": "UMLParameter",
+					"_id": "AAAAAAGTz8LNpeVR4oE=",
+					"_parent": {
+						"$ref": "AAAAAAGTz8BdV+VCds4="
+					},
+					"name": "tipoDeImpuesto",
+					"type": "String"
+				}
+			]
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz8UCHeVVlyI=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "hacerContabilidad"
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz8pv5eXWfpY=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "enseñarContabilidad"
+		},
+		{
+			"_type": "UMLOperation",
+			"_id": "AAAAAAGTz/9LkOXf2uk=",
+			"_parent": {
+				"$ref": "AAAAAAGTz7qToOTTGcg="
+			},
+			"name": "aprenderContabilidad"
+		}
+	]
+}
