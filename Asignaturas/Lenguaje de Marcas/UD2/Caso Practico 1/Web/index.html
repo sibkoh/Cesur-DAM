@@ -1,0 +1,67 @@
+<!-- Enseña que es un documento HTML5, ayudando a los navegadores a leer bien lo que contiene.  -->
+<!DOCTYPE html>
+<!-- Indica que el contenido principal está en español. Mejora la accesibilidad para personas y motores de búsqueda.  -->
+<html lang="es">
+
+<!-- Encabezado del Documento -->
+
+<head>
+    <!-- Define la codificación como UTF-8, compatible con casi todos los caracteres -->
+    <meta charset="UTF-8">
+    <!-- Permite que el diseño se adapte a dispositivos móviles estableciendo el ancho de la página al ancho del dispositivo. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Texto que aparece en la pestaña del navegador. -->
+    <title>Receta de Pisto Manchego</title>
+    <!-- Vincula el archivo externo style.css para aplicar estilos al contenido. -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- fin del encabezado del documento -->
+
+<!-- Cuerpo del Documento -->
+
+<body>
+    <!-- Contenedor con la clase container que sirve para indentificarlo y aplicarle estilos. -->
+    <div class="container">
+        <!-- Encabezado principal (título de la página). -->
+        <h1>Pisto manchego</h1>
+        <!-- src: Ruta de la imagen. alt: Texto alternativo para accesibilidad. class: Permite aplicar estilos personalizados. -->
+        <img src="pisto.jpg" alt="Pisto manchego" class="receta-imagen">
+        <!-- Subtítulo para secciones como "Ingredientes" o "Preparación" -->
+        <h2>Ingredientes</h2>
+        <hr>
+        <p><strong>Para 4 personas</strong></p>
+        <!-- Lista desordenada: -->
+        <ul class="ingredientes">
+            <!-- La clase ingredientes permite aplicar estilos específicos. -->
+            <!-- Elemento de lista dentro de la lista desordenada. Cada ingrediente es un elemento separado. -->
+            <li>Tomate hermosos (o alguno más): ............... <strong>4</strong></li>
+            <!-- Párrafo con texto en negrita (<strong>) para destacar la cantidad de porciones. -->
+            <li>Cebolla picada: ............................................. <strong> 250 g</strong></li>
+            <li>Pimiento verde: ............................................. <strong>200 g</strong></li>
+            <li>Pimiento rojo: ................................................ <strong>200 g</strong></li>
+            <li>Diente de ajo: ................................................ <strong>2</strong></li>
+            <li>Calabacín: ..................................................... <strong>300 g</strong></li>
+            <li>Aceite de oliva virgen extra</li>
+            <li>Pimienta negra molida</li>
+            <li>Sal</li>
+        </ul>
+        <h2>Preparación</h2>
+        <ol class="preparacion">
+            <!-- Lista ordenada: -->
+            <!-- Lista ordenada para los pasos de preparación. Los elementos se enumeran automáticamente. -->
+            <li>Lava y corta todas las verduras en trozos pequeños.</li>
+            <li>En una sartén grande, calienta aceite de oliva y sofríe la cebolla y el ajo hasta que estén dorados.
+            </li>
+            <li>Añade los pimientos y cocina durante 5 minutos.</li>
+            <li>Agrega el calabacín y cocina otros 5 minutos.</li>
+            <li>Por último, incorpora los tomates y cocina a fuego lento durante 20 minutos. Remueve ocasionalmente.
+            </li>
+            <li>Sazona con sal y pimienta al gusto. Sirve caliente acompañado de pan.</li>
+        </ol>
+    </div>
+</body>
+<!-- Fin del cuerpo del documento -->
+
+</html>
+
+<!-- Fin del archivo HTML -->

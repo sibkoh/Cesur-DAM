@@ -1,0 +1,75 @@
+/* Global: Estilos del Cuerpo */
+body {
+    /* Fuente predeterminada. Espaciado entre líneas. Color del texto y fondo. */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    /* margen de la página */
+    padding: 0;
+    /* relleno de la página */
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilo del Contenedor  */
+.container {
+    /* Diseño centrado con bordes redondeados y una sombra ligera para dar profundidad. */
+    max-width: 800px;
+    margin: 20px auto;
+    /* margen superior e inferior de 20px y margen izquierdo y derecho automático */
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* sombra */
+}
+
+/* Color complementario para subtítulos. */
+h1,
+h2 {
+    color: #333;
+}
+
+/* Centrado, ideal para el título principal. */
+h1 {
+    text-align: center;
+}
+
+/* Línea Horizontal */
+hr {
+    border: none;
+    border-top: 2px solid #a52a2a;
+    margin: 10px 0;
+}
+
+/* Centra la imagen, ajusta su tamaño y aplica bordes redondeados. */
+.receta-imagen {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 300px;
+    height: 225px;
+    border-radius: 8px;
+}
+
+/* Elimina las viñetas y ajusta el espaciado. */
+.ingredientes {
+    list-style-type: none;
+    /* Elimina las viñetas */
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.ingredientes li {
+    margin-bottom: 5px;
+}
+
+/* Añade numeración automática con espaciado ajustado. */
+.preparacion {
+    list-style-type: decimal;
+    margin: 0;
+    padding: 0;
+}
+
+.preparacion li {
+    margin-bottom: 10px;
+}

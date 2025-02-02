@@ -1,0 +1,150 @@
+Explicaciones Simples de HTML y CSS  
+HTML: Estructura del Documento  
+Declaración Inicial  
+html  
+Copiar código  
+<!DOCTYPE html>  
+Enseña que es un documento HTML5, ayudando a los navegadores a leer bien lo que contiene.  
+Etiqueta <html>  
+html  
+Copiar código  
+<html lang="es">  
+Indica que el contenido principal está en español. Mejora la accesibilidad para personas y motores de búsqueda.  
+Encabezado del Documento (<head>)  
+Contiene información y configuraciones generales.  
+Codificación de Caracteres  
+html  
+Copiar código  
+<meta charset="UTF-8">  
+Define la codificación como UTF-8, que es compatible con muchos caracteres.  
+Optimización para Móviles  
+html  
+Copiar código  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+Permite que el diseño se ajuste a dispositivos móviles, fijando el ancho de la página al del dispositivo.  
+Título del Documento  
+html  
+Copiar código  
+<title>Receta de Pisto Manchego</title>  
+Texto que se muestra en la pestaña del navegador.  
+Enlace a CSS  
+html  
+Copiar código  
+<link rel="stylesheet" href="style.css">  
+Conecta el archivo externo style.css para aplicar estilos al contenido.  
+Cuerpo del Documento (<body>)  
+Contiene lo que se muestra en el navegador.  
+Contenedor Principal  
+html  
+Copiar código  
+<div class="container">  
+Organiza el contenido principal en una caja con estilo.  
+Encabezados  
+html  
+Copiar código  
+<h1>Pisto manchego</h1>  
+<h2>Ingredientes</h2>  
+<h1>: Título principal de la página.  
+<h2>: Subtítulo para secciones como "Ingredientes" o "Preparación".  
+Imágenes  
+html  
+Copiar código  
+<img src="pisto.jpg" alt="Pisto manchego" class="receta-imagen">  
+src: Ruta de la imagen.  
+alt: Texto alternativo para personas con discapacidad.  
+class: Ayuda a aplicar estilos personalizados.  
+Listas  
+Lista desordenada:  
+html  
+Copiar código  
+<ul class="ingredientes">  
+  <li>Tomates</li>  
+  <li>Pimientos</li>  
+</ul>  
+Agrupa elementos como ingredientes.  
+La clase ingredientes permite aplicar estilos específicos.  
+Lista ordenada:  
+html  
+Copiar código  
+<ol class="preparacion">  
+  <li>Picamos las verduras.</li>  
+  <li>Cocinamos a fuego lento.</li>  
+</ol>  
+Usada para enumerar pasos de preparación.  
+CSS: Diseño y Estilo  
+Global: Estilos del Cuerpo (body)  
+css  
+Copiar código  
+body {  
+  font-family: Arial, sans-serif;  
+  line-height: 1.6;  
+  margin: 0;  
+  padding: 0;  
+  background-color: #f5f5f5;  
+  color: #333;  
+}  
+Define el estilo básico:  
+Fuente por defecto.  
+Espacio entre líneas.  
+Color del texto y del fondo.  
+Estilo del Contenedor (.container)  
+css  
+Copiar código  
+.container {  
+  max-width: 800px;  
+  margin: 20px auto;  
+  padding: 20px;  
+  background: #fff;  
+  border-radius: 10px;  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+}  
+Diseño centrado con bordes redondeados y sombra ligera para dar profundidad.  
+Encabezados (h1, h2)  
+css  
+Copiar código  
+h1 {  
+  text-align: center;  
+  color: #2c3e50;  
+}  
+h2 {  
+  color: #34495e;  
+}  
+h1: Centrado, apto para el título principal.  
+h2: Color que complementa subtítulos.  
+Línea Horizontal (hr)  
+css  
+Copiar código  
+hr {  
+  border: 1px solid #ddd;  
+  margin: 20px 0;  
+}  
+Separa contenido con una línea simple.  
+Imagen (.receta-imagen)  
+css  
+Copiar código  
+.receta-imagen {  
+  display: block;  
+  margin: 0 auto;  
+  width: 100%;  
+  max-width: 500px;  
+  border-radius: 10px;  
+}  
+Centra la imagen, ajusta su tamaño y hace bordes redondeados.  
+Listas de Ingredientes y Preparación  
+Ingredientes (.ingredientes)  
+css  
+Copiar código  
+.ingredientes {  
+  list-style-type: none;  
+  padding: 0;  
+  margin: 10px 0;  
+}  
+Elimina viñetas y ajusta el espaciado.  
+Preparación (.preparacion)  
+css  
+Copiar código  
+.preparacion {  
+  list-style-type: decimal;  
+  padding-left: 20px;  
+}  
+Añade numeración automática y ajusta el espaciado.

@@ -1,0 +1,30 @@
+Desarrollo del trabajo del foro evaluable
+Fase del desarrollo elegida: Diseño
+La seguridad en el desarrollo de software es crucial en todas las fases, pero si hay que priorizar una para garantizar que la aplicación sea segura desde su base, la fase de diseño se destaca como una de las más importantes. Durante esta etapa, se definen los fundamentos del sistema, incluyendo la arquitectura, las interacciones entre componentes y las políticas de seguridad que guiarán el resto del proyecto.
+
+Justificación
+Prevención de vulnerabilidades desde la raíz:
+
+La fase de diseño establece cómo se estructurará el software y qué medidas de seguridad se implementarán.
+Una mala decisión de diseño puede dejar huecos significativos que serán difíciles de corregir en fases posteriores.
+Ejemplo: La falta de un sistema de autenticación seguro desde el diseño puede derivar en accesos no autorizados.
+Incorporación de principios de diseño seguro:
+
+En esta etapa, se deben aplicar principios de seguridad como:
+Principio de menor privilegio: cada componente o usuario solo debe tener acceso a los recursos necesarios.
+Defensa en profundidad: múltiples capas de seguridad para mitigar riesgos.
+Validación de entrada: evitar ataques como la inyección SQL o problemas como los que causó la vulnerabilidad Log4Shell.
+Si estas estrategias no se integran desde el diseño, será más costoso y complicado implementarlas más tarde.
+Definición de arquitectura y estándares:
+
+El diseño debe contemplar el uso de herramientas y librerías seguras.
+Ejemplo relacionado con Log4Shell:
+En el diseño, se habría podido planificar el uso de un gestor de dependencias que monitorizara la seguridad de las librerías externas como Log4j.
+Además, se habría establecido una política de actualización continua para mitigar vulnerabilidades conocidas.
+Reducción de costos y riesgos:
+
+Identificar y prevenir problemas de seguridad en la fase de diseño es mucho más económico que corregirlos durante la explotación o el mantenimiento.
+Un fallo descubierto en producción puede afectar a la reputación de la empresa, como ocurrió con Log4Shell, que afectó aplicaciones en todo el mundo.
+Conclusión
+Si bien la seguridad debe ser considerada en todas las fases del desarrollo de software, integrarla desde la fase de diseño es clave para construir aplicaciones sólidas y resistentes. Esta etapa permite sentar las bases para implementar medidas de protección efectivas, evitar vulnerabilidades comunes y garantizar que las fases posteriores se beneficien de un enfoque seguro. Tal como demuestra el caso de Log4Shell, abordar la seguridad a nivel arquitectónico habría prevenido la explotación de una vulnerabilidad que puso en jaque a miles de sistemas.
+
