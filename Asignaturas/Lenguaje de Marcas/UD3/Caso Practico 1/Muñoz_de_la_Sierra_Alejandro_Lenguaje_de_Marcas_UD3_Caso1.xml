@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <?xml version="1.0"?>: Muestra que el documento sigue la versión 1.0 de XML. -->
+<!-- encoding="UTF-8": Define la codificación de caracteres para incluir símbolos especiales, como acentos y eñes. -->
+
+
+<!DOCTYPE pedido [
+
+<!-- Define el documento tipo DTD, que es interno al documento XML. -->
+<!-- El DTD se encuentra entre corchetes [ ] y contiene las reglas de estructura y contenido del documento. -->
+
+    <!ELEMENT pedido (articulo+)>
+
+<!-- <!ELEMENT> → Define un elemento XML y su contenido permitido. -->
+
+<!-- El elemento <pedido> es el elemento principal del documento.   -->
+<!-- Contenido: Debe incluir uno o más (+) elementos <articulo>.   -->
+
+    <!ATTLIST pedido proveedor CDATA #REQUIRED>
+
+<!-- <!ATTLIST> → Declara los atributos que un elemento puede tener. -->
+
+<!-- El proveedor es un atributo obligatorio en <pedido>.   -->
+<!-- Tipo CDATA: Admite cualquier cadena de texto.   -->
+
+    <!ELEMENT articulo (nombre, marca)>
+
+<!-- Cada <articulo> debe tener un <nombre> y una <marca>.   -->
+
+    <!ATTLIST articulo cantidad CDATA #REQUIRED>
+    <!ATTLIST articulo color CDATA #REQUIRED>
+
+<!-- Ambos atributos son necesarios (#REQUIRED).   -->
+
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT marca (#PCDATA)>
+
+<!-- Ambos deben contener solo texto (#PCDATA).   -->
+
+]>
+
+<!-- Fin del DTD -->
+
+<pedido proveedor="Papelería Central">
+
+<!-- <pedido>: Este es el elemento raíz, lo que significa que todos los datos del pedido están dentro de este. -->
+<!-- Atributo proveedor="Papelería Central": Muestra el nombre del proveedor del que se hace el pedido. -->
+
+
+    <articulo cantidad="30" color="negro">
+
+<!-- <articulo>: Cada producto en el pedido se muestra como un elemento dentro de <pedido>. -->
+<!-- Atributos dentro de <articulo>: -->
+<!-- cantidad="30": Indica cuántas unidades del producto se piden. -->
+<!-- color="negro": Especifica el color del producto. -->
+
+
+        <nombre>Lápiz</nombre>
+        <marca>A</marca>
+
+<!-- <nombre>: Incluye el nombre del producto dentro del elemento <articulo>. -->
+<!-- <marca>: Indica la marca del artículo. Esto brinda información adicional sobre el producto sin usar más atributos. -->
+
+
+    </articulo>
+
+    <!-- </articulo> delimitador de fin de todos los elementos dentro de <articulo>  -->
+
+    <articulo cantidad="20" color="azul">
+        <nombre>Bloc</nombre>
+        <marca>B</marca>
+    </articulo>
+
+     <articulo cantidad="40" color="verde">
+        <nombre>Bolígrafo</nombre>
+        <marca>C</marca>
+    </articulo>
+
+    <articulo cantidad="20" color="negro">
+        <nombre>Bolígrafo</nombre>
+        <marca>D</marca>
+    </articulo>
+
+</pedido>
+
+ <!-- </pedido> delimitador de fin de todos los elementos dentro de <pedido>  -->
+
+<!-- El nodo raíz <pedido> contiene toda la información del pedido. -->
+<!-- Cada <articulo> representa un producto con atributos como cantidad y color. -->
+<!-- Los subelementos <nombre> y <marca> dan detalles sobre cada artículo. -->
