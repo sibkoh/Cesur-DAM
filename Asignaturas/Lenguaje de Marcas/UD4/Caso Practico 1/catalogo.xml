@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogo SYSTEM "catalogo.dtd">
+<catalogo>
+       <libro titulo="Cien años de soledad" autor="Gabriel García Márquez" año="1967"
+              editorial="Editorial Sudamericana"
+              resumen="Una novela que narra la historia de la familia Buendía en el mítico pueblo de Macondo.">
+              <detalles>
+                     <genero>Realismo Mágico</genero>
+                     <paginas>417</paginas>
+              </detalles>
+       </libro>
+       <libro titulo="1984" autor="George Orwell" año="1949" editorial="Secker &amp; Warburg"
+              resumen="Una distopía que describe un régimen totalitario controlado por un líder omnipresente, el Gran Hermano.">
+              <detalles>
+                     <genero>Dystopia</genero>
+                     <paginas>328</paginas>
+              </detalles>
+       </libro>
+       <!-- Agrega más libros según sea necesario -->
+</catalogo>
+
+<!-- Explicación del caso:
+
+1.XML:
+
+El archivo contiene un elemento raíz <catalogo> que agrupa todos los libros.
+Cada <libro> tiene atributos obligatorios: titulo, autor, año, editorial, y resumen. Además, cada
+libro contiene un sub-elemento <detalles> con información adicional como el género y el número de
+páginas. 
+Que podríamos haberlos considerado como atributos también, pero decidimos hacerlo de esta manera,
+por si en un futuro
+se necesitara agregar más información a los detalles de un libro.
+El archivo XML está validado con el DTD que definimos a través de la declaración <!DOCTYPE catalogo
+SYSTEM "catalogo.dtd">.
+
+2.DTD:
+
+El DTD externo define la estructura del XML, especificando que el catálogo debe contener al menos
+un libro (libro+).
+Cada <libro> debe tener los atributos mencionados y debe contener un sub-elemento <detalles> con
+los elementos <genero> y <paginas>.
+Los elementos <genero> y <paginas> contienen texto simple (#PCDATA).
+
+3. Validación:
+
+Para validar el XML, deberías asegurarte de que el archivo catalogo.xml cumple con las reglas
+definidas en el catalogo.dtd. 
+Esto lo hemos hecho instalando la extension XML Language Support by Red hat en Vscode y aunque
+inicialmente encontramos un 
+error al utilizar el caracter &, lo solucionamos escapándolo con &amp; -->

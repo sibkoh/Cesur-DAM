@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT catalogo (libro+)>
+<!ELEMENT libro (detalles)>
+<!ATTLIST libro
+    titulo CDATA #REQUIRED
+    autor CDATA #REQUIRED
+    año CDATA #REQUIRED
+    editorial CDATA #REQUIRED
+    resumen CDATA #REQUIRED>
+<!ELEMENT detalles (genero, paginas)>
+<!ELEMENT genero (#PCDATA)>
+<!ELEMENT paginas (#PCDATA)>
