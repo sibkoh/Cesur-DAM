@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test Base de Datos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    button { display: block; margin: 10px 0; padding: 10px; width: 100%; }
+    #question { font-weight: bold; margin-bottom: 10px; }
+    #result { margin-top: 10px; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Test de Base de Datos</h1>
+  <div id="question"></div>
+  <div id="options"></div>
+  <div id="result"></div>
+  <button onclick="nextQuestion()">Siguiente</button>
+
+  <script>
+    const questions = [
+        {
+    question: "1. ¿Qué es una base de datos?",
+    options: ["Una colección organizada de datos", "Un lenguaje de programación", "Un dispositivo físico de almacenamiento"],
+    answer: 0
+  },
+  {
+    question: "2. ¿Cuál es el objetivo principal de una base de datos relacional?",
+    options: ["Evitar duplicación de datos", "Mejorar la velocidad del disco duro", "Aumentar el consumo de memoria"],
+    answer: 0
+  },
+  {
+    question: "3. ¿Qué lenguaje se utiliza para gestionar bases de datos relacionales?",
+    options: ["HTML", "SQL", "HTTP"],
+    answer: 1
+  },
+  {
+    question: "4. ¿Qué significa SQL?",
+    options: ["Structured Query Language", "Standard Question List", "Simple Query Logic"],
+    answer: 0
+  },
+  {
+    question: "5. ¿Cuál es el comando SQL para seleccionar datos?",
+    options: ["SELECT", "GET", "PULL"],
+    answer: 0
+  },
+  {
+    question: "6. ¿Qué comando SQL se usa para eliminar una tabla?",
+    options: ["DELETE TABLE", "DROP TABLE", "REMOVE TABLE"],
+    answer: 1
+  },
+  {
+    question: "7. ¿Cuál es la función principal de una clave primaria?",
+    options: ["Relacionar tablas", "Identificar unívocamente cada fila", "Contar registros"],
+    answer: 1
+  },
+  {
+    question: "8. ¿Qué comando se usa para insertar datos en una tabla?",
+    options: ["ADD INTO", "INSERT INTO", "APPEND TO"],
+    answer: 1
+  },
+  {
+    question: "9. ¿Cuál de estas opciones es un sistema gestor de base de datos?",
+    options: ["Photoshop", "Excel", "MySQL"],
+    answer: 2
+  },
+  {
+    question: "10. ¿Qué es una clave foránea?",
+    options: ["Una clave que se repite", "Un campo que hace referencia a una clave primaria de otra tabla", "Un identificador de columna duplicado"],
+    answer: 1
+  },
+  {
+    question: "11. ¿Qué operador SQL se usa para combinar condiciones?",
+    options: ["WHERE", "AND", "JOIN"],
+    answer: 1
+  },
+  {
+    question: "12. ¿Qué hace el comando UPDATE en SQL?",
+    options: ["Inserta un nuevo registro", "Elimina datos", "Modifica registros existentes"],
+    answer: 2
+  },
+  {
+    question: "13. ¿Qué es una consulta?",
+    options: ["Una tabla nueva", "Una petición de datos a la base", "Un nuevo índice"],
+    answer: 1
+  },
+  {
+    question: "14. ¿Qué representa un campo en una tabla?",
+    options: ["Un conjunto de registros", "Una columna de datos", "Un nombre de tabla"],
+    answer: 1
+  },
+  {
+    question: "15. ¿Qué tipo de dato es adecuado para almacenar textos largos?",
+    options: ["VARCHAR", "TEXT", "BOOLEAN"],
+    answer: 1
+  },
+  {
+    question: "16. ¿Qué hace una vista en una base de datos?",
+    options: ["Almacena datos físicamente", "Es una tabla temporal", "Muestra datos basados en una consulta"],
+    answer: 2
+  },
+  {
+    question: "17. ¿Cuál es la diferencia entre DELETE y TRUNCATE?",
+    options: ["DELETE borra todo, TRUNCATE borra parcialmente", "TRUNCATE es más rápido y no guarda registro", "DELETE no existe en SQL"],
+    answer: 1
+  },
+  {
+    question: "18. ¿Qué representa el modelo entidad-relación?",
+    options: ["Un modelo de cálculo", "Una técnica de presentación", "Un modelo gráfico de los datos y sus relaciones"],
+    answer: 2
+  },
+  {
+    question: "19. ¿Qué es un índice en una base de datos?",
+    options: ["Una clave duplicada", "Un sistema de respaldo", "Una estructura para acelerar búsquedas"],
+    answer: 2
+  },
+  {
+    question: "20. ¿Qué significa la normalización?",
+    options: ["Optimizar los gráficos", "Dividir una tabla en varias para reducir redundancia", "Eliminar las claves foráneas"],
+    answer: 1
+  },
+  {
+    question: "21. ¿Qué comando se usa para ordenar resultados en SQL?",
+    options: ["SORT BY", "ORDER", "ORDER BY"],
+    answer: 2
+  },
+  {
+    question: "22. ¿Qué operador SQL filtra resultados por coincidencia parcial?",
+    options: ["MATCHES", "LIKE", "CONTAINS"],
+    answer: 1
+  },
+  {
+    question: "23. ¿Qué operador se usa para unir dos tablas en SQL?",
+    options: ["LINK", "JOIN", "ATTACH"],
+    answer: 1
+  },
+  {
+    question: "24. ¿Qué significa el comodín % en SQL?",
+    options: ["Un número", "Una letra", "Cualquier cantidad de caracteres"],
+    answer: 2
+  },
+  {
+    question: "25. ¿Qué significa NULL en SQL?",
+    options: ["Cero", "Campo vacío sin valor", "Fin de tabla"],
+    answer: 1
+  },
+  {
+    question: "26. ¿Cuál de los siguientes es un tipo de relación entre tablas?",
+    options: ["1 a 1", "1 a muchos", "Ambas son correctas"],
+    answer: 2
+  },
+  {
+    question: "27. ¿Qué hace el comando CREATE TABLE?",
+    options: ["Elimina una tabla", "Crea una tabla nueva", "Muestra una tabla"],
+    answer: 1
+  },
+  {
+    question: "28. ¿Qué permite una transacción en SQL?",
+    options: ["Insertar múltiples registros", "Ejecutar comandos sin errores", "Agrupar operaciones que se completan todas o ninguna"],
+    answer: 2
+  },
+  {
+    question: "29. ¿Qué comando inicia una transacción?",
+    options: ["START TRANSACTION", "BEGIN", "COMMIT"],
+    answer: 0
+  },
+  {
+    question: "30. ¿Qué comando finaliza y guarda una transacción?",
+    options: ["ROLLBACK", "FINISH", "COMMIT"],
+    answer: 2
+  },
+  {
+    question: "31. ¿Qué comando revierte una transacción en SQL?",
+    options: ["CANCEL", "ROLLBACK", "ABORT"],
+    answer: 1
+  },
+  {
+    question: "32. ¿Qué es un trigger (disparador) en una base de datos?",
+    options: ["Un tipo de índice", "Un proceso automático que se activa con eventos", "Un campo especial de texto"],
+    answer: 1
+  },
+  {
+    question: "33. ¿Qué comando se usa para modificar una tabla existente?",
+    options: ["CHANGE TABLE", "ALTER TABLE", "UPDATE TABLE"],
+    answer: 1
+  },
+  {
+    question: "34. ¿Cuál es el comando SQL para eliminar una fila?",
+    options: ["DELETE FROM", "DROP ROW", "REMOVE ROW"],
+    answer: 0
+  },
+  {
+    question: "35. ¿Qué es un subquery?",
+    options: ["Un nombre de columna", "Una consulta dentro de otra consulta", "Un tipo de tabla temporal"],
+    answer: 1
+  },
+  {
+    question: "36. ¿Qué tipo de unión devuelve solo coincidencias en ambas tablas?",
+    options: ["INNER JOIN", "LEFT JOIN", "FULL JOIN"],
+    answer: 0
+  },
+  {
+    question: "37. ¿Qué hace una LEFT JOIN?",
+    options: ["Devuelve solo las coincidencias", "Devuelve todos los registros de la izquierda y coincidencias de la derecha", "Devuelve solo los nulos"],
+    answer: 1
+  },
+  {
+    question: "38. ¿Qué devuelve una FULL JOIN?",
+    options: ["Todos los registros coincidentes", "Solo los que tienen claves primarias", "Todos los registros de ambas tablas"],
+    answer: 2
+  },
+  {
+    question: "39. ¿Qué cláusula limita el número de resultados devueltos?",
+    options: ["WHERE", "LIMIT", "GROUP BY"],
+    answer: 1
+  },
+  {
+    question: "40. ¿Qué función SQL cuenta el número de registros?",
+    options: ["COUNT()", "SUM()", "TOTAL()"],
+    answer: 0
+  },
+  {
+    question: "41. ¿Qué función SQL devuelve la media?",
+    options: ["AVG()", "MEAN()", "MEDIAN()"],
+    answer: 0
+  },
+  {
+    question: "42. ¿Qué función SQL devuelve el valor más alto?",
+    options: ["TOP()", "MAX()", "UPPER()"],
+    answer: 1
+  },
+  {
+    question: "43. ¿Qué función SQL devuelve el valor más bajo?",
+    options: ["MIN()", "LOW()", "BOTTOM()"],
+    answer: 0
+  },
+  {
+    question: "44. ¿Qué función une el contenido de varias columnas?",
+    options: ["MERGE()", "CONCAT()", "JOIN()"],
+    answer: 1
+  },
+  {
+    question: "45. ¿Qué cláusula agrupa resultados según valores repetidos?",
+    options: ["ORDER BY", "GROUP BY", "SORT"],
+    answer: 1
+  },
+  {
+    question: "46. ¿Qué cláusula filtra los grupos creados con GROUP BY?",
+    options: ["HAVING", "WHERE", "FILTER"],
+    answer: 0
+  },
+  {
+    question: "47. ¿Qué función redondea valores en SQL?",
+    options: ["ROUND()", "TRIM()", "CLOSE()"],
+    answer: 0
+  },
+  {
+    question: "48. ¿Qué operador lógico representa O (OR)?",
+    options: ["&&", "||", "OR"],
+    answer: 2
+  },
+  {
+    question: "49. ¿Qué significa `DISTINCT` en una consulta?",
+    options: ["Quita valores duplicados", "Elige solo nulos", "Ordena por clave"],
+    answer: 0
+  },
+  {
+    question: "50. ¿Cuál es la función de `NOW()` en SQL?",
+    options: ["Devuelve la hora actual", "Borra registros", "Actualiza datos"],
+    answer: 0
+  },
+  {
+    question: "51. ¿Qué comando muestra todas las tablas de una base de datos en MySQL?",
+    options: ["SHOW DATABASES", "SHOW TABLES", "LIST ALL"],
+    answer: 1
+  },
+  {
+    question: "52. ¿Qué sentencia muestra la estructura de una tabla?",
+    options: ["SHOW COLUMNS", "DESCRIBE tabla", "STRUCTURE TABLE"],
+    answer: 1
+  },
+  {
+    question: "53. ¿Qué significa ACID en bases de datos?",
+    options: ["Atomicidad, Consistencia, Aislamiento, Durabilidad", "Acción, Carga, Inserción, Devolución", "Acceso, Conexión, Integridad, Desarrollo"],
+    answer: 0
+  },
+  {
+    question: "54. ¿Qué es una tabla temporal?",
+    options: ["Una copia exacta de una tabla", "Una tabla para backups", "Una tabla que existe solo mientras dura una sesión o transacción"],
+    answer: 2
+  },
+  {
+    question: "55. ¿Qué significa el tipo de dato BOOLEAN?",
+    options: ["Texto largo", "Sí o No (1 o 0)", "Hora exacta"],
+    answer: 1
+  },
+  {
+    question: "56. ¿Qué hace `AUTO_INCREMENT`?",
+    options: ["Inicia una transacción", "Evita duplicados", "Genera automáticamente valores únicos al insertar"],
+    answer: 2
+  },
+  {
+    question: "57. ¿Qué comando cambia el nombre de una tabla?",
+    options: ["RENAME TABLE", "ALTER NAME", "MODIFY TABLE"],
+    answer: 0
+  },
+  {
+    question: "58. ¿Qué es un procedimiento almacenado?",
+    options: ["Un índice automático", "Una operación guardada que se puede ejecutar en la base", "Un disparador de errores"],
+    answer: 1
+  },
+  {
+    question: "59. ¿Qué tipo de JOIN devuelve solo registros sin coincidencias?",
+    options: ["CROSS JOIN", "RIGHT JOIN", "OUTER JOIN con IS NULL"],
+    answer: 2
+  },
+  {
+    question: "60. ¿Qué operador busca coincidencias exactas en SQL?",
+    options: ["=", "==", "EQUAL"],
+    answer: 0
+  },
+  {
+    question: "61. ¿Qué palabra clave define una clave primaria en SQL?",
+    options: ["UNIQUE", "PRIMARY KEY", "INDEXED"],
+    answer: 1
+  },
+  {
+    question: "62. ¿Qué cláusula se usa para restringir los resultados de una consulta?",
+    options: ["WHERE", "HAVING", "LIMIT"],
+    answer: 0
+  },
+  {
+    question: "63. ¿Qué sentencia se usa para crear un índice en una tabla?",
+    options: ["CREATE INDEX", "MAKE INDEX", "INSERT INDEX"],
+    answer: 0
+  },
+  {
+    question: "64. ¿Qué tipo de JOIN combina cada fila de una tabla con todas las filas de otra?",
+    options: ["INNER JOIN", "FULL JOIN", "CROSS JOIN"],
+    answer: 2
+  },
+  {
+    question: "65. ¿Qué instrucción borra todos los datos pero conserva la estructura de la tabla?",
+    options: ["DELETE", "TRUNCATE", "DROP"],
+    answer: 1
+  },
+  {
+    question: "66. ¿Qué comando borra completamente una tabla y su estructura?",
+    options: ["DELETE", "DROP", "REMOVE"],
+    answer: 1
+  },
+  {
+    question: "67. ¿Qué es una relación uno a muchos?",
+    options: ["Un valor se repite varias veces", "Una fila de una tabla se relaciona con muchas filas de otra", "Dos tablas comparten la misma clave primaria"],
+    answer: 1
+  },
+  {
+    question: "68. ¿Qué hace la cláusula `IN`?",
+    options: ["Agrupa campos", "Comprueba si un valor está en una lista", "Suma valores"],
+    answer: 1
+  },
+  {
+    question: "69. ¿Cuál de estos tipos de datos es para números decimales?",
+    options: ["VARCHAR", "FLOAT", "BOOLEAN"],
+    answer: 1
+  },
+  {
+    question: "70. ¿Qué hace la cláusula `BETWEEN`?",
+    options: ["Filtra un valor exacto", "Filtra valores dentro de un rango", "Combina columnas"],
+    answer: 1
+  },
+  {
+    question: "71. ¿Qué comando borra filas que cumplen una condición?",
+    options: ["REMOVE WHERE", "DELETE FROM ... WHERE", "DROP WHERE"],
+    answer: 1
+  },
+  {
+    question: "72. ¿Qué significa `DEFAULT` al crear una columna?",
+    options: ["El valor será obligatorio", "El valor por defecto si no se especifica", "La columna será nula"],
+    answer: 1
+  },
+  {
+    question: "73. ¿Qué es un `schema` en una base de datos?",
+    options: ["Un tipo de columna", "Una copia de seguridad", "Una colección de estructuras como tablas y vistas"],
+    answer: 2
+  },
+  {
+    question: "74. ¿Qué comando devuelve solo los valores diferentes?",
+    options: ["UNIQUE", "DISTINCT", "LIMIT"],
+    answer: 1
+  },
+  {
+    question: "75. ¿Qué permite el tipo de dato DATE?",
+    options: ["Almacenar textos largos", "Almacenar fechas", "Contar filas"],
+    answer: 1
+  },
+  {
+    question: "76. ¿Qué operador compara si dos valores son diferentes en SQL?",
+    options: ["!=", "<>", "Ambos son válidos"],
+    answer: 2
+  },
+  {
+    question: "77. ¿Qué tipo de clave no puede repetirse ni ser nula?",
+    options: ["FOREIGN KEY", "UNIQUE", "PRIMARY KEY"],
+    answer: 2
+  },
+  {
+    question: "78. ¿Qué función devuelve la longitud de una cadena en SQL?",
+    options: ["SIZE()", "LENGTH()", "WIDTH()"],
+    answer: 1
+  },
+  {
+    question: "79. ¿Qué es una consulta anidada?",
+    options: ["Una consulta dentro de otra", "Una clave secundaria", "Un trigger de tabla"],
+    answer: 0
+  },
+  {
+    question: "80. ¿Qué cláusula se usa para renombrar columnas en resultados?",
+    options: ["RENAME", "AS", "SET"],
+    answer: 1
+  },
+  {
+    question: "81. ¿Qué hace el operador `IS NULL`?",
+    options: ["Comprueba si hay valor", "Selecciona columnas no vacías", "Filtra registros con valor nulo"],
+    answer: 2
+  },
+  {
+    question: "82. ¿Qué comando crea una base de datos en SQL?",
+    options: ["MAKE DATABASE", "CREATE DATABASE", "INIT DB"],
+    answer: 1
+  },
+  {
+    question: "83. ¿Qué es una clave compuesta?",
+    options: ["Una clave con índice automático", "Una clave que se repite", "Una clave formada por más de una columna"],
+    answer: 2
+  },
+  {
+    question: "84. ¿Qué significa `VARCHAR(50)`?",
+    options: ["Cadena de máximo 50 caracteres", "Cadena exacta de 50 caracteres", "Cadena con mínimo 50 caracteres"],
+    answer: 0
+  },
+  {
+    question: "85. ¿Qué es una transacción?",
+    options: ["Una combinación de claves", "Un conjunto de operaciones que se ejecutan como una sola", "Un índice entre dos tablas"],
+    answer: 1
+  },
+  {
+    question: "86. ¿Qué comando muestra la versión de MySQL?",
+    options: ["SHOW VERSION", "mysql --version", "VERSION()"],
+    answer: 1
+  },
+  {
+    question: "87. ¿Qué sistema gestor de base de datos es de código abierto?",
+    options: ["Oracle", "MySQL", "SQL Server"],
+    answer: 1
+  },
+  {
+    question: "88. ¿Qué función convierte a minúsculas?",
+    options: ["LOWER()", "MIN()", "TOLOWER()"],
+    answer: 0
+  },
+  {
+    question: "89. ¿Qué función convierte a mayúsculas?",
+    options: ["TOUPPER()", "UPPER()", "CAPITAL()"],
+    answer: 1
+  },
+  {
+    question: "90. ¿Qué palabra clave se usa para asegurarse de que un campo no quede vacío?",
+    options: ["UNIQUE", "DEFAULT", "NOT NULL"],
+    answer: 2
+  }
+
+    ];
+
+    let current = 0;
+
+    function showQuestion() {
+      const q = questions[current];
+      document.getElementById("question").textContent = q.question;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+      q.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(index);
+        optionsDiv.appendChild(btn);
+      });
+      document.getElementById("result").textContent = "";
+    }
+
+    function checkAnswer(index) {
+      const q = questions[current];
+      const result = document.getElementById("result");
+      if (index === q.answer) {
+        result.textContent = "✅ ¡Correcto!";
+      } else {
+        result.textContent = "❌ Incorrecto. La correcta es: " + q.options[q.answer];
+      }
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      showQuestion();
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>

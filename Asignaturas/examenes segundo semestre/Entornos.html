@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test Entornos de Desarrollo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    button { display: block; margin: 10px 0; padding: 10px; width: 100%; }
+    #question { font-weight: bold; margin-bottom: 10px; }
+    #result { margin-top: 10px; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Test de Entornos de Desarrollo</h1>
+  <div id="question"></div>
+  <div id="options"></div>
+  <div id="result"></div>
+  <button onclick="nextQuestion()">Siguiente</button>
+
+  <script>
+    const questions = [
+      {
+    question: "1. ¿Qué representa un IDE?",
+    options: ["Una base de datos", "Un entorno de desarrollo integrado", "Un lenguaje de programación"],
+    answer: 1
+  },
+  {
+    question: "2. ¿Cuál de las siguientes opciones es una ventaja del uso de entornos integrados de desarrollo?",
+    options: ["Reducción de errores de sintaxis", "Requiere más memoria", "Solo sirve para un lenguaje"],
+    answer: 0
+  },
+  {
+    question: "3. ¿Qué tipo de herramienta es Eclipse?",
+    options: ["Compilador", "Editor de texto", "IDE"],
+    answer: 2
+  },
+  {
+    question: "4. ¿Cuál de las siguientes no es una característica común de los IDE?",
+    options: ["Depuración", "Compilación", "Gestión de redes"],
+    answer: 2
+  },
+  {
+    question: "5. ¿Qué es el control de versiones?",
+    options: ["Un método para crear nuevas versiones del sistema operativo", "Una técnica para rastrear cambios en el código", "Una forma de compilar proyectos grandes"],
+    answer: 1
+  },
+  {
+    question: "6. ¿Qué sistema de control de versiones es distribuido?",
+    options: ["CVS", "Subversion", "Git"],
+    answer: 2
+  },
+  {
+    question: "7. ¿Cuál de los siguientes comandos de Git se usa para subir cambios al repositorio remoto?",
+    options: ["git push", "git pull", "git init"],
+    answer: 0
+  },
+  {
+    question: "8. ¿Qué comando de Git se usa para clonar un repositorio remoto?",
+    options: ["git start", "git clone", "git copy"],
+    answer: 1
+  },
+  {
+    question: "9. ¿Qué es un repositorio en Git?",
+    options: ["Una copia del sistema operativo", "Un conjunto de archivos con historial de versiones", "Una carpeta de usuario local"],
+    answer: 1
+  },
+  {
+    question: "10. ¿Qué representa el símbolo ~ en UML?",
+    options: ["Privado", "Protegido", "Paquete"],
+    answer: 2
+  },
+  {
+    question: "11. ¿Qué se entiende por clase abstracta?",
+    options: ["Una clase que no puede tener atributos", "Una clase que no puede instanciarse", "Una clase con solo métodos estáticos"],
+    answer: 1
+  },
+  {
+    question: "12. ¿Qué diagrama de UML muestra la interacción entre objetos en el tiempo?",
+    options: ["Diagrama de casos de uso", "Diagrama de clases", "Diagrama de secuencia"],
+    answer: 2
+  },
+  {
+    question: "13. ¿Cuál es el propósito de la herencia en POO?",
+    options: ["Evitar errores", "Reutilizar código", "Crear variables globales"],
+    answer: 1
+  },
+  {
+    question: "14. ¿Qué operador se usa para indicar herencia en Java?",
+    options: ["extends", "implements", "inherits"],
+    answer: 0
+  },
+  {
+    question: "15. ¿Qué palabra clave se usa para implementar una interfaz en Java?",
+    options: ["extends", "inherits", "implements"],
+    answer: 2
+  },
+  {
+    question: "16. ¿Qué se representa en un diagrama de clases?",
+    options: ["La secuencia de eventos", "Las clases, atributos, métodos y relaciones", "Los actores y casos de uso"],
+    answer: 1
+  },
+  {
+    question: "17. ¿Qué tipo de relación se representa con una línea con rombo vacío en UML?",
+    options: ["Asociación", "Agregación", "Composición"],
+    answer: 1
+  },
+  {
+    question: "18. ¿Qué es una excepción en Java?",
+    options: ["Un valor nulo", "Un error que ocurre en tiempo de compilación", "Un evento que altera el flujo normal del programa"],
+    answer: 2
+  },
+  {
+    question: "19. ¿Cuál es el paquete principal para manejo de excepciones en Java?",
+    options: ["java.util", "java.io", "java.lang"],
+    answer: 2
+  },
+  {
+    question: "20. ¿Qué palabra clave se utiliza para capturar una excepción?",
+    options: ["try", "catch", "throw"],
+    answer: 1
+  },
+  {
+    question: "21. ¿Qué hace el bloque finally en Java?",
+    options: ["Ejecuta código después del catch", "Ignora errores", "Define la excepción"],
+    answer: 0
+  },
+  {
+    question: "22. ¿Qué representa la palabra clave throw?",
+    options: ["Crear una excepción nueva", "Ignorar una excepción", "Capturar una excepción"],
+    answer: 0
+  },
+  {
+    question: "23. ¿Qué clase se usa para capturar excepciones generales en Java?",
+    options: ["Exception", "Throwable", "IOException"],
+    answer: 0
+  },
+  {
+    question: "24. ¿Qué diferencia hay entre checked y unchecked exceptions?",
+    options: ["Las checked se deben manejar obligatoriamente", "Las unchecked son errores de sintaxis", "Las checked son más comunes"],
+    answer: 0
+  },
+  {
+    question: "25. ¿Qué permite una herramienta de integración continua?",
+    options: ["Eliminar ramas en Git", "Compilar código automáticamente", "Crear interfaces gráficas"],
+    answer: 1
+  },
+  {
+    question: "26. ¿Qué es Jenkins?",
+    options: ["Un framework de Java", "Una herramienta de integración continua", "Un sistema operativo"],
+    answer: 1
+  },
+  {
+    question: "27. ¿Cuál es la función del comando javac?",
+    options: ["Ejecutar programas Java", "Compilar programas Java", "Eliminar código"],
+    answer: 1
+  },
+  {
+    question: "28. ¿Qué formato se usa para describir interfaces en JavaFX?",
+    options: ["HTML", "FXML", "JSON"],
+    answer: 1
+  },
+  {
+    question: "29. ¿Qué componente de JavaFX representa una caja de texto?",
+    options: ["Label", "TextArea", "TextField"],
+    answer: 2
+  },
+  {
+    question: "30. ¿Qué clase en Java se usa para trabajar con fechas y horas modernas?",
+    options: ["Date", "Calendar", "LocalDateTime"],
+    answer: 2
+  },
+  {
+    question: "31. ¿Qué comando se usa en Git para ver el historial de commits?",
+    options: ["git status", "git history", "git log"],
+    answer: 2
+  },
+  {
+    question: "32. ¿Qué comando crea un nuevo repositorio en Git?",
+    options: ["git create", "git init", "git add"],
+    answer: 1
+  },
+  {
+    question: "33. ¿Qué se logra con la integración continua?",
+    options: ["Pruebas automáticas y despliegue continuo", "División del código", "Solo validación de formularios"],
+    answer: 0
+  },
+  {
+    question: "34. ¿Qué es Maven?",
+    options: ["Un compilador", "Un sistema de control de versiones", "Una herramienta de gestión de proyectos Java"],
+    answer: 2
+  },
+  {
+    question: "35. ¿Qué tipo de lenguaje es XML?",
+    options: ["De programación", "De marcado", "Compilado"],
+    answer: 1
+  },
+  {
+    question: "36. ¿Qué representa la palabra clave `super` en Java?",
+    options: ["Una constante", "Acceso a la clase padre", "Creación de objetos"],
+    answer: 1
+  },
+  {
+    question: "37. ¿Qué significa que un método sea `abstract`?",
+    options: ["Está implementado en la clase", "Debe implementarse en las subclases", "Es privado"],
+    answer: 1
+  },
+  {
+    question: "38. ¿Cuál es la extensión de un archivo Java compilado?",
+    options: [".java", ".javac", ".class"],
+    answer: 2
+  },
+  {
+    question: "39. ¿Qué herramienta de JavaFX define interfaces gráficas?",
+    options: ["SceneBuilder", "FXMLViewer", "JCreator"],
+    answer: 0
+  },
+  {
+    question: "40. ¿Qué palabra clave se usa para heredar de una clase en Java?",
+    options: ["inherits", "extends", "implements"],
+    answer: 1
+  },
+  {
+    question: "41. ¿Qué indica la notación `<<interface>>` en un diagrama UML?",
+    options: ["Una clase abstracta", "Una interfaz", "Una librería"],
+    answer: 1
+  },
+  {
+    question: "42. ¿Qué es una relación de dependencia en UML?",
+    options: ["Una clase que contiene otra", "Una clase que usa otra", "Una clase que hereda de otra"],
+    answer: 1
+  },
+  {
+    question: "43. ¿Qué tipo de relación representa un diamante sólido en UML?",
+    options: ["Agregación", "Composición", "Herencia"],
+    answer: 1
+  },
+  {
+    question: "44. ¿Qué comando de Git se usa para ver archivos modificados?",
+    options: ["git log", "git status", "git branch"],
+    answer: 1
+  },
+  {
+    question: "45. ¿Qué representa una rama en Git?",
+    options: ["Una carpeta", "Una línea de desarrollo", "Una versión fija"],
+    answer: 1
+  },
+  {
+    question: "46. ¿Qué hace `git merge`?",
+    options: ["Fusiona ramas", "Crea commits", "Elimina cambios"],
+    answer: 0
+  },
+  {
+    question: "47. ¿Qué hace el comando `git pull`?",
+    options: ["Sube cambios", "Borra archivos", "Actualiza el repositorio local con cambios remotos"],
+    answer: 2
+  },
+  {
+    question: "48. ¿Qué es `README.md`?",
+    options: ["Un archivo de configuración", "Un archivo de texto con información del proyecto", "Un ejecutable"],
+    answer: 1
+  },
+  {
+    question: "49. ¿Qué es un commit en Git?",
+    options: ["Un cambio guardado con un mensaje", "Una carpeta temporal", "Una rama alternativa"],
+    answer: 0
+  },
+  {
+    question: "50. ¿Qué se usa para automatizar pruebas?",
+    options: ["Jenkins", "JUnit", "JavaFX"],
+    answer: 1
+  },
+  {
+    question: "51. ¿Qué archivo define las dependencias en un proyecto Maven?",
+    options: ["build.gradle", "pom.xml", "settings.xml"],
+    answer: 1
+  },
+  {
+    question: "52. ¿Qué es un artefacto en Maven?",
+    options: ["Una herramienta de compilación", "Una versión del proyecto compilado", "Un plugin externo"],
+    answer: 1
+  },
+  {
+    question: "53. ¿Qué es GitHub?",
+    options: ["Un lenguaje de programación", "Un sistema operativo", "Una plataforma para alojar repositorios Git"],
+    answer: 2
+  },
+  {
+    question: "54. ¿Qué herramienta permite integración continua con GitHub?",
+    options: ["IntelliJ", "GitLab", "GitHub Actions"],
+    answer: 2
+  },
+  {
+    question: "55. ¿Qué significa `ctrl + z` en muchas herramientas?",
+    options: ["Rehacer", "Guardar", "Deshacer"],
+    answer: 2
+  },
+  {
+    question: "56. ¿Cuál es el propósito de `System.out.println()` en Java?",
+    options: ["Leer datos", "Mostrar datos en consola", "Cerrar aplicación"],
+    answer: 1
+  },
+  {
+    question: "57. ¿Qué hace el método `main()` en Java?",
+    options: ["Es el punto de entrada de ejecución", "Define una interfaz", "Contiene atributos globales"],
+    answer: 0
+  },
+  {
+    question: "58. ¿Qué significa que un método sea `static`?",
+    options: ["No necesita una instancia para usarse", "Solo se puede usar una vez", "Es abstracto"],
+    answer: 0
+  },
+  {
+    question: "59. ¿Qué es un IDE?",
+    options: ["Un editor de texto plano", "Un entorno que integra herramientas de desarrollo", "Un lenguaje de programación"],
+    answer: 1
+  },
+  {
+    question: "60. ¿Qué hace un depurador?",
+    options: ["Detecta errores lógicos en tiempo de ejecución", "Compila programas", "Guarda archivos"],
+    answer: 0
+  },
+  {
+    question: "61. ¿Qué comando en Git crea una nueva rama?",
+    options: ["git new", "git branch", "git clone"],
+    answer: 1
+  },
+  {
+    question: "62. ¿Para qué sirve el comando `git checkout`?",
+    options: ["Cambiar de rama", "Crear rama", "Eliminar rama"],
+    answer: 0
+  },
+  {
+    question: "63. ¿Qué indica `HEAD` en Git?",
+    options: ["El primer commit", "La rama principal", "El último commit actual"],
+    answer: 2
+  },
+  {
+    question: "64. ¿Qué comando de Git revierte cambios?",
+    options: ["git revert", "git resume", "git undo"],
+    answer: 0
+  },
+  {
+    question: "65. ¿Cuál de estas herramientas no es un sistema de control de versiones?",
+    options: ["Git", "SVN", "MySQL"],
+    answer: 2
+  },
+  {
+    question: "66. ¿Qué significa `DRY` en desarrollo de software?",
+    options: ["Don’t Repeat Yourself", "Do Repeat Yourself", "Data Repeat Yield"],
+    answer: 0
+  },
+  {
+    question: "67. ¿Qué es una refactorización?",
+    options: ["Modificar código sin cambiar su comportamiento", "Eliminar métodos", "Compilar en otro lenguaje"],
+    answer: 0
+  },
+  {
+    question: "68. ¿Qué es un entorno de producción?",
+    options: ["Donde trabajan los desarrolladores", "Donde se prueban funciones", "Donde se usa la aplicación real por los usuarios"],
+    answer: 2
+  },
+  {
+    question: "69. ¿Qué representa un actor en un diagrama de casos de uso?",
+    options: ["Una clase", "Un método", "Un usuario o sistema externo"],
+    answer: 2
+  },
+  {
+    question: "70. ¿Qué palabra clave define una clase en Java?",
+    options: ["define", "class", "new"],
+    answer: 1
+  },
+  {
+    question: "71. ¿Qué representa una flecha en un diagrama de secuencia?",
+    options: ["Creación de objetos", "Intercambio de mensajes", "Jerarquía de clases"],
+    answer: 1
+  },
+  {
+    question: "72. ¿Qué indica una línea discontinua en UML?",
+    options: ["Herencia", "Interfaz", "Mensaje de retorno"],
+    answer: 2
+  },
+  {
+    question: "73. ¿Qué tipo de visibilidad representa `+` en UML?",
+    options: ["Privada", "Protegida", "Pública"],
+    answer: 2
+  },
+  {
+    question: "74. ¿Qué permite la modularidad en programación?",
+    options: ["Dividir el programa en partes independientes", "Hacer un solo archivo", "Unir todas las clases en una sola"],
+    answer: 0
+  },
+  {
+    question: "75. ¿Qué es una variable de instancia?",
+    options: ["Se comparte entre todas las instancias", "Pertenece a cada objeto", "Se define como estática"],
+    answer: 1
+  },
+  {
+    question: "76. ¿Qué método se ejecuta primero al iniciar un programa Java?",
+    options: ["run()", "start()", "main()"],
+    answer: 2
+  },
+  {
+    question: "77. ¿Qué es una excepción controlada (checked exception)?",
+    options: ["Debe manejarse obligatoriamente", "Ocurre en tiempo de ejecución", "Es opcional"],
+    answer: 0
+  },
+  {
+    question: "78. ¿Qué clase permite leer datos desde el teclado en Java?",
+    options: ["BufferedReader", "Scanner", "DataInputStream"],
+    answer: 1
+  },
+  {
+    question: "79. ¿Qué es un constructor en Java?",
+    options: ["Un método que crea interfaces", "Un método especial que inicializa objetos", "Un atributo de clase"],
+    answer: 1
+  },
+  {
+    question: "80. ¿Qué significa sobrecarga de métodos?",
+    options: ["Mismos nombres, diferentes parámetros", "Mismos nombres y mismos parámetros", "Diferentes nombres"],
+    answer: 0
+  },
+  {
+    question: "81. ¿Qué método se usa para comparar cadenas ignorando mayúsculas?",
+    options: ["equals()", "equalsIgnoreCase()", "compareTo()"],
+    answer: 1
+  },
+  {
+    question: "82. ¿Qué clase en Java representa una fecha sin hora?",
+    options: ["LocalTime", "LocalDate", "Calendar"],
+    answer: 1
+  },
+  {
+    question: "83. ¿Qué hace `setText()` en JavaFX?",
+    options: ["Asigna texto a una etiqueta", "Cierra la ventana", "Ejecuta código Java"],
+    answer: 0
+  },
+  {
+    question: "84. ¿Qué palabra clave se usa para definir una constante?",
+    options: ["var", "const", "final"],
+    answer: 2
+  },
+  {
+    question: "85. ¿Qué es una interfaz en Java?",
+    options: ["Una clase normal", "Una clase abstracta", "Una colección de métodos sin implementación"],
+    answer: 2
+  },
+  {
+    question: "86. ¿Qué clase se usa para mostrar alertas en JavaFX?",
+    options: ["Popup", "Dialog", "Alert"],
+    answer: 2
+  },
+  {
+    question: "87. ¿Qué representa el patrón MVC?",
+    options: ["Modelo Vista Controlador", "Modelo Variable Código", "Módulo Visual Componente"],
+    answer: 0
+  },
+  {
+    question: "88. ¿Qué método convierte texto en número entero?",
+    options: ["parseInt()", "toInt()", "stringToInt()"],
+    answer: 0
+  },
+  {
+    question: "89. ¿Qué comando de Git elimina una rama?",
+    options: ["git remove", "git branch -d", "git delete"],
+    answer: 1
+  },
+  {
+    question: "90. ¿Qué representa el archivo `.gitignore`?",
+    options: ["Define las ramas protegidas", "Lista de archivos que no se deben subir al repo", "Contiene el historial de cambios"],
+    answer: 1
+  },
+  {
+    question: "91. ¿Qué herramienta se usa para subir un proyecto a GitHub?",
+    options: ["Eclipse", "Git", "JavaFX"],
+    answer: 1
+  },
+  {
+    question: "92. ¿Qué lenguaje usa FXML?",
+    options: ["Java", "XML", "JSON"],
+    answer: 1
+  },
+  {
+    question: "93. ¿Qué permite el diseño modular?",
+    options: ["Separar responsabilidades", "Mezclar capas", "Evitar librerías"],
+    answer: 0
+  },
+  {
+    question: "94. ¿Qué operador se usa para concatenar cadenas en Java?",
+    options: ["&", "+", "++"],
+    answer: 1
+  },
+  {
+    question: "95. ¿Qué símbolo se usa en Java para comentarios de una línea?",
+    options: ["//", "#", "/*"],
+    answer: 0
+  },
+  {
+    question: "96. ¿Qué método se usa para imprimir texto en consola en Java?",
+    options: ["print()", "write()", "System.out.println()"],
+    answer: 2
+  }
+    ];
+
+    let current = 0;
+
+    function showQuestion() {
+      const q = questions[current];
+      document.getElementById("question").textContent = q.question;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+      q.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(index);
+        optionsDiv.appendChild(btn);
+      });
+      document.getElementById("result").textContent = "";
+    }
+
+    function checkAnswer(index) {
+      const q = questions[current];
+      const result = document.getElementById("result");
+      if (index === q.answer) {
+        result.textContent = "✅ ¡Correcto!";
+      } else {
+        result.textContent = "❌ Incorrecto. La correcta es: " + q.options[q.answer];
+      }
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      showQuestion();
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>

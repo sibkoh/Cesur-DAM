@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test de Programación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    button { display: block; margin: 10px 0; padding: 10px; width: 100%; }
+    #question { font-weight: bold; margin-bottom: 10px; }
+    #result { margin-top: 10px; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Test de Programación</h1>
+  <div id="question"></div>
+  <div id="options"></div>
+  <div id="result"></div>
+  <button onclick="nextQuestion()">Siguiente</button>
+
+  <script>
+    const questions = [
+    
+  {
+    question: "1. Según el siguiente código. ¿Qué método se utilizará para obtener el valor de la variable estática ‘contador’?\nclass Persona {\n    static int contador = 0;\n    static int getContador() {\n        return contador;\n    }\n    static void setContador(int nuevoContador) {\n        contador = nuevoContador;\n    }\n    void contador() {\n        contador++;\n    }\n}",
+    options: ["Persona.contador()", "Persona.getContador()", "Persona.setContador()"],
+    answer: 0
+  },
+  {
+    question: "2. ¿Qué paquete contiene las clases e interfaces para la entrada/salida en Java?",
+    options: ["java.io", "java.net", "java.util"],
+    answer: 0
+  },
+  {
+    question: "3. ¿Qué se debe hacer en XAMPP para conectar Java con MySQL?",
+    options: ["Iniciar solo Apache", "Iniciar Apache y MySQL", "No iniciar nada"],
+    answer: 1
+  },
+  {
+    question: "4. ¿Qué palabra clave se usa para implementar interfaces en Java?",
+    options: ["extends", "implements", "inherits"],
+    answer: 1
+  },
+  {
+    question: "5. ¿Qué método crea un archivo temporal en Java?",
+    options: ["createNewFile()", "createTempFile()", "createUniqueFile()"],
+    answer: 1
+  },
+  {
+    question: "6. ¿Qué símbolo indica inicio de línea en expresiones regulares?",
+    options: ["$", ".", "^"],
+    answer: 2
+  },
+  {
+    question: "7. ¿Qué pasa si intentas crear una instancia de una clase abstracta?",
+    options: ["Compila sin error", "Error al compilar", "Excepción en ejecución"],
+    answer: 1
+  },
+  {
+    question: "8. ¿Qué hace un botón con setOnAction en JavaFX?",
+    options: ["Cierra la app", "Muestra mensaje", "Nada"],
+    answer: 1
+  },
+  {
+    question: "9. ¿Cómo se accede al primer elemento de una lista?",
+    options: ["get(0)", "getFirst()", "getHead()"],
+    answer: 0
+  },
+  {
+    question: "10. ¿Qué driver JDBC está hecho en Java y C/C++?",
+    options: ["Ambos", "Nativo/Java", "JDBC-ODBC"],
+    answer: 1
+  },
+  {
+    question: "11. ¿Para qué sirven los métodos estáticos de creación?",
+    options: ["Facilitan instanciación", "Limitar acceso"],
+    answer: 0
+  },
+  {
+    question: "12. ¿Qué componente en XAMPP gestiona bases de datos?",
+    options: ["Apache", "MySQL/MariaDB", "PHP"],
+    answer: 1
+  },
+  {
+    question: "13. ¿Qué clase se usa para obtener conexión a la BD en Java?",
+    options: ["Connection", "Driver", "DriverManager"],
+    answer: 2
+  },
+  {
+    question: "14. ¿Qué clases se usan para leer y escribir bytes en Java?",
+    options: ["BufferedReader/Writer", "FileInputStream/FileOutputStream", "FileReader/FileWriter"],
+    answer: 1
+  },
+  {
+    question: "15. ¿Cómo se crea un Statement desde una conexión?",
+    options: ["createStatement()", "executeQuery()", "getConnection()"],
+    answer: 0
+  },
+  {
+    question: "16. ¿Qué clase simplifica escritura de datos en Java?",
+    options: ["BufferedWriter", "FileWriter", "PrintWriter"],
+    answer: 2
+  },
+  {
+    question: "17. ¿Qué valor devuelve un lector al final del archivo?",
+    options: ["-1", "EOF", "null"],
+    answer: 0
+  },
+  {
+    question: "18. ¿Qué algoritmo se recomienda para buscar en arrays grandes?",
+    options: ["Búsqueda binaria", "Burbuja", "Lineal"],
+    answer: 0
+  },
+  {
+    question: "19. ¿Qué clase representa una caja de texto de una sola línea?",
+    options: ["Label", "TextArea", "TextField"],
+    answer: 2
+  },
+  {
+    question: "20. ¿Qué herramienta es multiplataforma (Win, Linux, Mac)?",
+    options: ["Eclipse", "MySQL Workbench", "XAMPP"],
+    answer: 2
+  },
+  {
+    question: "21. ¿Cómo accedes a 'Categoria' en un Map<String, String>?",
+    options: ["miMapa.fetch('Categoria')", "miMapa.get('Categoria')", "miMapa['Categoria']"],
+    answer: 1
+  },
+  {
+    question: "22. ¿Qué hace el código con SELECT FROM pacientes WHERE edad > ? usando PreparedStatement?",
+    options: ["Elimina pacientes mayores", "Inserta mayores de 18", "Muestra mayores de 18"],
+    answer: 2
+  },
+  {
+    question: "23. ¿Qué ventaja ofrece la herencia?",
+    options: ["Algoritmos", "Reutilización de código", "Sobrecarga de métodos"],
+    answer: 1
+  },
+  {
+    question: "24. ¿Qué palabra indica herencia en Java?",
+    options: ["extends", "implements", "inherits"],
+    answer: 0
+  },
+  {
+    question: "25. ¿Qué colección permite guardar objetos de otra clase?",
+    options: ["Ambas", "ArrayList", "LinkedList"],
+    answer: 0
+  },
+  {
+    question: "26. ¿Qué tipo de archivo se debe borrar para evitar errores al crear un proyecto JavaFX en Eclipse?",
+    options: ["Main.java", "application.css", "module-info.java"],
+    answer: 2
+  },
+  {
+    question: "27. ¿Qué método crea un objeto Matcher en Java?",
+    options: ["compile()", "matcher()", "matches()"],
+    answer: 1
+  },
+  {
+    question: "28. ¿Qué hace este código con DataOutputStream?",
+    options: ["Crea archivo de texto", "Escribe int y double", "Lee datos de archivo"],
+    answer: 1
+  },
+  {
+    question: "29. ¿Qué interfaz representa los resultados de una SELECT?",
+    options: ["Connection", "ResultSet", "Statement"],
+    answer: 1
+  },
+  {
+    question: "30. ¿Qué interfaz se implementa para serializar un objeto?",
+    options: ["DataOutput", "ObjectInput", "Serializable"],
+    answer: 2
+  },
+  {
+    question: "31. ¿Qué método redondea hacia arriba?",
+    options: ["Math.ceil()", "Math.floor()", "Math.round()"],
+    answer: 0
+  },
+  {
+    question: "32. ¿Qué es db4o?",
+    options: ["BD orientada a objetos", "BD orientada a documentos", "BD relacional"],
+    answer: 0
+  },
+  {
+    question: "33. ¿Qué driver JDBC se usa para MySQL en Java?",
+    options: ["JDBC-Net", "JDBC-ODBC", "Native-API"],
+    answer: 2
+  },
+  {
+    question: "34. ¿Qué tipo de recursividad tiene escribirLista()?",
+    options: ["Directa", "Indirecta", "Múltiple"],
+    answer: 0
+  },
+  {
+    question: "35. ¿Cómo se declara una clase genérica?",
+    options: ["class Almacen<T> {}", "class Almacen<Object> {}", "class Almacen {}"],
+    answer: 0
+  },
+  {
+    question: "36. ¿Qué método obtiene el nodo raíz en XML?",
+    options: ["getDocumentElement()", "getRootElement()", "getRootNode()"],
+    answer: 0
+  },
+  {
+    question: "37. ¿Qué necesitas para conectar JDBC a MySQL?",
+    options: ["Añadir mysql-connector-java al classpath"],
+    answer: 0
+  },
+  {
+    question: "38. ¿Qué versión de Java introdujo genéricos?",
+    options: ["1.4", "5.0", "8"],
+    answer: 1
+  },
+  {
+    question: "39. ¿Qué driver JDBC tiene mejor rendimiento?",
+    options: ["Nativo", "Todo Java", "JDBC-ODBC"],
+    answer: 1
+  },
+  {
+    question: "40. ¿Qué clase maneja eventos SAX?",
+    options: ["ContentHandler", "EventHandler", "SAXHandler"],
+    answer: 0
+  },
+  {
+    question: "41. ¿Qué método lee un double?",
+    options: ["readDouble()", "readObject()", "readUTF()"],
+    answer: 0
+  },
+  {
+    question: "42. ¿Cómo se escribe una cadena con DataOutputStream?",
+    options: ["writeChars()", "writeString()", "writeUTF()"],
+    answer: 2
+  },
+  {
+    question: "43. ¿Qué tipo se pasa a getXXX() para indicar el nombre de la columna?",
+    options: ["Object", "String", "int"],
+    answer: 1
+  },
+  {
+    question: "44. ¿Qué método añade elementos a un Set?",
+    options: ["add()", "insert()", "put()"],
+    answer: 0
+  },
+  {
+    question: "45. ¿Qué imprime este código con métodos sumar(int, double)?",
+    options: ["8", "6", "Error"],
+    answer: 0
+  },
+  {
+    question: "46. ¿Qué método borra un archivo en Java?",
+    options: ["delete()", "deleteOnExit()", "remove()"],
+    answer: 0
+  },
+  {
+    question: "47. ¿Qué hace este código si cadena es null?",
+    options: ["Lanza NullPointerException", "Imprime nulo", "Error de compilación"],
+    answer: 0
+  },
+  {
+    question: "48. ¿Qué clase tiene métodos para operaciones matemáticas?",
+    options: ["Math", "Number", "Random"],
+    answer: 0
+  },
+  {
+    question: "49. ¿Qué clase se usa para leer archivos de texto línea por línea?",
+    options: ["BufferedReader", "Scanner", "FileReader"],
+    answer: 0
+  },
+  {
+    question: "50. ¿Qué condición se debe cumplir para multiplicar matrices en Java?",
+    options: ["Filas iguales", "Columnas iguales", "Columnas A = filas B"],
+    answer: 2
+  },
+  {
+    question: "51. ¿Qué método de la clase File borra un archivo inmediatamente?",
+    options: ["delete()", "deleteOnExit()", "remove()"],
+    answer: 0
+  },
+  {
+    question: "52. ¿Qué hace el siguiente bloque?\nString cadena = null;\nif (cadena == null) {\n throw new NullPointerException(\"La cadena no puede ser nula\");\n}",
+    options: ["Lanza una excepción si la cadena es null", "Imprime la cadena", "No hace nada"],
+    answer: 0
+  },
+  {
+    question: "53. ¿Qué clase de java.lang proporciona métodos para operaciones matemáticas?",
+    options: ["Math", "Number", "Random"],
+    answer: 0
+  },
+  {
+    question: "54. a. El constructor con parámetros",
+    options: ["El constructor que coincida con el de la subclase", "El constructor sin parámetros"],
+    answer: 0
+  },
+  {
+    question: "55. a. Que la clase no puede tener métodos",
+    options: ["Que la clase no puede tener subclases", "Que la clase no puede tener variables"],
+    answer: 0
+  },
+  {
+    question: "56. a. close()",
+    options: ["release()"],
+    answer: 0
+  },
+  {
+    question: "57. a. Listas densas",
+    options: ["Listas enlazadas", "Listas ordinales"],
+    answer: 0
+  },
+  {
+    question: "58. Ventaja que tiene hacer públicos los miembros objeto de una clase compuesta.",
+    options: ["Permite acceder a las funcionalidades y propiedades de los objetos contenidos", "Permite crear nuevos objetos a partir de los objetos contenidos"],
+    answer: 0
+  },
+  {
+    question: "59. Ventaja de utilizar un buffer para leer o escribir datos en Java.",
+    options: ["Permite leer o escribir datos de diferentes tipos, como bytes, caracteres o líneas.", "Permite leer o escribir datos de forma aleatoria, sin seguir un orden secuencial.", "Permite leer o escribir datos en bloques, lo que mejora el rendimiento de la lectura o escritura de datos grandes."],
+    answer: 0
+  },
+  {
+    question: "60. a. Java Application Project.",
+    options: ["Java Project.", "JavaFX Project."],
+    answer: 0
+  },
+  {
+    question: "61. ¿Cómo se denomina al tipo de flujo de salida que se utiliza para escribir datos de diferentes tipos en un formato binario?",
+    options: ["BufferedOutputStream.", "DataOutputStream.", "FileOutputStream."],
+    answer: 0
+  },
+  {
+    question: "62. Método de la clase Document que se utiliza para crear un nuevo elemento con una etiqueta determinada.",
+    options: ["createElement(String tag)", "createNode(String tag)", "createTag(String tag)"],
+    answer: 0
+  },
+  {
+    question: "63. Método de la clase String que se utiliza para buscar la última ocurrencia de un carácter dentro de una cadena.",
+    options: ["charAt(int index)", "indexOf(int ch)", "lastIndexOf(int ch)"],
+    answer: 0
+  },
+  {
+    question: "64. a. La capacidad de compartir y transferir objetos entre diferentes programas y sistemas",
+    options: ["La capacidad de mantener la información de objetos a lo largo del tiempo, más allá de la vida útil de la ejecución del programa"],
+    answer: 0
+  },
+  {
+    question: "65. Dado el siguiente código en Java, ¿Qué devuelve `saludo.substring(5);`\nString saludo = \"Hola Mundo\";",
+    options: ["Hola", "Hola Mundo", "Mundo"],
+    answer: 0
+  },
+  {
+    question: "67. a. Un archivo que contiene datos representados en formato binario (0 y 1).",
+    options: ["Un archivo que contiene datos representados en formato de caracteres (letras, números y símbolos).", "Un archivo que contiene datos representados en formato de objetos (clases e instancias)."],
+    answer: 0
+  },
+  {
+    question: "68. ¿Qué desafíos puede presentar el desfase objeto-relacional?",
+    options: ["Ambas opciones son correctas", "Diferencias de tipos de datos"],
+    answer: 0
+  },
+  {
+    question: "69. ¿Cuál es el propósito principal del siguiente código que usa Statement y ResultSet para una consulta SELECT de pacientes activos?",
+    options: ["Crear una nueva tabla en la base de datos.", "Insertar un nuevo registro en la tabla `pacientes`.", "Recuperar y mostrar los nombres, apellidos y correos electrónicos de los pacientes activos."],
+    answer: 0
+  },
+  {
+    question: "70. ¿Qué es una consulta preparada de tipo preparedStatement?",
+    options: ["Una consulta que se compila antes de ejecutarse y puede contener parámetros variables", "Una consulta que se compila y se ejecuta al mismo tiempo y puede contener parámetros opcionales"],
+    answer: 0
+  },
+  {
+    question: "71. ¿Cuál es el tipo de lista que se caracteriza por tener una referencia al primer y al último nodo, y cada nodo tiene una referencia al anterior y al siguiente?",
+    options: ["Lista circular", "Lista enlazada bidireccional", "Lista enlazada unidireccional"],
+    answer: 0
+  },
+  {
+    question: "72. a. Ambas son válidas",
+    options: ["Evita que se cambien accidentalmente los valores de las constantes", "Mejora la legibilidad y el mantenimiento del código"],
+    answer: 0
+  },
+  {
+    question: "74. ¿Qué es una excepción en Java?",
+    options: ["Un error que ocurre cuando el usuario introduce datos incorrectos o inválidos.", "Un error que ocurre durante la compilación de un programa y que impide que el programa se ejecute correctamente.", "Un error que ocurre durante la ejecución de un programa y que puede causar que el programa se detenga o se comporte de forma inesperada."],
+    answer: 0
+  },
+  {
+    question: "75. Método que se utiliza para recuperar el valor de una columna de tipo booleano.",
+    options: ["getBit()", "getBoolean()", "getFlag()"],
+    answer: 0
+  },
+  {
+    question: "76. ¿Cuáles son el tipo de datos que se pueden usar para diferenciar los métodos sobrecargados en una clase?",
+    options: ["Ambos son válidos", "Numéricos o lógicos", "Primitivos o referencias"],
+    answer: 0
+  },
+  {
+    question: "77. ¿Qué ocurre al instanciar una clase abstracta?",
+    options: ["Se produce un error en tiempo de compilación", "Conversión implícita", "Excepción en ejecución"],
+    answer: 0
+  },
+  {
+    question: "78. ¿Qué imprime el método run sobreescrito?",
+    options: ["¡Hola desde el thread secundario!", "Nada", "Error de compilación"],
+    answer: 0
+  },
+  {
+    question: "79. ¿Cómo se llaman los métodos estáticos?",
+    options: ["Desde la clase", "Desde una instancia", "Desde una subclase"],
+    answer: 0
+  },
+  {
+    question: "80. ¿Qué ventaja tiene SAX sobre DOM?",
+    options: ["Es más rápido y consume menos memoria", "Accede a todo el árbol XML directamente"],
+    answer: 0
+  },
+  {
+    question: "81. ¿Qué permite un inicializador al crear un array?",
+    options: ["Asignar valores sin bucle", "Crear arrays sin usar 'new'"],
+    answer: 0
+  },
+  {
+    question: "82. ¿Qué objeto se usa para leer del teclado?",
+    options: ["System.err", "System.in", "System.out"],
+    answer: 1
+  },
+  {
+    question: "83. ¿Qué método escribe un entero?",
+    options: ["writeDouble()", "writeInt()", "writeUTF()"],
+    answer: 1
+  },
+  {
+    question: "84. ¿A qué paquete pertenecen DataInputStream y DataOutputStream?",
+    options: ["java.io", "java.lang", "java.util"],
+    answer: 0
+  },
+  {
+    question: "85. ¿Qué permite JDBC 4.0?",
+    options: ["Carga automática del driver sin Class.forName()", "Es obligatorio usar Class.forName()"],
+    answer: 0
+  },
+  {
+    question: "86. ¿Qué se puede usar en una clase abstracta?",
+    options: ["Constantes", "Ambas son válidas", "Solo métodos privados"],
+    answer: 1
+  },
+  {
+    question: "87. ¿Qué palabra se usa para crear un array?",
+    options: ["array", "dim", "new"],
+    answer: 2
+  },
+  {
+    question: "88. ¿Qué representa ResultSet?",
+    options: ["Resultados de una consulta", "Conexión a BD", "Instrucción SQL"],
+    answer: 0
+  },
+  {
+    question: "89. ¿Qué clase se recomienda para cálculos precisos?",
+    options: ["BigDecimal", "Double", "Math"],
+    answer: 0
+  },
+  {
+    question: "90. ¿Qué variable sirve para contar objetos?",
+    options: ["Variable estática", "Variable local"],
+    answer: 0
+  },
+  {
+    question: "91. ¿Qué pasa si se instancia una clase abstracta?",
+    options: ["Error al compilar", "Conversión implícita", "Excepción en ejecución"],
+    answer: 0
+  },
+  {
+    question: "92. ¿Qué método elimina espacios en una cadena?",
+    options: ["cut()", "strip()", "trim()"],
+    answer: 2
+  },
+  {
+    question: "93. ¿Cómo se llaman las clases hijas?",
+    options: ["Derivadas", "Internas", "Base"],
+    answer: 0
+  },
+  {
+    question: "94. ¿Qué hereda una subclase?",
+    options: ["Métodos públicos y protegidos", "Todo lo privado", "Nada"],
+    answer: 0
+  },
+  {
+    question: "95. ¿Qué tienen en común los métodos sobrecargados?",
+    options: ["Mismo nombre", "Mismo número de parámetros", "Mismo retorno"],
+    answer: 0
+  },
+  {
+    question: "96. ¿Qué hace este código con PreparedStatement?",
+    options: ["Inserta un registro", "Elimina un registro", "Actualiza un registro"],
+    answer: 0
+  },
+  {
+    question: "97. ¿Desventaja del driver protocolo nativo/todo Java?",
+    options: ["Dependiente de la plataforma", "Más rápido", "Menor seguridad"],
+    answer: 0
+  },
+  {
+    question: "98. ¿Qué representa el Stage en JavaFX?",
+    options: ["La ventana principal", "El contenido dentro de la escena"],
+    answer: 0
+  },
+  {
+    question: "99. ¿Cuándo ocurre un DragEvent en JavaFX?",
+    options: ["Durante arrastrar y soltar", "Al hacer clic", "Al pulsar una tecla"],
+    answer: 0
+  },
+  {
+    question: "100. ¿Qué devuelve compareTo() si la cadena es menor?",
+    options: ["0", "Negativo", "Positivo"],
+    answer: 1
+  },
+  {
+    question: "101. ¿Qué imprime el código con contador estático en una clase?",
+    options: ["3", "1", "0"],
+    answer: 0
+  },
+  {
+    question: "102. ¿Qué operador concatena cadenas en Java?",
+    options: ["+", "&", "."],
+    answer: 0
+  },
+  {
+    question: "103. ¿Qué mapa es más rápido para búsquedas?",
+    options: ["HashMap", "TreeMap", "LinkedHashMap"],
+    answer: 0
+  },
+  {
+    question: "104. ¿Qué valor imprime el código si una variable estática se incrementa en el constructor y se crean 3 objetos?",
+    options: ["0", "3"],
+    answer: 1
+  },
+  {
+    question: "105. ¿Qué está mal en este uso de matcher?: Matcher m = pattern.matcher[texto];",
+    options: ["El paréntesis debe ser ()", "El código es correcto", "matcher no debe tener texto"],
+    answer: 0
+  },
+  {
+    question: "106. ¿Qué es el desfase objeto-relacional?",
+    options: ["Diferencia entre modelos de datos OO y relacionales", "Diferencia entre datos y clases"],
+    answer: 0
+  },
+  {
+    question: "107. ¿Qué es ZODB?",
+    options: ["BD orientada a objetos usada por Zope", "BD de Ruby", "BD relacional"],
+    answer: 0
+  },
+  {
+    question: "108. ¿Cuál es el valor que se muestra en pantalla si 'variable1' es una variable estática que se incrementa en el constructor?\npublic class Main {\n  public static void main(String[] args) {\n    Persona p1 = new Persona();\n    Persona p2 = new Persona();\n    Persona p3 = new Persona();\n    System.out.println(\"El valor es: \" + Persona.variable1);\n  }\n}",
+    options: ["0", "3"],
+    answer: 0
+  },
+  {
+    question: "109. ¿Qué es incorrecto en las siguientes líneas de código?\nString expresionRegular = \"\\\\bcasa\\\\b\";\nPattern objetoPattern = Pattern.compile(expresionRegular);\nString texto = \"La casa de la pradera.\";\nMatcher objetomatcher = objetoPattern.matcher[texto];",
+    options: ["El código es correcto", "El paréntesis debería ser () en vez de []", "matcher debería contener otros caracteres"],
+    answer: 0
+  },
+  {
+    question: "110. ¿A qué se denomina desfase objeto-relacional?",
+    options: ["La diferencia entre el modelo de datos de una BD relacional y el de una aplicación orientada a objetos", "La diferencia entre SQL y Java OO"],
+    answer: 0
+  },
+  {
+    question: "111. ¿Qué es ZODB (Zope Object Database)?",
+    options: ["Una base de datos orientada a objetos utilizada en el servidor de aplicaciones web Zope", "BD relacional", "BD para Ruby"],
+    answer: 0
+  },
+  {
+    question: "112. ¿Qué condición debe cumplir un array para aplicar búsqueda binaria?",
+    options: ["Estar lleno", "Estar ordenado", "Estar vacío"],
+    answer: 0
+  },
+  {
+    question: "113. ¿Qué es una cadena literal en Java?",
+    options: ["Un conjunto de caracteres rodeados por comillas dobles", "Conjunto de caracteres entre comillas simples", "Conjunto entre paréntesis"],
+    answer: 0
+  },
+  {
+    question: "114. ¿Qué método devuelve la posición actual del puntero de un archivo?",
+    options: ["getFilePointer()", "seek(long)", "skipBytes(int)"],
+    answer: 0
+  },
+  {
+    question: "115. ¿Qué archivo define la interfaz en JavaFX?",
+    options: ["FXML", "HTML", "XML"],
+    answer: 0
+  },
+  {
+    question: "116. ¿Ventajas del uso de herramientas ORM?",
+    options: ["Abstraen del uso de SQL manual", "Ambas opciones son correctas"],
+    answer: 0
+  },
+  {
+    question: "117. ¿Qué tipo de excepción está relacionada con problemas en la base de datos?",
+    options: ["SQLException", "ArrayIndexOutOfBoundsException", "ClassCastException"],
+    answer: 0
+  },
+  {
+    question: "118. ¿Qué modelan los objetos en la programación orientada a objetos?",
+    options: ["Clientes, productos, pedidos", "Atributos como nombres o precios"],
+    answer: 0
+  },
+  {
+    question: "119. ¿Qué tipo de flujo de salida mejora el rendimiento usando búfer?",
+    options: ["BufferedOutputStream", "DataOutputStream", "FileOutputStream"],
+    answer: 0
+  },
+  {
+    question: "120. ¿Qué tipo de relación se establece al tener una clase que contiene objetos de otra?",
+    options: ["Asociación", "Dependencia", "Herencia"],
+    answer: 0
+  },
+  {
+    question: "121. ¿Qué clase representa nombres de archivos en Java?",
+    options: ["File", "FileInputStream", "FileWriter"],
+    answer: 0
+  },
+  {
+    question: "122. ¿Qué método genera un número aleatorio entre 0 y 1?",
+    options: ["Math.rand()", "Math.random()", "Math.rnd()"],
+    answer: 1
+  },
+  {
+    question: "123. ¿Qué ocurre si se llama a un constructor que no existe?",
+    options: ["Error al compilar", "Excepción en ejecución", "Se usa constructor por defecto"],
+    answer: 0
+  },
+  {
+    question: "124. ¿Qué es un driver API nativo/parte Java?",
+    options: ["Driver JDBC que usa métodos nativos de Java para convertir solicitudes", "Driver con sockets", "Driver solo con protocolo Java"],
+    answer: 0
+  },
+  {
+    question: "125. ¿Qué archivo necesitas añadir en Eclipse para que funcione una conexión JDBC con MySQL?",
+    options: ["Agregar el archivo `.jar` del conector JDBC al proyecto", "Solo tener instalado el JDK de Java"],
+    answer: 0
+  },
+  {
+    question: "126. ¿Qué plugin se usa en Gradle para proyectos con JavaFX?",
+    options: ["JavaFX plugin", "JavaFX Gradle plugin", "Ambos son correctos"],
+    answer: 2
+  },
+  {
+    question: "127. ¿Cómo se diferencian métodos sobrecargados?",
+    options: ["Por nombre del método", "Por lista de parámetros", "Por valor de retorno"],
+    answer: 1
+  },
+  {
+    question: "128. ¿Cómo obtienes el tercer valor del array int[] miArray = {20, 10, 6 , 5, 8}?",
+    options: ["miArray[2]", "miArray[3]", "miArray(3)"],
+    answer: 0
+  },
+  {
+    question: "129. ¿Qué hace %.2f en printf?",
+    options: ["Imprime número flotante con 2 decimales", "Imprime número entero con espacios", "Imprime cadena con espacios"],
+    answer: 0
+  },
+  {
+    question: "130. ¿Qué hace este PreparedStatement con INSERT?",
+    options: ["Inserta un nuevo registro", "Actualiza un paciente"],
+    answer: 0
+  },
+  {
+    question: "131. ¿Qué valor tiene matriz[1][2] en int[][] matriz = {{1,2,3},{4,5,6},{7,8,9}}?",
+    options: ["6", "2", "9"],
+    answer: 0
+  },
+  {
+    question: "132. ¿Qué patrón se usa para componer clases?",
+    options: ["Objetos privados de otras clases", "Objetos estáticos", "Herencia directa"],
+    answer: 0
+  },
+  {
+    question: "133. ¿Qué método se usa para leer una línea completa en Java?",
+    options: ["read()", "readAll()", "readLine()"],
+    answer: 2
+  },
+  {
+    question: "134. ¿Qué método obtiene una subcadena desde el índice 3?",
+    options: ["substring(3)", "substring(3, -1)", "substring(3, length())"],
+    answer: 0
+  },
+  {
+    question: "135. ¿Qué excepción lanza dividir por cero?",
+    options: ["ArithmeticException", "IOException", "NumberFormatException"],
+    answer: 0
+  },
+  {
+    question: "136. ¿Qué formato se usa para el diseño de interfaces en JavaFX?",
+    options: ["FXML", "HTML", "XML"],
+    answer: 0
+  },
+  {
+    question: "137. ¿Qué hace la capa intermedia en una arquitectura de 3 capas?",
+    options: ["Ambas son correctas", "Recibe datos del cliente y consulta BD", "Responde al cliente desde BD"],
+    answer: 0
+  },
+  {
+    question: "138. ¿Qué es JDBC?",
+    options: ["Un lenguaje de acceso a bases de datos relacionales en Java"],
+    answer: 0
+  },
+  {
+    question: "139. ¿Cuál es la clase base para colecciones en Java?",
+    options: ["Collection", "List", "Map"],
+    answer: 0
+  },
+  {
+    question: "140. ¿Qué conjunto mantiene el orden de inserción?",
+    options: ["HashSet", "LinkedHashSet", "TreeSet"],
+    answer: 1
+  },
+  {
+    question: "141. ¿Qué permite trabajar con diferentes tipos en métodos y clases?",
+    options: ["Abstracción", "Genericidad"],
+    answer: 1
+  },
+  {
+    question: "142. Método de la clase Math que se utiliza para generar un número al azar entre 0.0 y 1.0 (excluido).",
+    options: ["rand()", "random()", "randomize()"],
+    answer: 0
+  },
+  {
+    question: "143. ¿Cuál es el propósito de `int mid = low + (high - low) / 2;` en búsqueda binaria?",
+    options: ["Calcular el promedio de los elementos", "Encontrar el índice medio", "Sumar los elementos"],
+    answer: 1
+  },
+  {
+    question: "144. ¿Qué es un atributo autoincremental?",
+    options: ["Un atributo que almacena el valor más alto", "Un atributo que indica el orden de inserción"],
+    answer: 0
+  },
+  {
+    question: "145. ¿Qué imprime `texto.indexOf(\"ra\", 3)` sobre \"abracadabra\"?",
+    options: ["Primera ocurrencia de 'ra' después del índice 3", "Última ocurrencia de 'ra'", "Todas las ocurrencias de 'ra'"],
+    answer: 0
+  },
+  {
+    question: "146. ¿Qué es un bloque try-catch en Java?",
+    options: ["Estructura para manejar excepciones", "Estructura para liberar memoria", "Estructura para evitar compilación"],
+    answer: 0
+  },
+  {
+    question: "147. Método de la clase Connection que se utiliza para iniciar una transacción.",
+    options: ["commit()", "rollback()", "setAutoCommit()"],
+    answer: 2
+  },
+  {
+    question: "148. ¿Qué salida produce este código?\nint resultadoSuma = Calculadora.sumar(5, 3);\ndouble resultadoDivision = Calculadora.dividir(10.0, 2.0);\nSystem.out.println(\"Resultado de la suma: \" + resultadoSuma);\nSystem.out.println(\"Resultado de la división: \" + resultadoDivision);",
+    options: ["Resultado de la suma: 8 / Resultado de la división: 5.0", "Error en compilación", "Error en ejecución"],
+    answer: 0
+  },
+  {
+    question: "149. ¿Dónde se agrega el .jar del conector JDBC en Eclipse?",
+    options: ["ConectorJDBC", "Referenced Libraries", "src"],
+    answer: 1
+  },
+  {
+    question: "150. ¿Qué es una colección iterable?",
+    options: ["Colección secuencial", "Fuente de datos", "Flujo binario"],
+    answer: 0
+  },
+  {
+    question: "152. Método de SAX para leer contenido de una etiqueta XML.",
+    options: ["characters()", "endElement()", "startElement()"],
+    answer: 0
+  },
+  {
+    question: "153. ¿Qué imprime una clase Animal con Gato y Perro sobreescribiendo hacerSonido()?",
+    options: ["El gato maulla / El perro ladra", "El perro ladra / El gato maulla", "Sonido indefinido"],
+    answer: 1
+  },
+  {
+    question: "154. ¿Qué hace una herramienta ORM?",
+    options: ["Mapea objetos a tablas y viceversa", "Convierte clases en archivos", "Ejecuta código automáticamente"],
+    answer: 0
+  },
+  {
+    question: "155. ¿Qué diferencia hay entre composición y agregación?",
+    options: ["Composición es una relación más fuerte", "Agregación es más fuerte", "No hay diferencia"],
+    answer: 0
+  },
+  {
+    question: "156. ¿Qué imprime un Reproductor que implementa dos interfaces?",
+    options: ["Reproduciendo / Pausando / Grabando", "Error de compilación", "No se puede hacer"],
+    answer: 0
+  },
+  {
+    question: "157. ¿Qué restricción tiene super() en un constructor?",
+    options: ["Debe ser la primera línea", "Debe ser la última", "Solo una vez por clase"],
+    answer: 0
+  },
+  {
+    question: "158. ¿Qué es SQL?",
+    options: ["Lenguaje para comunicarse con una BD", "Lenguaje de diseño gráfico", "Lenguaje de sistemas"],
+    answer: 0
+  },
+  {
+    question: "159. ¿Qué tarea realiza este fragmento de código?\nFileReader fr = new FileReader(\"documento.txt\");\nBufferedReader br = new BufferedReader(fr);\nString line;\nwhile((line = br.readLine()) != null) {\n  System.out.println(line);\n}\nbr.close();",
+    options: ["Copia el contenido del archivo", "Cuenta el número de líneas", "Lee y muestra cada línea"],
+    answer: 2
+  },
+  {
+    question: "160. ¿Qué sucede al ejecutar este código con clases Portatil y Computadora que tienen métodos encender?",
+    options: ["El compilador emite error por sobrescritura", "El programa imprime 'Encendiendo portátil'", "Se lanza una excepción en ejecución"],
+    answer: 1
+  },
+  {
+    question: "161. ¿Qué método se usa para lanzar una aplicación JavaFX en Eclipse?",
+    options: ["init()", "launch()", "start()"],
+    answer: 1
+  },
+  {
+    question: "162. ¿Qué excepción se lanza al convertir una cadena inválida a número?",
+    options: ["ArithmeticException", "IOException", "NumberFormatException"],
+    answer: 2
+  },
+  {
+    question: "163. ¿Qué paquete contiene las clases principales de JDBC?",
+    options: ["java.jdbc", "java.sql", "javax.sql"],
+    answer: 1
+  },
+  {
+    question: "164. ¿Qué patrón de diseño permite separar lógica de negocio y lógica de acceso a datos?",
+    options: ["DAO", "MVC", "Ambas"],
+    answer: 2
+  },
+  {
+    question: "165. ¿Qué clase se usa para leer datos primitivos desde archivos binarios?",
+    options: ["DataInputStream", "DataOutputStream", "InputStreamReader"],
+    answer: 0
+  },
+  {
+    question: "166. ¿Qué método sobreescriben Gato y Perro de una clase Animal?",
+    options: ["sonido()", "hablar()", "animal()"],
+    answer: 0
+  },
+  {
+    question: "168. ¿Qué clase lee una línea desde un flujo de entrada?",
+    options: ["BufferedReader", "BufferedWriter", "Scanner"],
+    answer: 0
+  },
+  {
+    question: "169. ¿Qué imprime `numeros[2]` si int[] numeros = {2, 4, 6, 8, 10}?",
+    options: ["2", "4", "6"],
+    answer: 2
+  },
+  {
+    question: "170. ¿Qué ocurre con `nombres[nombres.length]` si nombres tiene 5 elementos?",
+    options: ["Error de compilación", "ArrayIndexOutOfBoundsException", "Se imprime el último elemento"],
+    answer: 1
+  },
+  {
+    question: "171. ¿Qué valor imprime este código si cadenas son iguales ignorando mayúsculas?\n`cadena1.compareToIgnoreCase(cadena2)`",
+    options: ["0", "Número negativo", "Número positivo"],
+    answer: 0
+  },
+  {
+    question: "172. ¿Qué método convierte una cadena a entero?",
+    options: ["Integer.parseInt()", "Integer.valueOf()", "Ambos"],
+    answer: 2
+  },
+  {
+    question: "173. ¿Qué es un protocolo de acceso universal a bases de datos?",
+    options: ["ODBC", "JDBC", "Ambas"],
+    answer: 2
+  },
+  {
+    question: "174. ¿Qué hace DataInputStream combinado con BufferedInputStream y FileInputStream?",
+    options: ["Lee datos primitivos desde el archivo", "Escribe datos formateados", "Lee bytes sin formato"],
+    answer: 0
+  },
+  {
+    question: "175. ¿Qué clase representa un concepto abstracto que no se puede instanciar?",
+    options: ["Clase abstracta", "Clase estática"],
+    answer: 0
+  },
+  {
+    question: "176. ¿Está bien este constructor?: public NodoLista(int x, NodoLista n)}",
+    options: ["No, faltan paréntesis y llaves", "Sí", "Está mal el nombre"],
+    answer: 0
+  },
+  {
+    question: "177. ¿Cómo se llama una función que tiene el mismo nombre que la clase?",
+    options: ["Constructor", "Destructor", "Inicializador"],
+    answer: 0
+  },
+  {
+    question: "178. ¿Qué imprime este código con una matriz de temperaturas?\nSystem.out.println(temperaturas.length);",
+    options: ["2", "3", "Error"],
+    answer: 0
+  },
+  {
+    question: "179. ¿Qué palabra clave indica sobrecarga de métodos?",
+    options: ["none", "overload", "override"],
+    answer: 1
+  },
+  {
+    question: "180. ¿Qué implica que una subclase herede métodos de su superclase?",
+    options: ["Puede usar métodos heredados", "Puede ocultarlos", "Los convierte en privados"],
+    answer: 0
+  },
+  {
+    question: "181. ¿Qué palabra clave define una clase estática?",
+    options: ["static", "statical", "statically"],
+    answer: 0
+  },
+  {
+    question: "183. ¿Qué excepción se lanza al acceder a un archivo que no existe?",
+    options: ["EOFException", "FileNotFoundException", "IOException"],
+    answer: 1
+  },
+  {
+    question: "184. ¿Qué tipo de archivo representa la estructura de interfaz en JavaFX?",
+    options: ["FXML", "HTML", "XML"],
+    answer: 0
+  },
+  {
+    question: "185. ¿Qué excepción se lanza al intentar escribir en un archivo inexistente?",
+    options: ["IOException", "ArithmeticException", "NullPointerException"],
+    answer: 0
+  },
+  {
+    question: "186. ¿Qué clase se utiliza para manipular archivos y carpetas en Java de forma multiplataforma?",
+    options: ["BigDecimal", "Calendar", "File"],
+    answer: 2
+  },
+  {
+    question: "187. ¿Cuál es el método que se usa para obtener la longitud de una cadena en Java?",
+    options: ["count()", "length()", "size()"],
+    answer: 1
+  },
+  {
+    question: "188. ¿Qué representa una clave foránea?",
+    options: ["Campo que referencia a la clave primaria de otra tabla", "Campo que impide duplicados"],
+    answer: 0
+  },
+  {
+    question: "189. ¿Qué tipo de comportamiento tiene una pila?",
+    options: ["FIFO", "FILO", "LIFO"],
+    answer: 2
+  },
+  {
+    question: "190. ¿Qué es incorrecto en este bucle? for (i=0; i<<x.length; i++)",
+    options: ["El bucle es correcto", "Falta = en i=0", "Sobra < en i<<x"],
+    answer: 2
+  },
+  {
+    question: "191. ¿Qué método se usa para asignar atributos a un elemento en XML con DOM?",
+    options: ["setAttribute(String, String)", "setProperty(String, String)", "setValue(String, String)"],
+    answer: 0
+  },
+  {
+    question: "193. Palabra clave para invocar al constructor de la superclase en Java.",
+    options: ["new", "super", "this"],
+    answer: 1
+  },
+  {
+    question: "194. Clase de JDBC que se usa para enviar consultas SQL.",
+    options: ["Connection", "ResultSet", "Statement"],
+    answer: 2
+  },
+  {
+    question: "195. ¿Qué conector se usa con aplicaciones .NET como C# o VB.NET?",
+    options: ["Conector .NET", "Conector JDBC", "Conector ODBC"],
+    answer: 0
+  },
+  {
+    question: "196. ¿Qué es el comando javac?",
+    options: ["Compila programas Java", "Ejecuta programas Java"],
+    answer: 0
+  },
+  {
+    question: "198. ¿Qué palabra clave indica herencia en Java?",
+    options: ["extends", "implements", "inherits"],
+    answer: 0
+  },
+  {
+    question: "199. ¿Qué argumento se usa en RandomAccessFile para lectura y escritura?",
+    options: ["r", "w", "rw"],
+    answer: 2
+  },
+  {
+    question: "200. ¿Qué método inicia un hilo en Java?",
+    options: ["sleep()", "start()", "run()"],
+    answer: 1
+  },
+  {
+    question: "201. ¿Dónde debe ir super() en un constructor?",
+    options: ["Primera sentencia", "Última sentencia", "Después del this()"],
+    answer: 0
+  },
+  {
+    question: "202. ¿Qué imprime el siguiente código con herencia?\nclass A { int i; A(int v) { i = v; } }\nclass B extends A { int j; B(int v) { super(v); j = v+10; } }\nmain → B obj = new B(5);",
+    options: ["Valor de i: 5 y Valor de j: 15", "Error por herencia", "Error de constructor"],
+    answer: 0
+  },
+  {
+    question: "203. ¿Qué tipo de excepciones lanza un método que interactúa con archivos?",
+    options: ["Excepciones de entrada/salida"],
+    answer: 0
+  },
+  {
+    question: "204. ¿Qué símbolos se usan para declarar genéricos?",
+    options: ["[]", "{}", "<>"],
+    answer: 2
+  },
+  {
+    question: "205. ¿Cómo se añaden elementos a una lista en Java?",
+    options: ["nombres.add(\"Nombre\")", "nombres.insert(\"Nombre\")", "nombres.push(\"Nombre\")"],
+    answer: 0
+  },
+  {
+    question: "206. ¿Qué hace FileInputStream y read() en un bucle?",
+    options: ["Lee y procesa cada byte del archivo", "Crea archivo", "Escribe datos"],
+    answer: 0
+  },
+  {
+    question: "207. ¿Qué es una clase contenedora?",
+    options: ["Clase que contiene objetos formando jerarquías", "Clase que oculta métodos"],
+    answer: 0
+  },
+  {
+    question: "208. ¿Qué hace PreparedStatement con UPDATE?",
+    options: ["Actualiza el email de un paciente identificado por su DNI"],
+    answer: 0
+  },
+  {
+    question: "209. Método de List para ordenar elementos.",
+    options: ["sort()", "arrange()", "order()"],
+    answer: 0
+  },
+  {
+    question: "210. ¿Qué tipo de lista permite colección ordenada con acceso por índice?",
+    options: ["ArrayList", "HashSet", "TreeMap"],
+    answer: 0
+  },
+  {
+    question: "211. ¿Qué implica una variable estática?",
+    options: ["Pertenece a la clase, no a la instancia", "Solo se modifica una vez"],
+    answer: 0
+  },
+  {
+    question: "212. ¿Ventaja del driver JDBC todo Java sobre el puente JDBC-ODBC?",
+    options: ["Mejor rendimiento", "Mayor compatibilidad", "Menor complejidad"],
+    answer: 0
+  }
+];
+  
+
+    let current = 0;
+
+    function showQuestion() {
+      const q = questions[current];
+      document.getElementById("question").textContent = q.question;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+      q.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(index);
+        optionsDiv.appendChild(btn);
+      });
+      document.getElementById("result").textContent = "";
+    }
+
+    function checkAnswer(index) {
+      const q = questions[current];
+      const result = document.getElementById("result");
+      if (index === q.answer) {
+        result.textContent = "✅ ¡Correcto!";
+      } else {
+        result.textContent = "❌ Incorrecto. La correcta es: " + q.options[q.answer];
+      }
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      showQuestion();
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
