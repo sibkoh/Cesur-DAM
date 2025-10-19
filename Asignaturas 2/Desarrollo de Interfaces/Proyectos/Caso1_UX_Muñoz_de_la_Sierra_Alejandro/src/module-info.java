@@ -1,7 +1,8 @@
-module TareaUD1 {
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires transitive javafx.graphics; // <--- asegura que cualquier cliente vea Stage
-    exports application; // IMPORTANTE: ahora exportamos el paquete 'application'
-}
+module Caso1_UX_Muñoz_de_la_Sierra_Alejandro {
+	requires javafx.controls;
+	requires javafx.graphics;
+	requires javafx.fxml;
 
+	opens application to javafx.graphics, javafx.fxml;
+
+}
