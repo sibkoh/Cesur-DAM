@@ -1,0 +1,27 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class lecturajava {
+    public static void leerfichero(String ruta) throws
+                                                   FileNotFoundException, IOException {
+        String salida="";
+        FileReader fr = new FileReader(ruta);
+        BufferedReader br = new BufferedReader(fr);
+
+        //lectura del fichero mediante bucle while
+        while((salida = br.readLine())!=null) {
+
+        }
+        br.close();
+
+    }
+
+     public static void main(String[] args) throws IOException {
+     //llamamos a leerfichero con la ruta donde se encuentra
+
+     leerfichero("c://prueba.txt");
+
+     }
+}
