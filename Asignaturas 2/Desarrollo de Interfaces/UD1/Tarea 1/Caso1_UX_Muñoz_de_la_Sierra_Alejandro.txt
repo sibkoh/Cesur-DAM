@@ -1,4 +1,0 @@
-Enlace a Google Drive donde están las librerías de JAVA usadas, tanto Jdk25 como JavaFx25, descomprimir en C:\ para que funcione directamente.
-
-
-https://drive.google.com/file/d/1bmfHyEHLb-7VbH6jn3nyOBucO8sZ7PgM/view?usp=sharing

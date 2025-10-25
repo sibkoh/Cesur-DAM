@@ -1,0 +1,7 @@
+Hola Sergio
+
+Estoy leyendo de un fichero en Java
+Puedes intentarlo desde otro lenguaje
+
+Sergio L. 
+Fin del ejercicio
