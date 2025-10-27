@@ -10,3 +10,39 @@ Asignaturas/Programación/Proyectos Eclipse/asdasdasd/.settings/org.eclipse.core
 Asignaturas/Programación/Proyectos Eclipse/asdfadsf/.classpath
 Asignaturas/Programación/Proyectos Eclipse/asdfadsf/.project
 Asignaturas/Programación/Proyectos Eclipse/asdfadsf/.settings/org.eclipse.core.resources.prefs
+
+
+
+# === CONFIGURACIONES LOCALES DEL WORKSPACE ===
+.metadata/
+.recommenders/
+.remote-sync.json
+.vscode/
+*.code-workspace
+
+# === ARCHIVOS DE CONFIGURACIÓN TEMPORALES DE ECLIPSE ===
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# === CONFIGURACIÓN DE PROYECTO ESPECÍFICA (NO COMPARTIBLE) ===
+.settings/
+.loadpath
+.factorypath
+.classpath.bak
+.project.bak
+
+# === COMPILACIÓN Y BINARIOS ===
+bin/
+build/
+target/
+out/
+dist/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
