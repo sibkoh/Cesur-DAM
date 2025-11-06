@@ -1,0 +1,8 @@
+
+Comenzando a procesar audio... 
+Comando recibido: Subir volumen Volumen actual: 1
+Comando recibido: Subir volumen Volumen actual: 2
+Comando recibido: Bajar volumen Volumen actual: 1
+Comando recibido: Subir volumen Volumen actual: 2
+Comando recibido: Subir volumen Volumen actual: 3
+Comando recibido: Subir volumen Volumen actual: 4
