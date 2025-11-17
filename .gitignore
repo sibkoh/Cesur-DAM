@@ -46,3 +46,25 @@ dist/
 *.zip
 *.tar.gz
 *.rar
+
+# Ignorar TODOS los workspaces
+*/Proyectos/
+*/proyectos/
+*/Workspace/
+*/workspace/
+
+# Eclipse basura
+.metadata/
+.settings/
+bin/
+tmp/
+recommenders/
+.loadpath
+
+# Java
+*.class
+
+# Cualquier carpeta binaria
+target/
+out/
+build/
