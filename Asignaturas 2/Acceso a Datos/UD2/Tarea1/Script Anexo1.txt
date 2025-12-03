@@ -1,0 +1,43 @@
+-- Crear la base de datos
+
+CREATE DATABASE IF NOT EXISTS aad;
+
+ 
+
+-- Usar la base de datos
+
+USE aad;
+
+ 
+
+-- Crear la tabla Alumnos
+
+CREATE TABLE IF NOT EXISTS Alumnos (
+
+    ID INT NOT NULL AUTO_INCREMENT,
+
+    Nombre VARCHAR(45) NOT NULL,
+
+    Apellidos VARCHAR(45) NOT NULL,
+
+    Edad INT,
+
+    PRIMARY KEY (ID)
+
+);
+
+ 
+
+-- Insertar datos en la tabla Alumnos
+
+INSERT INTO Alumnos (Nombre, Apellidos, Edad) VALUES ('Sergio', 'González', 50);
+
+INSERT INTO Alumnos (Nombre, Apellidos, Edad) VALUES ('Juan', 'López', 25);
+
+INSERT INTO Alumnos (Nombre, Apellidos, Edad) VALUES ('Carmen', 'Ruiz', 18);
+
+ 
+
+-- Realizar una consulta para mostrar los datos
+
+SELECT * FROM Alumnos;
