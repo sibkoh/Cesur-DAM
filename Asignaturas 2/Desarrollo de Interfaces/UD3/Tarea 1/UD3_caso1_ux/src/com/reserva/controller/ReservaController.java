@@ -97,10 +97,6 @@ public class ReservaController {
 			alert.setHeaderText(null);
 			alert.setContentText("¡Reserva realizada con éxito para " + nombre + "!");
 			alert.showAndWait();
-
-			// Opcional: Limpiar los campos después de reservar
-			// txtNombre.setText("");
-			// ...
 		}
 	}
 
@@ -112,5 +108,4 @@ public class ReservaController {
 		alert.setContentText(mensaje);
 		alert.showAndWait();
 	}
-
 }

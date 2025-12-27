@@ -11,17 +11,15 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// 1. Cargar el archivo FXML (La Vista)
+			// 1. Cargamos el archivo FXML (La Vista)
 			// IMPORTANTE: La ruta empieza con / y sigue la estructura de paquetes
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/reserva/view/VistaReserva.fxml"));
 			Parent root = loader.load();
 
-			// 2. Crear la Escena (El contenido dentro de la ventana)
+			// 2. Creamos la Escena (El contenido dentro de la ventana)
 			Scene scene = new Scene(root);
 
 			// 3. Configurar el Escenario (La ventana del S.O.)
-			// Opcional: Cargar una hoja de estilos CSS
-			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			primaryStage.setTitle("Reserva de Eventos - UD3");
 			primaryStage.setScene(scene);
