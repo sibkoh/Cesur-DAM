@@ -1,0 +1,1 @@
+Evidencia técnica extraída de las cabeceras del mensaje (Vista 'Mostrar original'), confirmando el uso del protocolo de transporte seguro TLSv1.2/1.3 durante la transmisión.
