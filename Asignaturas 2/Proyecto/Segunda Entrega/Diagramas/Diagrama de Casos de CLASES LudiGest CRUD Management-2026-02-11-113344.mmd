@@ -1,0 +1,132 @@
+classDiagram
+    %% --- NÚCLEO DEL CATÁLOGO ---
+    class JuegoReferencia {
+        +Long id_referencia
+        +String titulo
+        +String editorial
+        +int anio
+        +String url_imagen
+        
+        %% AQUÍ ESTÁ LO QUE FALTABA
+        +String url_bgg 
+        
+        +float dureza
+        +int min_jugadores
+        +int max_jugadores
+        +int recomendado_jugadores
+        +int duracion_min
+        +getPromedioPuntuacionAsociacion()
+        +getPromedioPuntuacionBGG()
+    }
+
+    class Ejemplar {
+        +Long id_ejemplar
+        +String codigo_barras
+        +String estado
+        +String ubicacion
+        +boolean disponible
+        +Date fecha_alta
+        +JuegoReferencia juego
+        +isNovedad() boolean
+    }
+
+    class Valoracion {
+        +Long id_valoracion
+        +int estrellas
+        +String comentario
+        +Date fecha
+        +Socio socio
+        +JuegoReferencia juego
+    }
+
+    %% --- GESTIÓN DE ESPACIO ---
+    class Mesa {
+        +Long id_mesa
+        +String nombre_numero
+        +int capacidad_personas
+        +boolean tiene_enchufe
+    }
+
+    %% --- ACTORES Y PROCESOS ---
+    class Socio {
+        +Long id_socio
+        +String nickname
+        +String nombre
+        +String apellidos
+        +String email
+        +String password
+        +String rol
+        +String telefono
+        +Date fecha_alta
+        +boolean tiene_llave
+        +int total_puntos_voluntariado
+        +getAntiguedadMeses() int
+        
+        %% ACCIONES
+        +puntuarJuego(JuegoReferencia j, int nota)
+        +reservarMesa(Mesa m, Date fecha)
+        +reservarJuego(JuegoReferencia j)
+        +solicitarPrestamo(Ejemplar e)
+        
+        %% GESTIÓN EVENTOS
+        +inscribirseEvento(Evento e)
+    }
+
+    %% --- GESTIÓN DE EVENTOS ---
+    class Evento {
+        +Long id_evento
+        +String nombre
+        +Date fecha_inicio
+        +Date fecha_fin
+        +String ubicacion
+        +String estado
+        +bloquearJuegosParaEvento()
+        +cerrarEvento()
+    }
+
+    class Participacion {
+        +Long id_participacion
+        +Socio socio
+        +Evento evento
+        +String rol_voluntario
+        +int puntos_otorgados
+        +boolean asistio_realmente
+    }
+
+    class Reserva {
+        +Long id_reserva
+        +Date fecha_reserva
+        +String estado
+        +Socio socio
+        +Mesa mesa
+        +JuegoReferencia juego
+    }
+
+    class Prestamo {
+        +Long id_prestamo
+        +Date fecha_inicio
+        +Date fecha_fin_prevista
+        +Date fecha_devolucion_real
+        +Socio socio
+        +Ejemplar ejemplar
+        +isVencido() boolean
+    }
+
+    %% --- RELACIONES ---
+    JuegoReferencia "1" -- "0..*" Ejemplar : tiene
+
+    Socio "1" -- "0..*" Prestamo : realiza
+    Ejemplar "1" -- "0..*" Prestamo : es prestado
+
+    Socio "1" -- "0..*" Valoracion : escribe
+    JuegoReferencia "1" -- "0..*" Valoracion : recibe
+
+    Socio "1" -- "0..*" Reserva : solicita
+    Mesa "0..1" -- "0..*" Reserva : se reserva
+    JuegoReferencia "0..1" -- "0..*" Reserva : lista de espera
+
+    %% RELACIONES DE EVENTOS
+    Evento "1" -- "0..*" Participacion : organiza
+    Socio "1" -- "0..*" Participacion : voluntario en
+    
+    Evento "0..1" -- "0..*" Ejemplar : bloquea_para_evento

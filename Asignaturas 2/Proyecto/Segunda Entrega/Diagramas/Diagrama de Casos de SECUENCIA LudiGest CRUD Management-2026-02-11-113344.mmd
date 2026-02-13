@@ -1,0 +1,46 @@
+sequenceDiagram
+    autonumber
+    actor Admin as Administrador
+    participant GUI as JavaFX (Cliente)
+    participant API as API REST (Spring Boot)
+    participant DB as Base de Datos (MySQL)
+
+    Note over GUI, API: Comunicación vía HTTP / JSON
+
+    %% FASE 1: BÚSQUEDA (READ)
+    Admin->>GUI: 1. Escribe "Catan" y pulsa "Buscar en BGG"
+    
+    GUI->>API: GET /api/bgg/search?q=Catan
+    activate API
+    
+    Note right of API: El Backend consulta el servicio externo<br/>o caché local
+    API-->>GUI: JSON Response: [ {id:13, titulo:"Catan", anio:1995...} ]
+    deactivate API
+
+    GUI-->>Admin: Muestra lista de resultados con carátulas
+
+    %% FASE 2: SELECCIÓN Y ALTA (WRITE)
+    Admin->>GUI: 2. Selecciona el juego correcto
+    Admin->>GUI: 3. Introduce datos físicos (Ubicación: "A-01", Estado: "Nuevo")
+    Admin->>GUI: 4. Pulsa "Guardar Ejemplar"
+
+    GUI->>API: POST /api/ejemplares
+    Note right of GUI: Body: { "id_bgg": 13, "ubicacion": "A-01" }
+    
+    activate API
+    
+    %% Lógica de Negocio en el Backend
+    API->>DB: SELECT * FROM JuegoReferencia WHERE id_bgg = 13
+    
+    alt El Juego NO existe en local
+        API->>DB: INSERT INTO JuegoReferencia (titulo, anio, url_bgg...)
+        DB-->>API: OK (ID Referencia Generado)
+    end
+
+    API->>DB: INSERT INTO Ejemplar (id_juego, ubicacion, estado...)
+    DB-->>API: OK (ID Ejemplar Generado)
+    
+    API-->>GUI: HTTP 201 Created (JSON del Ejemplar)
+    deactivate API
+
+    GUI-->>Admin: Muestra notificación "Juego y Ejemplar guardados"

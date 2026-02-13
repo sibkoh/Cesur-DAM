@@ -1,0 +1,42 @@
+---
+config:
+  layout: fixed
+---
+flowchart TB
+ subgraph zona_socio["Zona Socios (Autoservicio)"]
+    direction TB
+        UC_Buscar["Consultar Catálogo"]
+        UC_Votar["Puntuar y Reseñar"]
+        UC_Resmesa["Reservar Mesa (Sala)"]
+        UC_ResJuego["Reservar Juego (Cola)"]
+        UC_Prestar["Retirar Juego (Check-out)"]
+        UC_Devolver["Devolver Juego (Check-in)"]
+        UC_JoinEvento["Inscribirse a Evento"]
+  end
+ subgraph zona_admin["Gestión Interna"]
+    direction TB
+        UC_Import["Importar desde BGG"]
+        UC_Ejemplar["Gestión Ejemplares"]
+        UC_SociosAdmin["Gestión Usuarios"]
+  end
+ subgraph zona_eventos["Gestión Avanzada de Eventos"]
+    direction TB
+        UC_CrearEvento["Crear Evento"]
+        UC_Bloquear["Bloquear Juegos (Evento)"]
+        UC_Validar["Validar Voluntarios"]
+  end
+ subgraph sistema["Sistema LudiGest (JavaFX)"]
+    direction TB
+        UC_Login["Login / Autenticación"]
+        zona_socio
+        zona_admin
+        zona_eventos
+  end
+    Act_Admin(("Administrador")) -- hereda de --> Act_Socio(("Socio"))
+    Act_Socio --> UC_Login & UC_Buscar & UC_Votar & UC_Resmesa & UC_ResJuego & UC_Prestar & UC_Devolver & UC_JoinEvento
+    Act_Admin --> UC_Import & UC_Ejemplar & UC_SociosAdmin & UC_CrearEvento & UC_Bloquear & UC_Validar
+    UC_Bloquear -. requiere .-> UC_CrearEvento
+
+    style Act_Admin fill:#f9f,stroke:#333,stroke-width:2px
+    style Act_Socio fill:#ccf,stroke:#333,stroke-width:2px
+    style sistema fill:#fff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
