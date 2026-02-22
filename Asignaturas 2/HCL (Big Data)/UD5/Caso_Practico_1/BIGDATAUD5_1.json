@@ -1,0 +1,34 @@
+// Ejemplo del modelo de documento en la colección 'web_pages'
+{
+    "_id": ObjectId("652b4c9a3f..."),
+    "url": "https://www.ejemplo.es/tecnologia/5g",
+    "dominio": "ejemplo.es",
+    "hash_url": "a1b2c3d4e5f6...", // Índice único para evitar indexar dos veces la misma web
+    "contenido": {
+        "titulo": "El avance del 5G en zonas rurales",
+        "cuerpo_texto": "El despliegue de la red móvil avanza a buen ritmo...",
+        "idioma": "es-ES",
+        "tiene_multimedia": true
+    },
+    "metadatos_seo": {
+        "keywords": [
+            "5G",
+            "tecnología",
+            "redes",
+            "rural"
+        ],
+        "fecha_ultimo_rastreo": ISODate("2026-02-21T09:00:00Z"),
+    },
+    "metricas_tecnicas": {
+        "latencia_media_ms": 12,
+        "optimizado_movil_amp": true
+    },
+    "autoridad": {
+        "page_rank_score": 8.7, // Este dato lo pre-calculamos por la noche
+        "trust_score": 9.1
+    },
+    "enlaces_salientes": [
+        "https://www.otraweb.es/info",
+        "https://www.gob.es/telecomunicaciones"
+    ]
+}
