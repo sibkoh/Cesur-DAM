@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="2.1">
+    
+    <persistence-unit name="EditorialesPU">
+        <provider>com.objectdb.jpa.Provider</provider>
+        
+        <class>org.asociacion.compras.modelo.ClienteEditorial</class>
+        
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="objectdb:db/historial_editoriales.odb"/>
+        </properties>
+    </persistence-unit>
+</persistence>
