@@ -1,0 +1,71 @@
+erDiagram
+    %% Entidades Independientes
+    TITULAR {
+        int id_titular PK
+        varchar nombre_razon_social
+        enum tipo_titular
+        varchar pais_origen
+    }
+
+    INVENTOR {
+        int id_inventor PK
+        varchar nombre
+        varchar apellidos
+        varchar nacionalidad
+    }
+
+    CENTRO_TRABAJO {
+        int id_centro PK
+        varchar nombre_centro
+        varchar pais
+    }
+
+    CLASIFICACION_IPC {
+        varchar codigo_ipc PK
+        varchar descripcion_area
+    }
+
+    %% Entidad Central (Dependiente)
+    PATENTE {
+        int id_patente PK
+        varchar num_solicitud UK
+        varchar codigo_aprobacion UK
+        varchar titulo
+        date fecha_solicitud
+        date fecha_aprobacion
+        text resumen
+        int id_titular FK
+    }
+
+    DOCUMENTO_ADJUNTO {
+        int id_documento PK
+        int id_patente FK
+        varchar ruta_archivo
+        enum formato
+        enum tipo_documento
+    }
+
+    %% Tablas Intermedias (Para resolver relaciones N:M)
+    PATENTE_IPC {
+        int id_patente PK,FK
+        varchar codigo_ipc PK,FK
+    }
+
+    PARTICIPACION_INVENTOR {
+        int id_patente PK,FK
+        int id_inventor PK,FK
+        int id_centro FK
+    }
+
+    %% Definición de Relaciones (Pata de Gallo)
+    TITULAR ||--o{ PATENTE : "posee / registra"
+    PATENTE ||--o{ DOCUMENTO_ADJUNTO : "contiene / adjunta"
+    
+    %% Relaciones de Patente a Clasificación IPC (N:M)
+    PATENTE ||--|{ PATENTE_IPC : "pertenece_a"
+    CLASIFICACION_IPC ||--|{ PATENTE_IPC : "clasifica"
+    
+    %% Relación Ternaria: Patente - Inventor - Centro (N:M)
+    PATENTE ||--|{ PARTICIPACION_INVENTOR : "desarrollada_por"
+    INVENTOR ||--|{ PARTICIPACION_INVENTOR : "participa_en"
+    CENTRO_TRABAJO ||--o{ PARTICIPACION_INVENTOR : "alberga_investigacion"
