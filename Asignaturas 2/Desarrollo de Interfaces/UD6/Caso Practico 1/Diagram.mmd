@@ -1,0 +1,43 @@
+classDiagram
+    class Visitante {
+        -String documentoIdentidad
+        -String nombreCompleto
+        -String empresaOrigen
+        -String telefonoContacto
+        -String emailContacto
+        -Byte[] fotografiaFacial
+        -Boolean aceptaPrivacidad
+        +registrarNuevoVisitante()
+        +solicitarFirmaDigital()
+        +actualizarDatosContacto()
+        +anonimizarDatosPersonales()
+    }
+
+    class Empleado {
+        -String idEmpleado
+        -String nombreCompleto
+        -String cargoProfesional
+        -String departamento
+        -String extensionTelefonica
+        -String emailCorporativo
+        -Enum estadoDisponibilidad
+        +notificarLlegadaVisitante()
+        +cambiarEstadoDisponibilidad()
+        +obtenerUbicacionFisica()
+    }
+
+    class RegistroVisita {
+        -String idVisita
+        -DateTime fechaHoraEntrada
+        -DateTime fechaHoraSalida
+        -String motivoVisita
+        -Integer numeroAcreditacionFisica
+        -String puertaAcceso
+        +iniciarVisita()
+        +finalizarVisita()
+        +calcularTiempoEstancia()
+        +imprimirPaseAdhesivo()
+    }
+
+    Visitante "1" --> "0..*" RegistroVisita : realiza
+    Empleado "1" --> "0..*" RegistroVisita : es anfitrión de
