@@ -1,0 +1,19 @@
+ludigest-backend
+│
+├── 📂 src/main/java                   <-- (AQUÍ VA EL CÓDIGO JAVA)
+│   └── 📂 com.lexludi.ludigestbackend
+│       │
+│       ├── 📄 LudigestBackendApplication.java  <-- (Este ya viene creado, es el "Play" del servidor)
+│       │
+│       ├── 📂 model                   <-- (¡CREA ESTA CARPETA/PACKAGE!)
+│       │   ├── 📄 Socio.java          <-- (Pega aquí el código del Socio)
+│       │   ├── 📄 JuegoReferencia.java<-- (Pega aquí el código del Juego)
+│       │   └── 📄 Ejemplar.java       <-- (Pega aquí el código del Ejemplar)
+│       │
+│       ├── 📂 repository              <-- (La crearemos luego, para hablar con MySQL)
+│       └── 📂 controller              <-- (La crearemos luego, para los Endpoints)
+│
+├── 📂 src/main/resources              <-- (AQUÍ VA LA CONFIGURACIÓN)
+│   └── 📄 application.properties      <-- (Pega aquí el texto de conexión a MySQL)
+│
+└── 📄 pom.xml                         <-- (Aquí ya están las dependencias, no lo toques de momento)
