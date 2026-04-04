@@ -1,17 +1,11 @@
 package com.lexludi.ludigest_backend.model;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// Ficha tecnica pura con los datos sacados de la BGG
+// Entidad para gestionar el catalogo teorico de juegos (la ficha del juego)
 @Entity
 @Table(name = "juegos_referencia")
 @Data
@@ -23,27 +17,32 @@ public class JuegoReferencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Guardamos el ID de BoardGameGeek para futuras sincronizaciones
+    // BLINDAJE: unique = true asegura que MySQL rechazara cualquier intento de duplicado
+    @Column(name = "id_bgg", unique = true)
+    private Long idBgg;
+
     @Column(nullable = false, length = 150)
     private String titulo;
 
-    // Guardamos el ID de BoardGameGeek para futuras sincronizaciones
-    @Column(name = "id_bgg")
-    private Long idBgg;
+    @Column(length = 255)
+    private String urlImagen;
 
-    // Nota media en la BGG. Usamos Double para soportar decimales (ej: 8.4)
-    @Column(name = "puntuacion_bgg")
+    private Integer minJugadores;
+    private Integer maxJugadores;
+    private Integer duracionMinutos;
     private Double puntuacionBgg;
 
-    @Column(nullable = false)
-    private Integer minJugadores;
+    // --- NUEVOS CAMPOS APLICADOS ---
+    
+    // Campo para guardar el numero ideal de jugadores segun la BGG
+    @Column(length = 50)
+    private String jugadoresRecomendados;
 
-    @Column(nullable = false)
-    private Integer maxJugadores;
+    // Categoria principal del juego (ej: Strategy, Family, etc.)
+    @Column(length = 100)
+    private String categoria;
 
-    // Cuanto dura una partida en minutos segun la caja
-    private Integer duracionMinutos;
-
-    // Enlace a la portada del juego para el futuro frontend
-    @Column(length = 500)
-    private String urlImagen;
+    // Dureza o peso del juego (complejidad)
+    private Double dureza;
 }
