@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexludi.front.controller.DashboardController">
+    <left>
+        <VBox prefWidth="200.0" spacing="10.0" style="-fx-background-color: #2c3e50;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
+            </padding>
+            <children>
+                <Button fx:id="btnCatalogo" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Catálogo" />
+                <Button fx:id="btnSocios" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Gestión Socios" />
+                <Button fx:id="btnEventos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Eventos" />
+                <Button fx:id="btnPrestamos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Gestión Préstamos" />
+                <Button fx:id="btnMisPrestamos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mis Préstamos" />
+                <Button fx:id="btnMisReservas" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mis Reservas" />
+                <Button fx:id="btnConfiguracion" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Configuración" />
+                
+                <StackPane VBox.vgrow="ALWAYS" /> <Button fx:id="btnSalir" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Salir" />
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #ecf0f1;" BorderPane.alignment="CENTER">
+            </StackPane>
+    </center>
+</BorderPane>
