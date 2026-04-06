@@ -14,19 +14,21 @@
             </padding>
             <children>
                 <Button fx:id="btnCatalogo" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Catálogo" />
-                <Button fx:id="btnSocios" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Gestión Socios" />
+                
+                <Button fx:id="btnSocios" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Gestión Socios" onAction="#abrirModuloUsuarios" />
                 <Button fx:id="btnEventos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Eventos" />
                 <Button fx:id="btnPrestamos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Gestión Préstamos" />
                 <Button fx:id="btnMisPrestamos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mis Préstamos" />
                 <Button fx:id="btnMisReservas" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mis Reservas" />
                 <Button fx:id="btnConfiguracion" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Configuración" />
                 
-                <StackPane VBox.vgrow="ALWAYS" /> <Button fx:id="btnSalir" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Salir" />
+                <StackPane VBox.vgrow="ALWAYS" /> 
+                <Button fx:id="btnSalir" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Salir" />
             </children>
         </VBox>
     </left>
     <center>
         <StackPane fx:id="contentArea" style="-fx-background-color: #ecf0f1;" BorderPane.alignment="CENTER">
-            </StackPane>
+        </StackPane>
     </center>
 </BorderPane>

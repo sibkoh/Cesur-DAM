@@ -1,6 +1,11 @@
 package com.lexludi.ludigest_backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +32,16 @@ public class Usuario {
 
     @Column(nullable = false, length = 100)
     private String nombreCompleto;
+
+    // --- NUEVOS CAMPOS APLICADOS ---
+
+    // Correo electronico del usuario para notificaciones o recuperacion (obligatorio y unico)
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
+
+    // Telefono de contacto del administrador (opcional)
+    @Column(nullable = true, length = 15)
+    private String telefono;
 
     // Por ahora, todos los que entren seran administradores
     @Column(nullable = false, length = 20)

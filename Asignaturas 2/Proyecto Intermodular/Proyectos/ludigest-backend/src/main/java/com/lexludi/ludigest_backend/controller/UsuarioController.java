@@ -26,7 +26,7 @@ public class UsuarioController {
         
         // BLINDAJE: Si Postman o el frontend no nos envian un rol, forzamos el de ADMIN
         if (nuevoUsuario.getRol() == null || nuevoUsuario.getRol().isEmpty()) {
-            nuevoUsuario.setRol("ADMIN");
+            nuevoUsuario.setRol("SOCIO");
         }
         
         return usuarioRepository.save(nuevoUsuario);

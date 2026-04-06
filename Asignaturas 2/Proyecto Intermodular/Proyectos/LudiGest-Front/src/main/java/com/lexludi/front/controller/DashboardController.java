@@ -1,8 +1,15 @@
 package com.lexludi.front.controller;
 
+import java.io.IOException;
+// --- FIN PARTE NUEVA ---
+
 import com.lexludi.front.model.Usuario; // Asegurate de tener este paquete y clase creados
 
 import javafx.fxml.FXML;
+// --- INICIO PARTE NUEVA: Importaciones para inyección de vistas ---
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
@@ -63,4 +70,32 @@ public class DashboardController {
         boton.setVisible(true);
         boton.setManaged(true);
     }
+
+    // --- INICIO PARTE NUEVA: Método para inyectar la vista de usuarios ---
+    /**
+     * Método para cargar la vista de gestión de usuarios.
+     * Se debe llamar desde el botón "Socios/Usuarios" (btnSocios) del menú lateral en tu dashboard.fxml
+     */
+    @FXML
+    public void abrirModuloUsuarios() {
+        try {
+            // Cargamos el archivo FXML del módulo de usuarios
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/usuarios.fxml"));
+            Parent view = loader.load();
+            
+            // Limpiamos el área de contenido actual y añadimos la nueva vista inyectada
+            contentArea.getChildren().clear();
+            contentArea.getChildren().add(view);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Mostramos un alert si falla la carga del archivo FXML
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error de Carga");
+            alert.setHeaderText("No se pudo cargar el módulo de usuarios");
+            alert.setContentText("Detalle: " + e.getMessage());
+            alert.showAndWait();
+        }
+    }
+    // --- FIN PARTE NUEVA ---
 }
