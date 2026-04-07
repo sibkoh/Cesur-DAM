@@ -28,10 +28,10 @@ public class Prestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Un socio puede tener varios prestamos registrados en su historial
+    // Un usuario puede tener varios prestamos registrados en su historial
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "socio_id")
-    private Socio socio;
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     // Un ejemplar fisico puede estar en varios prestamos a lo largo del tiempo (historial)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -53,7 +53,7 @@ public class Prestamo {
     @Column(nullable = false)
     private Boolean activo = true;
 
-    // Espacio para apuntar si el socio devuelve el juego con cartas dobladas, caja rota, etc.
+    // Espacio para apuntar si el usuario devuelve el juego con cartas dobladas, caja rota, etc.
     @Column(length = 500)
     private String anotaciones;
 }

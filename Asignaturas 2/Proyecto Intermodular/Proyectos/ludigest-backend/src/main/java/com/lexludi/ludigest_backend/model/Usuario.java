@@ -1,5 +1,7 @@
 package com.lexludi.ludigest_backend.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// Entidad para gestionar el acceso al panel de administracion
+// Entidad unificada para gestionar tanto el acceso al sistema como los datos de la asociacion
 @Entity
 @Table(name = "usuarios")
 @Data
@@ -22,6 +24,8 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // --- DATOS DE ACCESO (LOGIN) ---
+
     // El nombre de usuario para hacer login (debe ser unico)
     @Column(nullable = false, unique = true, length = 50)
     private String username;
@@ -30,20 +34,45 @@ public class Usuario {
     @Column(nullable = false, length = 255)
     private String password;
 
-    @Column(nullable = false, length = 100)
-    private String nombreCompleto;
+    // Nivel de permisos en la aplicacion (ADMIN, SOCIO, etc.)
+    @Column(nullable = false, length = 20)
+    private String rol = "SOCIO";
 
-    // --- NUEVOS CAMPOS APLICADOS ---
+    // --- DATOS PERSONALES (Fusionados) ---
 
-    // Correo electronico del usuario para notificaciones o recuperacion (obligatorio y unico)
-    @Column(nullable = false, unique = true, length = 100)
+    // Sin nullable = false para evitar errores de migracion con usuarios antiguos
+    @Column(length = 100)
+    private String nombre;
+
+    @Column(length = 150)
+    private String apellidos;
+
+    // Nombre por el que se le conoce en las mesas de juego (opcional)
+    @Column(length = 50)
+    private String apodo;
+
+    // Correo electronico del usuario (unico)
+    @Column(unique = true, length = 100)
     private String email;
 
-    // Telefono de contacto del administrador (opcional)
-    @Column(nullable = true, length = 15)
+    // Telefono de contacto del administrador/socio (opcional)
+    @Column(length = 15)
     private String telefono;
 
-    // Por ahora, todos los que entren seran administradores
-    @Column(nullable = false, length = 20)
-    private String rol = "ADMIN";
+    // --- DATOS DE GESTION DE LA ASOCIACION ---
+
+    // Indica si la persona puede participar en las actividades y llevarse juegos
+    @Column(nullable = false)
+    private Boolean activo = true;
+
+    // Fecha en la que la persona se inscribio en LexLudi
+    private LocalDate fechaAlta;
+
+    // Control de acceso fisico al local
+    @Column(nullable = false)
+    private Boolean tieneLlave = false;
+
+    // Tipo de suscripcion (ej: Anual, Semestral, Familiar)
+    @Column(length = 50)
+    private String tipoCuota;
 }

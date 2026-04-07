@@ -1,11 +1,18 @@
 package com.lexludi.ludigest_backend.model;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 // Entidad para gestionar cada caja fisica real que tenemos en la ludoteca
 @Entity
@@ -50,4 +57,13 @@ public class Ejemplar {
     // Por defecto es false para evitar que se pongan a la venta recien comprados
     @Column(nullable = false)
     private Boolean enVenta = false;
+    
+ // --- CAMPO RECUPERADO Y ACTUALIZADO ---
+
+    // Relacion directa con el Usuario que tiene el juego actualmente.
+    // nullable = true porque si el juego esta en la estanteria, no tiene "dueño" temporal.
+    // Cambiamos socio_id por usuario_id para que coincida con tu nueva tabla 'usuarios'.
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = true)
+    private Usuario prestadoA;
 }

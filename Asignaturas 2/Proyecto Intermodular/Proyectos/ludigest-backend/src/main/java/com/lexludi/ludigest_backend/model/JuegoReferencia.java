@@ -33,7 +33,7 @@ public class JuegoReferencia {
     private Integer duracionMinutos;
     private Double puntuacionBgg;
 
-    // --- NUEVOS CAMPOS APLICADOS ---
+    // --- NUEVOS CAMPOS APLICADOS (FASE INICIAL)---
     
     // Campo para guardar el numero ideal de jugadores segun la BGG
     @Column(length = 50)
@@ -45,4 +45,26 @@ public class JuegoReferencia {
 
     // Dureza o peso del juego (complejidad)
     private Double dureza;
+    
+ // --- NUEVOS CAMPOS APLICADOS (FASE LUDOTECA) ---
+
+    // Mecanicas principales del juego (ej: Colocacion de trabajadores, Draft, etc.)
+    // Opcional, para no chocar con los datos existentes
+    @Column(length = 255)
+    private String mecanicas;
+
+    // Ano en el que el juego fue lanzado al mercado (sin ene por convencion de codigo)
+    // Opcional
+    private Integer anoPublicacion;
+
+    // Creador o creadores principales del juego
+    // Opcional
+    @Column(length = 150)
+    private String autor;
+
+    // Sinopsis o descripcion larga del juego. 
+    // Usamos columnDefinition = "TEXT" para que MySQL permita textos muy largos sin el limite de 255 caracteres
+    // Opcional
+    @Column(columnDefinition = "TEXT")
+    private String descripcion;
 }
