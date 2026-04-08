@@ -8,6 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,14 +30,20 @@ public class Usuario {
     // --- DATOS DE ACCESO (LOGIN) ---
 
     // El nombre de usuario para hacer login (debe ser unico)
+    // VALIDACION: Obligatorio y con un minimo de caracteres para seguridad
+    @NotBlank(message = "El nombre de usuario es obligatorio")
+    @Size(min = 4, message = "El username debe tener al menos 4 caracteres")
     @Column(nullable = false, unique = true, length = 50)
     private String username;
 
     // La contrasena de acceso
+ // VALIDACION: No puede estar vacia
+    @NotBlank(message = "La contraseña no puede estar vacia")
     @Column(nullable = false, length = 255)
     private String password;
 
     // Nivel de permisos en la aplicacion (ADMIN, SOCIO, etc.)
+    @NotBlank(message = "El rol es obligatorio")
     @Column(nullable = false, length = 20)
     private String rol = "SOCIO";
 
@@ -62,6 +71,7 @@ public class Usuario {
     // --- DATOS DE GESTION DE LA ASOCIACION ---
 
     // Indica si la persona puede participar en las actividades y llevarse juegos
+    @NotNull(message = "El estado activo/inactivo es obligatorio")
     @Column(nullable = false)
     private Boolean activo = true;
 
@@ -69,6 +79,7 @@ public class Usuario {
     private LocalDate fechaAlta;
 
     // Control de acceso fisico al local
+    @NotNull(message = "Debe indicarse si el usuario tiene llave o no")
     @Column(nullable = false)
     private Boolean tieneLlave = false;
 

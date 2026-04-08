@@ -1,12 +1,19 @@
 package com.lexludi.ludigest_backend.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.lexludi.ludigest_backend.model.Usuario;
 import com.lexludi.ludigest_backend.repository.UsuarioRepository;
 import com.lexludi.ludigest_backend.service.UsuarioService;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -20,14 +27,10 @@ public class UsuarioController {
         this.usuarioRepository = usuarioRepository;
     }
 
- // Metodo temporal para poder crear un administrador de prueba desde Postman
+ // Metodo para registrar usuarios desde Postman o el Frontend
+    // BLINDAJE: Usamos @Valid. Ya no hace falta el 'if' manual.
     @PostMapping("/registro")
-    public Usuario registrarUsuario(@RequestBody Usuario nuevoUsuario) {
-        
-        // BLINDAJE: Si Postman o el frontend no nos envian un rol, forzamos el de ADMIN
-        if (nuevoUsuario.getRol() == null || nuevoUsuario.getRol().isEmpty()) {
-            nuevoUsuario.setRol("SOCIO");
-        }
+    public Usuario registrarUsuario(@Valid @RequestBody Usuario nuevoUsuario) {
         
         return usuarioRepository.save(nuevoUsuario);
     }
@@ -47,4 +50,6 @@ public class UsuarioController {
     public List<Usuario> listarTodos() {
         return usuarioRepository.findAll();
     }
+    
+    
 }

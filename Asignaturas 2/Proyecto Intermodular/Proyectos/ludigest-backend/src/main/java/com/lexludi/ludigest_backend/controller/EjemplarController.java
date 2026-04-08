@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lexludi.ludigest_backend.model.Ejemplar;
 import com.lexludi.ludigest_backend.service.EjemplarService;
 
+import jakarta.validation.Valid;
+
 // Controlador para gestionar el inventario fisico (las cajas reales)
 @RestController
 @RequestMapping("/api/ejemplares")
@@ -38,10 +40,12 @@ public class EjemplarController {
         return ejemplarService.obtenerPorJuegoId(juegoId);
     }
 
-    // POST a http://localhost:8081/api/ejemplares
+ // POST a http://localhost:8081/api/ejemplares
     // Recibe un JSON con los datos de la caja y la guarda
+ // Anadimos @Valid. Si el JSON no cumple las reglas de la entidad, no entrara al metodo
     @PostMapping
-    public Ejemplar guardarEjemplar(@RequestBody Ejemplar nuevoEjemplar) {
+    public Ejemplar guardarEjemplar(@Valid @RequestBody Ejemplar nuevoEjemplar) {
         return ejemplarService.guardarEjemplar(nuevoEjemplar);
     }
+    
 }

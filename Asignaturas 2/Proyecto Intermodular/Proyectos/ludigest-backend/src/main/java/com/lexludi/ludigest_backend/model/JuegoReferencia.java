@@ -1,6 +1,13 @@
 package com.lexludi.ludigest_backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,22 +22,33 @@ public class JuegoReferencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private Long id;
 
     // Guardamos el ID de BoardGameGeek para futuras sincronizaciones
     // BLINDAJE: unique = true asegura que MySQL rechazara cualquier intento de duplicado
+ // VALIDACION: No puede ser nulo ya que es nuestra clave de sincronizacion
+    @NotNull(message = "El ID de la BGG es obligatorio para la sincronizacion")
     @Column(name = "id_bgg", unique = true)
     private Long idBgg;
 
+ // VALIDACION: El titulo no puede estar vacio ni ser solo espacios
+    @NotBlank(message = "El titulo del juego no puede estar vacio")
     @Column(nullable = false, length = 150)
     private String titulo;
 
     @Column(length = 255)
     private String urlImagen;
 
+    @NotNull(message = "Debes especificar el numero minimo de jugadores")
     private Integer minJugadores;
+
+    @NotNull(message = "Debes especificar el numero maximo de jugadores")
     private Integer maxJugadores;
+
+    @NotNull(message = "La duracion estimada es obligatoria")
     private Integer duracionMinutos;
+    
     private Double puntuacionBgg;
 
     // --- NUEVOS CAMPOS APLICADOS (FASE INICIAL)---

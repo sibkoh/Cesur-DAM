@@ -12,6 +12,8 @@ import com.lexludi.ludigest_backend.model.JuegoReferencia;
 import com.lexludi.ludigest_backend.service.BggSyncService;
 import com.lexludi.ludigest_backend.service.JuegoReferenciaService;
 
+import jakarta.validation.Valid;
+
 // Controlador para la ficha tecnica de los juegos de la ludoteca
 @RestController
 @RequestMapping("/api/juegos")
@@ -37,8 +39,9 @@ public class JuegoReferenciaController {
     }
 
     // Metodo para introducir la ficha de un nuevo juego manualmente delegando en el servicio
+ // BLINDAJE: Usamos @Valid para que Spring revise las reglas antes de intentar guardar
     @PostMapping
-    public JuegoReferencia guardarJuego(@RequestBody JuegoReferencia nuevoJuego) {
+    public JuegoReferencia guardarJuego(@Valid @RequestBody JuegoReferencia nuevoJuego) {
         return juegoReferenciaService.guardarJuego(nuevoJuego);
     }
 

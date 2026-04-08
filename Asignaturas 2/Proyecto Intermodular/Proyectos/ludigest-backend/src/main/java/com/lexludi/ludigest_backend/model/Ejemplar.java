@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +33,8 @@ public class Ejemplar {
     private String codigoLocal;
 
     // Relacion ManyToOne: Muchos ejemplares fisicos pueden pertenecer a una misma ficha teorica
+ // Validacion: El juego asociado no puede ser nulo
+    @NotNull(message = "El ejemplar debe estar asociado a un juego de referencia")
     @ManyToOne
     @JoinColumn(name = "juego_referencia_id", nullable = false)
     private JuegoReferencia juegoReferencia;
@@ -40,10 +44,12 @@ public class Ejemplar {
     private String balda;
 
     // Fecha en la que compramos o recibimos el juego (vital para la cuarentena)
+    @NotNull(message = "La fecha de adquisicion es obligatoria")
     @Column(nullable = false)
     private LocalDate fechaAdquisicion;
 
     // Estado actual del juego: DISPONIBLE, PRESTADO, RESERVADO, MANTENIMIENTO
+    @NotBlank(message = "El estado del juego es obligatorio")
     @Column(nullable = false, length = 20)
     private String estado = "DISPONIBLE";
 
@@ -55,6 +61,8 @@ public class Ejemplar {
     
     // Indicador de si la caja fisica esta en el mercadillo de segunda mano
     // Por defecto es false para evitar que se pongan a la venta recien comprados
+ // Validacion: Exigimos que nos digan si esta en venta o no
+    @NotNull(message = "Debe especificar si el juego esta en venta (true/false)")
     @Column(nullable = false)
     private Boolean enVenta = false;
     
