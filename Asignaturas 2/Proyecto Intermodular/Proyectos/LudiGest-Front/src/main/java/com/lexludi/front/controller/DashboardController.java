@@ -20,6 +20,7 @@ import javafx.scene.layout.StackPane;
 public class DashboardController {
 
     @FXML private Button btnCatalogo;
+    @FXML private Button btnJuegosReferencia;
     @FXML private Button btnSocios;
     @FXML private Button btnEventos;
     @FXML private Button btnPrestamos;
@@ -46,7 +47,7 @@ public class DashboardController {
             // Un socio no puede gestionar otros socios ni ver configuracion global
             ocultarBoton(btnSocios);
             ocultarBoton(btnConfiguracion);
-            
+            ocultarBoton(btnJuegosReferencia);
             // Si puede ver sus propios prestamos y reservas
             mostrarBoton(btnMisPrestamos);
             mostrarBoton(btnMisReservas);
@@ -97,5 +98,26 @@ public class DashboardController {
             alert.showAndWait();
         }
     }
-    // --- FIN PARTE NUEVA ---
+    /**
+     * Método para cargar la vista de Base de Datos de Juegos (Referencia).
+     * Se llama desde el botón "Base de Datos Juegos" del menú lateral.
+     */
+    @FXML
+    public void abrirModuloJuegosReferencia() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/juegos_referencia.fxml"));
+            Parent view = loader.load();
+            
+            contentArea.getChildren().clear();
+            contentArea.getChildren().add(view);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error de Carga");
+            alert.setHeaderText("No se pudo cargar el módulo de Juegos de Referencia");
+            alert.setContentText("Detalle: " + e.getMessage());
+            alert.showAndWait();
+        }
+    }
 }

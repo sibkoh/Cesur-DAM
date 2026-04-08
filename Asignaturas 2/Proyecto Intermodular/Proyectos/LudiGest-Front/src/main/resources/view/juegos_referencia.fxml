@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="650.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexludi.front.controller.JuegosReferenciaController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);">
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Añadir Juego desde BGG" />
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <TextField fx:id="txtBusquedaBGG" prefWidth="300.0" promptText="Nombre del juego (ej: Catan)" />
+            <Button fx:id="btnBuscarBGG" mnemonicParsing="false" onAction="#handleBuscarBGG" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Buscar en BGG" />
+        </HBox>
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <Label text="Resultados:" />
+            <ComboBox fx:id="cmbResultadosBGG" prefWidth="400.0" promptText="Selecciona un juego..." />
+        </HBox>
+    </VBox>
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+        <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);">
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Detalles del Juego" />
+            
+            <GridPane hgap="15.0" vgap="15.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                    <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                </columnConstraints>
+
+                <Label text="Título:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtTitulo" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                
+                <Label text="Año Publicación:" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtAnoPublicacion" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                <Label text="Min. Jugadores:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtMinJugadores" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                
+                <Label text="Max. Jugadores:" GridPane.columnIndex="2" GridPane.rowIndex="1" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtMaxJugadores" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                <Label text="Duración (min):" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtDuracion" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                
+                <Label text="Dureza (1-5):" GridPane.columnIndex="2" GridPane.rowIndex="2" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtDureza" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                
+                <Label text="Categorías:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtCategorias" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.columnSpan="3"/>
+                
+                <Label text="Mecánicas:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtMecanicas" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.columnSpan="3"/>
+                
+                <Label text="URL Imagen:" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtUrlImagen" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3"/>
+            </GridPane>
+            </GridPane>
+
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                <Button fx:id="btnGuardar" text="Guardar en Catálogo Local" onAction="#handleGuardarJuego" 
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;" 
+                        prefHeight="40.0" prefWidth="250.0" disable="true" />
+            </HBox>
+            </VBox>
+    </ScrollPane>
+        </VBox>
+    </ScrollPane>
+</VBox>

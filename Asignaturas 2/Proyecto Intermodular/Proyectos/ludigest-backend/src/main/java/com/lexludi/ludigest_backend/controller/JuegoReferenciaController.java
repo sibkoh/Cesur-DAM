@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lexludi.ludigest_backend.dto.BggGameDetailsDto;
+import com.lexludi.ludigest_backend.dto.BggSearchDto;
 import com.lexludi.ludigest_backend.model.JuegoReferencia;
 import com.lexludi.ludigest_backend.service.BggSyncService;
 import com.lexludi.ludigest_backend.service.JuegoReferenciaService;
@@ -19,39 +22,38 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/juegos")
 public class JuegoReferenciaController {
 
-    // Inyectamos el nuevo servicio de logica de negocio (sustituye al uso directo del repositorio)
     private final JuegoReferenciaService juegoReferenciaService;
-    
-    // Mantenemos nuestro servicio encargado de hablar con la BGG
     private final BggSyncService bggSyncService;
 
-    // Actualizamos el constructor para inyectar ambos servicios
     public JuegoReferenciaController(JuegoReferenciaService juegoReferenciaService, 
                                      BggSyncService bggSyncService) {
         this.juegoReferenciaService = juegoReferenciaService;
         this.bggSyncService = bggSyncService;
     }
 
-    // Metodo para consultar todo nuestro catalogo teorico delegando en el servicio
+    // --- ENDPOINTS DE BASE DE DATOS LOCAL ---
+
     @GetMapping
     public List<JuegoReferencia> listarTodos() {
         return juegoReferenciaService.obtenerTodos();
     }
 
-    // Metodo para introducir la ficha de un nuevo juego manualmente delegando en el servicio
- // BLINDAJE: Usamos @Valid para que Spring revise las reglas antes de intentar guardar
     @PostMapping
     public JuegoReferencia guardarJuego(@Valid @RequestBody JuegoReferencia nuevoJuego) {
         return juegoReferenciaService.guardarJuego(nuevoJuego);
     }
 
-    // --- ENDPOINT HISTORICO PARA TESTEAR LA IMPORTACION XML ---
-    
-    // Al hacer un GET a http://localhost:8081/api/juegos/importar-mock
-    // probaremos que nuestro servicio lee bien el archivo y lo transforma a JSON
-    @GetMapping("/importar-mock")
-    public JuegoReferencia importarMock() {
-        // Delegamos todo el trabajo de lectura al servicio y devolvemos el resultado
-        return bggSyncService.importarJuegoMock();
+    // --- ENDPOINTS DE INTEGRACION EXTERNA (BGG) ---
+
+    // GET a http://localhost:8081/api/juegos/bgg/buscar?query=catan
+    @GetMapping("/bgg/buscar")
+    public List<BggSearchDto> buscarEnBgg(@RequestParam String query) {
+        return bggSyncService.buscarJuegos(query);
+    }
+
+    // GET a http://localhost:8081/api/juegos/bgg/detalles?id=13
+    @GetMapping("/bgg/detalles")
+    public BggGameDetailsDto detallesDeBgg(@RequestParam Long id) {
+        return bggSyncService.obtenerDetallesJuego(id);
     }
 }
