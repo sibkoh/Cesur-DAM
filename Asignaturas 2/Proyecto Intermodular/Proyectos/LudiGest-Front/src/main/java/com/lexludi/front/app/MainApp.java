@@ -22,6 +22,11 @@ public class MainApp extends Application {
 
         // Configuracion basica de la ventana (Stage)
         Scene scene = new Scene(root, 400, 350);
+        
+     // AÑADE ESTA LÍNEA AQUÍ PARA HACER EL CSS GLOBAL
+        scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+        
+        
         primaryStage.setTitle("LudiGest");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false); // Bloqueamos el redimensionamiento para mantener el diseño

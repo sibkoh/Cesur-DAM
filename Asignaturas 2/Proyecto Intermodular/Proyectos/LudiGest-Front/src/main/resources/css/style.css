@@ -1,0 +1,187 @@
+/* ========================================================
+   TEMA LUDOTECA VIBRANTE (Morados, Lilas y Naranja Coral)
+   ======================================================== */
+
+/* 1. FONDO PRINCIPAL GLOBAL (Reemplaza el blanco y el azul oscuro triste) */
+.root {
+    /* Degradado morado alegre y moderno */
+    -fx-background-color: linear-gradient(to bottom right, #4a2c73, #2b1845); 
+    -fx-font-family: "Segoe UI", "Verdana", sans-serif;
+}
+
+/* Forzar que los ScrollPane (que por defecto son blancos) sean transparentes y dejen ver el morado */
+.scroll-pane, .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* --- ETIQUETAS Y TEXTOS --- */
+.label-filtro-min {
+    -fx-text-fill: #cbb5e3; /* Lila clarito, muy legible */
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+.titulo-principal, .label-titulo, .label-seccion {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+.titulo-principal { -fx-font-size: 22px; }
+.label-titulo { -fx-font-size: 24px; }
+.label-seccion { -fx-font-size: 18px; }
+
+.label { -fx-text-fill: #e6dcf5; } /* Textos normales en lila casi blanco */
+.label-bold { -fx-text-fill: #ffffff; -fx-font-weight: bold; }
+.label-subtitulo { -fx-text-fill: #b39ddb; -fx-font-size: 14px; }
+
+/* --- PANELES (Un lila/morado un poco más claro que el fondo) --- */
+.split-pane { -fx-background-color: transparent; }
+.split-pane *.split-pane-divider {
+    -fx-background-color: transparent;
+    -fx-padding: 0 2 0 2;
+}
+
+.panel-izquierdo, .panel-derecho, .contenido-tab, .panel-interno {
+    -fx-background-color: #553585; /* Morado alegre y vivo */
+    -fx-background-radius: 15;
+}
+
+/* --- TARJETAS DE JUEGO (CARDS) --- */
+.card-ejemplar {
+    -fx-background-color: #65419c; /* Destaca sobre el panel */
+    -fx-background-radius: 15;
+    -fx-padding: 12;
+    -fx-border-color: transparent;
+    -fx-border-radius: 15;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+.card-ejemplar:hover {
+    -fx-background-color: #764eb3;
+    -fx-border-color: #ff7a45; /* Borde naranja al pasar el ratón */
+    -fx-translate-y: -2;
+}
+
+/* --- INPUTS Y COMBOBOXES (Más claros y legibles) --- */
+.text-field, .combo-box, .text-area {
+    /* Lila intermedio: hace contraste pero no es un agujero negro */
+    -fx-background-color: #724da8; 
+    -fx-text-fill: #ffffff; /* Texto que escribe el usuario: Blanco puro */
+    -fx-border-color: #8c67c4;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 8;
+}
+/* TEXTO DE FONDO (Prompt text) mucho más claro */
+.text-field:default, .text-area:default {
+    -fx-prompt-text-fill: #d5c2f0; 
+}
+.text-area .content { -fx-background-color: #724da8; }
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #ff7a45; /* Foco naranja brillante */
+}
+.combo-box .label { -fx-text-fill: #ffffff; }
+.combo-box-popup .list-view {
+    -fx-background-color: #553585;
+    -fx-border-color: #8c67c4;
+}
+.combo-box-popup .list-cell {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: transparent;
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #ff7a45;
+}
+
+/* --- BOTONES: TODOS NARANJAS ESTILO PÍLDORA POR DEFECTO --- */
+.button {
+    -fx-background-radius: 25;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    /* Degradado Naranja Coral aplicado a todos los botones */
+    -fx-background-color: linear-gradient(to right, #ff8c42, #ff5757);
+    -fx-text-fill: #ffffff;
+}
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #ffa366, #ff7070);
+    -fx-effect: dropshadow(gaussian, rgba(255,140,66,0.4), 10, 0, 0, 0);
+}
+
+/* Botón secundario por si necesitas uno que no destaque tanto */
+.btn-secondary {
+    -fx-background-color: #8c67c4;
+}
+.btn-secondary:hover { -fx-background-color: #a382d6; }
+
+/* --- TABS (PESTAÑAS) CORREGIDAS PARA LEERSE BIEN --- */
+.tab-pane .tab-header-background { -fx-background-color: transparent; }
+.tab-pane .tab {
+    -fx-background-color: #4a2c73;
+    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 5 15;
+}
+/* ¡MAGIA AQUÍ! Forzamos el texto de las pestañas a ser BLANCO y negrita */
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: #553585;
+    -fx-border-color: #ff7a45 transparent transparent transparent;
+    -fx-border-width: 3 0 0 0;
+}
+
+/* --- TABLAS (GESTIÓN DE SOCIOS) ADAPTADAS AL TEMA --- */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #8c67c4;
+    -fx-border-radius: 5;
+}
+.table-view .column-header-background {
+    -fx-background-color: #4a2c73;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+.table-view .table-row-cell {
+    -fx-background-color: #553585;
+    -fx-table-cell-border-color: #4a2c73;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: #65419c; /* Filas alternas */
+}
+.table-view .table-cell {
+    -fx-text-fill: #ffffff;
+}
+.table-view .table-row-cell:selected {
+    -fx-background-color: #ff7a45; /* Fila seleccionada en naranja */
+    -fx-text-fill: #ffffff;
+}
+
+/* --- BADGES DE ESTADO --- */
+.badge-estado {
+    -fx-padding: 4 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+.badge-disponible { -fx-background-color: #00d084; } 
+.badge-reservado  { -fx-background-color: #ffb142; } 
+.badge-prestado   { -fx-background-color: #ff5252; } 
+.badge-cuarentena { -fx-background-color: #ff7a45; } 
+.badge-mantenimiento { -fx-background-color: #4a2c73; -fx-border-color: #ffffff; -fx-border-radius: 20;}
+
+/* --- SCROLLBARS LIMPIOS --- */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #8c67c4;
+    -fx-background-radius: 10;
+}

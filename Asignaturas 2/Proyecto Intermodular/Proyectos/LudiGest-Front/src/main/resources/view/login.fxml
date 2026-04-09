@@ -5,41 +5,46 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexludi.front.controller.LoginController">
-    <padding>
-        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-    </padding>
+<StackPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexludi.front.controller.LoginController">
     <children>
-        <Label text="LudiGest - Acceso Administrador">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-            <VBox.margin>
-                <Insets bottom="20.0" />
-            </VBox.margin>
-        </Label>
         
-        <VBox spacing="5.0">
+        <VBox alignment="CENTER" maxWidth="400.0" maxHeight="380.0" spacing="15.0" styleClass="panel-interno">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
             <children>
-                <Label text="Usuario:" />
-                <TextField fx:id="txtUsername" promptText="Introduce tu usuario" />
+                
+                <Label styleClass="titulo-principal" text="LudiGest" />
+                <Label styleClass="label-subtitulo" text="Acceso al Sistema">
+                    <VBox.margin>
+                        <Insets bottom="15.0" top="-5.0" />
+                    </VBox.margin>
+                </Label>
+                
+                <VBox spacing="5.0">
+                    <children>
+                        <Label styleClass="label-bold" text="Usuario:" />
+                        <TextField fx:id="txtUsername" promptText="Introduce tu usuario" />
+                    </children>
+                </VBox>
+                
+                <VBox spacing="5.0">
+                    <children>
+                        <Label styleClass="label-bold" text="Contraseña:" />
+                        <PasswordField fx:id="txtPassword" promptText="Introduce tu contraseña" />
+                    </children>
+                </VBox>
+                
+                <Button fx:id="btnEntrar" defaultButton="true" mnemonicParsing="false" onAction="#handleEntrar" prefWidth="200.0" styleClass="btn-accent" text="Entrar">
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                </Button>
+                
             </children>
         </VBox>
-        
-        <VBox spacing="5.0">
-            <children>
-                <Label text="Contraseña:" />
-                <PasswordField fx:id="txtPassword" promptText="Introduce tu contraseña" />
-            </children>
-        </VBox>
-        
-        <Button fx:id="btnEntrar" mnemonicParsing="false" onAction="#handleEntrar" prefWidth="150.0" text="Entrar" defaultButton="true">
-            <VBox.margin>
-                <Insets top="15.0" />
-            </VBox.margin>
-        </Button>
     </children>
-</VBox>
+</StackPane>

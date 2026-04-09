@@ -153,5 +153,40 @@ public class DashboardController {
             alert.showAndWait();
         }
     }
-    // === FIN PARTE NUEVA ===
+
+    @FXML
+    private void handleSalir(javafx.event.ActionEvent event) {
+        try {
+            // 1. Limpiamos la sesión del usuario en memoria
+            // (Ajusta esta línea según cómo se llame tu clase/variable de sesión)
+            // this.usuarioLogueado = null; 
+            // SesionGlobal.setUsuarioActual(null);
+
+            // 2. Cargamos el archivo FXML del Login
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/view/login.fxml"));
+            javafx.scene.Parent root = loader.load();
+            
+            // 3. Creamos la nueva escena con las dimensiones base
+            javafx.scene.Scene scene = new javafx.scene.Scene(root, 1200, 800);
+            
+            // 4. ¡CRÍTICO!: Volvemos a aplicar el CSS global a la nueva escena
+            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+
+            // 5. Obtenemos la ventana (Stage) actual a partir del botón clickeado y le ponemos la nueva escena
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            
+         // --- NUEVO: Bloqueo de tamaño para el Login ---
+            stage.setResizable(false); // Impide que el usuario la estire
+            stage.setWidth(400);      // Forzamos el ancho original
+            stage.setHeight(380);      // Forzamos el alto original
+            stage.centerOnScreen();    // Opcional: la centra por si estaba en una esquina
+            
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+            System.err.println("Error al intentar volver a la pantalla de Login.");
+        }
+    }
 }

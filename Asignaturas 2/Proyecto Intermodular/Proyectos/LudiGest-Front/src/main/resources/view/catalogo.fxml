@@ -5,26 +5,58 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexludi.front.controller.CatalogoController">
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexludi.front.controller.CatalogoController">
     <children>
-        <SplitPane dividerPositions="0.55" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.60" styleClass="split-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 
-                <VBox spacing="10.0" style="-fx-background-color: #f4f4f4;">
+                <VBox spacing="15.0" styleClass="panel-izquierdo">
                     <padding>
-                        <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                     </padding>
                     <children>
                         <HBox alignment="CENTER_LEFT" spacing="15.0">
                             <children>
-                                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Catálogo de la Ludoteca" />
+                                <Label styleClass="titulo-principal" text="Catálogo de la Ludoteca" />
                                 <Region HBox.hgrow="ALWAYS" />
-                                <TextField fx:id="txtBuscarEjemplar" prefWidth="200.0" promptText="Buscar ejemplar..." />
-                                <Button fx:id="btnNuevoEjemplar" mnemonicParsing="false" onAction="#abrirFormularioNuevo" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" text="+ Nuevo Ejemplar" />
+                                <Button fx:id="btnNuevoEjemplar" mnemonicParsing="false" onAction="#abrirFormularioNuevo" styleClass="btn-accent" text="+ Nuevo Ejemplar" />
                             </children>
                         </HBox>
                         
-                        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+ 						<VBox spacing="10.0" styleClass="panel-filtros">
+    <HBox spacing="15.0" alignment="BOTTOM_LEFT">
+        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+            <Label text="Búsqueda por Nombre/Autor" styleClass="label-filtro-min" />
+            <TextField fx:id="txtBuscarEjemplar" promptText="Ej: Catan, Klaus Teuber..." />
+        </VBox>
+        <VBox spacing="2.0">
+            <Label text="Estado actual" styleClass="label-filtro-min" />
+            <ComboBox fx:id="cmbFiltroEstado" prefWidth="150" promptText="Seleccionar..." />
+        </VBox>
+        <VBox spacing="2.0">
+            <Label text="Número recomendado de jugadores" styleClass="label-filtro-min" />
+            <TextField fx:id="txtNumJugadores" prefWidth="90" promptText="Ej: 4" />
+        </VBox>
+    </HBox>
+    <HBox spacing="15.0" alignment="BOTTOM_LEFT">
+        <VBox spacing="2.0">
+            <Label text="Complejidad (Dureza)" styleClass="label-filtro-min" />
+            <ComboBox fx:id="cmbFiltroDureza" prefWidth="160" promptText="Cualquiera" />
+        </VBox>
+        <VBox spacing="2.0">
+            <Label text="Duración partida" styleClass="label-filtro-min" />
+            <ComboBox fx:id="cmbFiltroDuracion" prefWidth="160" promptText="Cualquiera" />
+        </VBox>
+        <Region HBox.hgrow="ALWAYS" />
+        <VBox spacing="2.0">
+            <Label text="Ordenar lista por" styleClass="label-filtro-min" />
+            <ComboBox fx:id="cmbOrdenar" prefWidth="180" />
+        </VBox>
+        <Button mnemonicParsing="false" onAction="#limpiarFiltros" styleClass="btn-secondary" text="Limpiar" prefHeight="35"/>
+    </HBox>
+</VBox>
+                        
+                        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-transparente">
                             <content>
                                 <TilePane fx:id="gridEjemplares" hgap="15.0" vgap="15.0" prefColumns="3" style="-fx-padding: 10;" />
                             </content>
@@ -32,7 +64,7 @@
                     </children>
                 </VBox>
 
-                <StackPane fx:id="stackPanelDerecho" style="-fx-background-color: white;">
+                <StackPane fx:id="stackPanelDerecho" styleClass="panel-derecho">
                     <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                     </padding>
@@ -42,46 +74,37 @@
                             <tabs>
                                 <Tab text="Ficha del Juego">
                                     <content>
-                                        <VBox spacing="15.0" style="-fx-padding: 15;">
+                                        <VBox spacing="15.0" styleClass="contenido-tab">
                                             <HBox spacing="15.0">
                                                 <ImageView fx:id="imgDetalle" fitHeight="200.0" fitWidth="150.0" preserveRatio="true" />
                                                 <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                                                    <Label fx:id="lblDetalleTitulo" style="-fx-font-size: 22px; -fx-font-weight: bold;" wrapText="true" />
-                                                    <Label fx:id="lblDetalleAno" style="-fx-font-size: 14px; -fx-text-fill: gray;" />
-                                                    
-                                                    <GridPane hgap="10.0" vgap="8.0" style="-fx-padding: 10 0 0 0;">
+                                                    <Label fx:id="lblDetalleTitulo" styleClass="label-titulo" wrapText="true" />
+                                                    <Label fx:id="lblDetalleAno" styleClass="label-subtitulo" />
+                                                    <GridPane hgap="10.0" vgap="8.0">
                                                         <columnConstraints>
                                                             <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
                                                             <ColumnConstraints hgrow="ALWAYS" />
                                                         </columnConstraints>
-                                                        
-                                                        <Label text="Autor:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                                                        <Label text="Autor:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label-bold" />
                                                         <Label fx:id="lblDetalleAutor" GridPane.columnIndex="1" GridPane.rowIndex="0" wrapText="true" />
-
-                                                        <Label text="Jugadores:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+                                                        <Label text="Jugadores:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label-bold" />
                                                         <Label fx:id="lblDetalleJugadores" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                        
-                                                        <Label text="Recomendado:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+                                                        <Label text="Recomendado:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label-bold" />
                                                         <Label fx:id="lblDetalleJugRecomendados" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                        
-                                                        <Label text="Duración:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;" />
+                                                        <Label text="Duración:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="label-bold" />
                                                         <Label fx:id="lblDetalleDuracion" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                        
-                                                        <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight: bold;" />
+                                                        <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="label-bold" />
                                                         <Label fx:id="lblDetalleCategorias" GridPane.columnIndex="1" GridPane.rowIndex="4" wrapText="true" />
-                                                        
-                                                        <Label text="Mecánicas:" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-font-weight: bold;" />
+                                                        <Label text="Mecánicas:" GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="label-bold" />
                                                         <Label fx:id="lblDetalleMecanicas" GridPane.columnIndex="1" GridPane.rowIndex="5" wrapText="true" />
-                                                        
-                                                        <Label text="Dureza / Peso:" GridPane.columnIndex="0" GridPane.rowIndex="6" style="-fx-font-weight: bold;" />
+                                                        <Label text="Dureza / Peso:" GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="label-bold" />
                                                         <Label fx:id="lblDetalleDureza" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-
-                                                        <Label text="Puntuación BGG:" GridPane.columnIndex="0" GridPane.rowIndex="7" style="-fx-font-weight: bold;" />
+                                                        <Label text="Puntuación BGG:" GridPane.columnIndex="0" GridPane.rowIndex="7" styleClass="label-bold" />
                                                         <Label fx:id="lblDetallePuntuacion" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                     </GridPane>
                                                 </VBox>
                                             </HBox>
-                                            <Label style="-fx-font-weight: bold;" text="Descripción:" />
+                                            <Label styleClass="label-bold" text="Descripción:" />
                                             <TextArea fx:id="txtDetalleDescripcion" editable="false" wrapText="true" VBox.vgrow="ALWAYS" />
                                         </VBox>
                                     </content>
@@ -89,30 +112,29 @@
                                 
                                 <Tab text="Datos Físicos">
                                     <content>
-                                        <VBox spacing="15.0" style="-fx-padding: 15;">
+                                        <VBox spacing="15.0" styleClass="contenido-tab">
                                             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Información del Ejemplar" />
+                                                <Label styleClass="label-seccion" text="Información del Ejemplar" />
                                                 <Region HBox.hgrow="ALWAYS" />
-                                                <Label fx:id="lblDetalleEstado" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 3 8; -fx-background-radius: 3; -fx-text-fill: white;" />
+                                                <Label fx:id="lblDetalleEstado" styleClass="badge-estado" />
                                             </HBox>
-                                            
                                             <GridPane hgap="10.0" vgap="15.0">
                                                 <columnConstraints>
                                                     <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
                                                     <ColumnConstraints hgrow="ALWAYS" />
                                                 </columnConstraints>
-                                                <Label text="Código Local:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                                                <Label text="Código Local:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label-bold" />
                                                 <Label fx:id="lblDetalleCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                                <Label text="Balda:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+                                                <Label text="Balda:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label-bold" />
                                                 <Label fx:id="lblDetalleBalda" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Adquisición:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+                                                <Label text="Adquisición:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label-bold" />
                                                 <Label fx:id="lblDetalleAdquisicion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label text="En Venta:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;" />
+                                                <Label text="En Venta:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="label-bold" />
                                                 <Label fx:id="lblDetalleEnVenta" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label text="Prestado A:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight: bold;" />
+                                                <Label text="Prestado A:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="label-bold" />
                                                 <Label fx:id="lblDetallePrestadoA" text="Nadie" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                             </GridPane>
-                                            <Label style="-fx-font-weight: bold;" text="Anotaciones:" />
+                                            <Label styleClass="label-bold" text="Anotaciones:" />
                                             <TextArea fx:id="txtDetalleAnotaciones" editable="false" wrapText="true" prefHeight="80.0" />
                                         </VBox>
                                     </content>
@@ -120,17 +142,17 @@
                             </tabs>
                         </TabPane>
 
-                        <ScrollPane fx:id="panelRegistro" visible="false" managed="false" fitToWidth="true" style="-fx-background-color: transparent;">
+                        <ScrollPane fx:id="panelRegistro" visible="false" managed="false" fitToWidth="true" styleClass="scroll-transparente">
                             <content>
-                                <VBox spacing="15.0" style="-fx-background-color: white; -fx-padding: 20;">
-                                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Registrar Nuevo Ejemplar" />
+                                <VBox spacing="15.0" styleClass="contenido-tab">
+                                    <Label styleClass="titulo-principal" text="Registrar Nuevo Ejemplar" />
                                     
-                                    <VBox spacing="5.0" style="-fx-background-color: #f9f9f9; -fx-padding: 10; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
-                                        <Label text="1. Busca el Juego (Base de Datos Teórica):" style="-fx-font-weight: bold;" />
+                                    <VBox spacing="5.0" styleClass="panel-interno">
+                                        <Label text="1. Busca el Juego (Base de Datos Teórica):" styleClass="label-bold" />
                                         <HBox spacing="10.0">
                                             <TextField fx:id="txtBuscarRefLocal" HBox.hgrow="ALWAYS" promptText="Escribe el nombre..." />
                                         </HBox>
-                                        <ComboBox fx:id="cmbJuegoReferencia" prefWidth="Infinity" promptText="Selecciona un resultado..." />
+                                        <ComboBox fx:id="cmbJuegoReferencia" maxWidth="1.7976931348623157E308" promptText="Selecciona un resultado..." />
                                     </VBox>
 
                                     <Label text="Código Local (ej: CAT-001):" />
@@ -138,16 +160,16 @@
                                     <Label text="Balda:" />
                                     <TextField fx:id="txtNuevaBalda" />
                                     <Label text="Fecha de Adquisición:" />
-                                    <DatePicker fx:id="dpFechaAdquisicion" prefWidth="Infinity" />
+                                    <DatePicker fx:id="dpFechaAdquisicion" maxWidth="1.7976931348623157E308" />
                                     
                                     <HBox spacing="20.0">
                                         <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                                             <Label text="Estado Inicial:" />
-                                            <ComboBox fx:id="cmbNuevoEstado" prefWidth="Infinity" />
+                                            <ComboBox fx:id="cmbNuevoEstado" maxWidth="1.7976931348623157E308" />
                                         </VBox>
                                         <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                                             <Label text="¿En Venta (Mercadillo)?" />
-                                            <ComboBox fx:id="cmbEnVenta" prefWidth="Infinity" />
+                                            <ComboBox fx:id="cmbEnVenta" maxWidth="1.7976931348623157E308" />
                                         </VBox>
                                     </HBox>
                                     
@@ -156,8 +178,8 @@
                                     
                                     <Region VBox.vgrow="ALWAYS" />
                                     <HBox spacing="10.0" alignment="CENTER_RIGHT">
-                                        <Button mnemonicParsing="false" onAction="#cancelarRegistro" style="-fx-background-color: #9E9E9E; -fx-text-fill: white;" text="Cancelar" />
-                                        <Button fx:id="btnGuardarEjemplar" mnemonicParsing="false" onAction="#guardarEjemplar" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Guardar Ejemplar" />
+                                        <Button mnemonicParsing="false" onAction="#cancelarRegistro" styleClass="btn-secondary" text="Cancelar" />
+                                        <Button fx:id="btnGuardarEjemplar" mnemonicParsing="false" onAction="#guardarEjemplar" styleClass="btn-success" text="Guardar Ejemplar" />
                                     </HBox>
                                 </VBox>
                             </content>

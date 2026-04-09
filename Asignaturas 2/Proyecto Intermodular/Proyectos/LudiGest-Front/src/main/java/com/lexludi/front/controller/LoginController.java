@@ -130,6 +130,11 @@ public class LoginController {
             
             // Creamos la nueva escena y se la asignamos al Stage
             Scene scene = new Scene(root);
+            
+         // ¡ESTA ES LA LÍNEA QUE FALTA AL CARGAR EL DASHBOARD!
+            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+            
+            
             stage.setTitle("LudiGest - Panel de Control [" + usuario.getRol() + "]");
             stage.setScene(scene);
             stage.setResizable(true); // Permitimos redimensionar la ventana principal
