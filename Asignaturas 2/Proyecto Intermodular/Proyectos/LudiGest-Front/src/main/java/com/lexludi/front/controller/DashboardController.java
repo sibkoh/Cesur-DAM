@@ -120,4 +120,38 @@ public class DashboardController {
             alert.showAndWait();
         }
     }
+    
+ // === INICIO PARTE NUEVA: Método para inyectar la vista del Catálogo ===
+    /**
+     * Método para cargar la vista del Catálogo Físico.
+     * Se llama desde el botón "Catálogo" del menú lateral.
+     */
+    @FXML
+    public void abrirModuloCatalogo() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/catalogo.fxml"));
+            Parent view = loader.load();
+            
+            // ¡LA MAGIA!: Obtenemos el controlador de la vista que acabamos de cargar
+            CatalogoController catalogoController = loader.getController();
+            
+            // Si el usuario es un SOCIO, le ordenamos al catálogo que aplique sus restricciones
+            if (usuarioLogueado != null && "SOCIO".equalsIgnoreCase(usuarioLogueado.getRol())) {
+                catalogoController.configurarVistaSocio();
+            }
+            
+            // Inyectamos la vista en el área principal
+            contentArea.getChildren().clear();
+            contentArea.getChildren().add(view);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error de Carga");
+            alert.setHeaderText("No se pudo cargar el módulo de Catálogo");
+            alert.setContentText("Detalle: " + e.getMessage());
+            alert.showAndWait();
+        }
+    }
+    // === FIN PARTE NUEVA ===
 }

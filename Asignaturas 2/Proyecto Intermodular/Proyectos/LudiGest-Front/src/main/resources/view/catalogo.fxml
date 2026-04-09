@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexludi.front.controller.CatalogoController">
+    <children>
+        <SplitPane dividerPositions="0.55" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                
+                <VBox spacing="10.0" style="-fx-background-color: #f4f4f4;">
+                    <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                            <children>
+                                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Catálogo de la Ludoteca" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <TextField fx:id="txtBuscarEjemplar" prefWidth="200.0" promptText="Buscar ejemplar..." />
+                                <Button fx:id="btnNuevoEjemplar" mnemonicParsing="false" onAction="#abrirFormularioNuevo" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" text="+ Nuevo Ejemplar" />
+                            </children>
+                        </HBox>
+                        
+                        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                            <content>
+                                <TilePane fx:id="gridEjemplares" hgap="15.0" vgap="15.0" prefColumns="3" style="-fx-padding: 10;" />
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </VBox>
+
+                <StackPane fx:id="stackPanelDerecho" style="-fx-background-color: white;">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                    </padding>
+                    <children>
+                        
+                        <TabPane fx:id="tabPaneDetalles" tabClosingPolicy="UNAVAILABLE">
+                            <tabs>
+                                <Tab text="Ficha del Juego">
+                                    <content>
+                                        <VBox spacing="10.0" style="-fx-padding: 15;">
+                                            <HBox spacing="15.0">
+                                                <ImageView fx:id="imgDetalle" fitHeight="200.0" fitWidth="150.0" preserveRatio="true" />
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <Label fx:id="lblDetalleTitulo" style="-fx-font-size: 22px; -fx-font-weight: bold;" wrapText="true" />
+                                                    <Label fx:id="lblDetalleAno" style="-fx-font-size: 14px; -fx-text-fill: gray;" />
+                                                    <Label style="-fx-font-weight: bold; -fx-padding: 10 0 0 0;" text="Mecánicas:" />
+                                                    <Label fx:id="lblDetalleMecanicas" wrapText="true" />
+                                                </VBox>
+                                            </HBox>
+                                            <Label style="-fx-font-weight: bold;" text="Descripción:" />
+                                            <TextArea fx:id="txtDetalleDescripcion" editable="false" wrapText="true" VBox.vgrow="ALWAYS" />
+                                        </VBox>
+                                    </content>
+                                </Tab>
+                                
+                                <Tab text="Datos Físicos">
+                                    <content>
+                                        <VBox spacing="15.0" style="-fx-padding: 15;">
+                                            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Información del Ejemplar" />
+                                            <GridPane hgap="10.0" vgap="15.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="NEVER" minWidth="100.0" />
+                                                    <ColumnConstraints hgrow="ALWAYS" />
+                                                </columnConstraints>
+                                                
+                                                <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                                                <Label fx:id="lblDetalleCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                                
+                                                <Label text="Ubicación:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+                                                <Label fx:id="lblDetalleUbicacion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                
+                                                <Label text="Estado:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+                                                <Label fx:id="lblDetalleEstado" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 3 8; -fx-background-radius: 3; -fx-text-fill: white;" />
+                                                
+                                                <Label text="Prestado a:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;" />
+                                                <Label fx:id="lblDetallePrestadoA" text="Nadie (Disponible)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                            </GridPane>
+                                        </VBox>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+
+                        <VBox fx:id="panelRegistro" visible="false" managed="false" spacing="15.0" style="-fx-background-color: white; -fx-padding: 20;">
+                            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Registrar Nuevo Ejemplar" />
+                            
+                            <Label text="Juego (Base de Datos):" />
+                            <ComboBox fx:id="cmbJuegoReferencia" prefWidth="Infinity" promptText="Selecciona el juego teórico..." />
+                            
+                            <Label text="Código Interno:" />
+                            <TextField fx:id="txtNuevoCodigo" promptText="Ej: LUD-CAT-001" />
+                            
+                            <Label text="Ubicación:" />
+                            <TextField fx:id="txtNuevaUbicacion" promptText="Ej: Estantería A3" />
+                            
+                            <Region VBox.vgrow="ALWAYS" />
+                            
+                            <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                                <Button mnemonicParsing="false" onAction="#cancelarRegistro" style="-fx-background-color: #9E9E9E; -fx-text-fill: white;" text="Cancelar" />
+                                <Button fx:id="btnGuardarEjemplar" mnemonicParsing="false" onAction="#guardarEjemplar" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Guardar Ejemplar" />
+                            </HBox>
+                        </VBox>
+
+                    </children>
+                </StackPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

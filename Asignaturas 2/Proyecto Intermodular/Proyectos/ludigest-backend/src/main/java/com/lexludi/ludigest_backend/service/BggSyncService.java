@@ -13,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -21,6 +22,8 @@ import org.xml.sax.InputSource;
 
 import com.lexludi.ludigest_backend.dto.BggGameDetailsDto;
 import com.lexludi.ludigest_backend.dto.BggSearchDto;
+import com.lexludi.ludigest_backend.model.JuegoReferencia;
+import com.lexludi.ludigest_backend.repository.JuegoReferenciaRepository;
 
 @Service
 public class BggSyncService {
@@ -30,6 +33,14 @@ public class BggSyncService {
     private String bggApiToken;
 
     private final RestTemplate restTemplate = new RestTemplate();
+    
+ // 1. Declaramos la herramienta que necesitamos
+    private final JuegoReferenciaRepository juegoReferenciaRepository;
+
+    // 2. Creamos el constructor para que Spring nos la "inyecte" automáticamente
+    public BggSyncService(JuegoReferenciaRepository juegoReferenciaRepository) {
+        this.juegoReferenciaRepository = juegoReferenciaRepository;
+    }
 
     // --- METODO DE BUSQUEDA (API V1) ---
     public List<BggSearchDto> buscarJuegos(String query) {
@@ -155,5 +166,84 @@ public class BggSyncService {
             }
         }
         return null;
+    }
+    
+ // --- IMPORTACION PESADA Y PERSISTENCIA ---
+    @Transactional
+    public JuegoReferencia importarJuegoDesdeBgg(Long bggId) {
+        // 1. Obtener los detalles completos desde la BGG (reutilizamos la lógica de red existente)
+        String url = "https://boardgamegeek.com/xmlapi/boardgame/" + bggId + "?stats=1";
+        String xmlResponse = hacerPeticionConToken(url);
+        
+        try {
+            Document doc = parsearXml(xmlResponse);
+            Element item = (Element) doc.getElementsByTagName("boardgame").item(0);
+            
+         // Usamos el repositorio que inyectamos arriba
+         // 2. Control de duplicados: ¿Ya lo tenemos?
+            JuegoReferencia juego = juegoReferenciaRepository.findByIdBgg(bggId).orElse(new JuegoReferencia());
+                           
+            // 3. Mapeo Total a la Entidad
+            juego.setIdBgg(bggId);
+            
+            // Titulo Primario
+            NodeList names = item.getElementsByTagName("name");
+            for (int i = 0; i < names.getLength(); i++) {
+                Element nameEl = (Element) names.item(i);
+                if ("true".equals(nameEl.getAttribute("primary"))) {
+                    juego.setTitulo(nameEl.getTextContent());
+                    break;
+                }
+            }
+
+            // Datos técnicos
+            juego.setAnoPublicacion(extraerEnteroV1(item, "yearpublished"));
+            juego.setMinJugadores(extraerEnteroV1(item, "minplayers"));
+            juego.setMaxJugadores(extraerEnteroV1(item, "maxplayers"));
+            juego.setDuracionMinutos(extraerEnteroV1(item, "playingtime"));
+            juego.setDescripcion(item.getElementsByTagName("description").item(0).getTextContent());
+            
+            if (item.getElementsByTagName("image").getLength() > 0) {
+                juego.setUrlImagen(item.getElementsByTagName("image").item(0).getTextContent());
+            }
+
+            // Estadísticas (Puntuación y Dureza)
+            if (item.getElementsByTagName("average").getLength() > 0) {
+                juego.setPuntuacionBgg(Double.parseDouble(item.getElementsByTagName("average").item(0).getTextContent()));
+            }
+            if (item.getElementsByTagName("averageweight").getLength() > 0) {
+                juego.setDureza(Double.parseDouble(item.getElementsByTagName("averageweight").item(0).getTextContent()));
+            }
+
+            // Jugadores recomendados (Poll Summary)
+            NodeList pollResults = item.getElementsByTagName("result");
+            for (int i = 0; i < pollResults.getLength(); i++) {
+                Element res = (Element) pollResults.item(i);
+                if ("bestwith".equals(res.getAttribute("name"))) {
+                    juego.setJugadoresRecomendados(res.getAttribute("value"));
+                }
+            }
+
+            // Mapeo de Listas (Categorías, Mecánicas, Autores) a Strings
+            juego.setCategoria(unirEtiquetas(item, "boardgamecategory"));
+            juego.setMecanicas(unirEtiquetas(item, "boardgamemechanic"));
+            juego.setAutor(unirEtiquetas(item, "boardgamedesigner"));
+
+         // Guardado final
+            return juegoReferenciaRepository.save(juego);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error en la importación pesada: " + e.getMessage());
+        }
+    }
+
+    // Método de ayuda para convertir múltiples tags XML en un String único
+    private String unirEtiquetas(Element parent, String tagName) {
+        NodeList nodes = parent.getElementsByTagName(tagName);
+        List<String> lista = new ArrayList<>();
+        for (int i = 0; i < nodes.getLength(); i++) {
+            lista.add(nodes.item(i).getTextContent());
+        }
+        return String.join(", ", lista);
     }
 }

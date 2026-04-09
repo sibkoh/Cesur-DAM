@@ -13,7 +13,7 @@
                 <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
             </padding>
             <children>
-                <Button fx:id="btnCatalogo" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Ludotéca" />
+                <Button fx:id="btnCatalogo" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Ludotéca" onAction="#abrirModuloCatalogo" />
                 <Button fx:id="btnJuegosReferencia" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Registrar Juegos desde BGG" onAction="#abrirModuloJuegosReferencia" />
                 <Button fx:id="btnSocios" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Gestión Socios" onAction="#abrirModuloUsuarios" />
                 <Button fx:id="btnEventos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Eventos" />

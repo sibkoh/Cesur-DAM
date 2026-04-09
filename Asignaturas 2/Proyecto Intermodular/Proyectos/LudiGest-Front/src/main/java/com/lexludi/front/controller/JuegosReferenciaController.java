@@ -255,7 +255,7 @@ public class JuegosReferenciaController {
         String jsonBody = String.format("{\"bggId\":\"%s\"}", bggIdSeleccionado);
         
         // Asumimos que el Backend tendrá este endpoint para importar el juego a la DB local
-        String url = "http://localhost:8081/api/juegos/importar";
+        String url = "http://localhost:8081/api/juegos/bgg/importar";
 
         try {
             HttpClient client = HttpClient.newHttpClient();

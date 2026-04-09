@@ -56,4 +56,15 @@ public class JuegoReferenciaController {
     public BggGameDetailsDto detallesDeBgg(@RequestParam Long id) {
         return bggSyncService.obtenerDetallesJuego(id);
     }
+    
+ // Nuevo endpoint de importación pesada
+    // Recibe: {"bggId": 13}
+    @PostMapping("/bgg/importar")
+    public JuegoReferencia importarDesdeBgg(@RequestBody ImportRequest request) {
+        // Llamada limpia y directa
+        return bggSyncService.importarJuegoDesdeBgg(request.bggId());
+    }
+
+    // Pequeño DTO interno para mapear la petición del Front
+    public record ImportRequest(Long bggId) {}
 }
