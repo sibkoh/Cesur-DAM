@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lexludi.ludigest_backend.model.Ejemplar;
@@ -48,4 +49,10 @@ public class EjemplarController {
         return ejemplarService.guardarEjemplar(nuevoEjemplar);
     }
     
+ // GET a http://localhost:8081/api/ejemplares/buscar?query={texto}
+    // Busca ejemplares por código local o por el título del juego
+    @GetMapping("/buscar")
+    public List<Ejemplar> buscarEjemplares(@RequestParam String query) {
+        return ejemplarService.buscarEjemplares(query);
+    }
 }

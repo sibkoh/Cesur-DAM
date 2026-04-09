@@ -1,8 +1,9 @@
 package com.lexludi.ludigest_backend.service;
 
+import org.springframework.stereotype.Service;
+
 import com.lexludi.ludigest_backend.model.Usuario;
 import com.lexludi.ludigest_backend.repository.UsuarioRepository;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioService {

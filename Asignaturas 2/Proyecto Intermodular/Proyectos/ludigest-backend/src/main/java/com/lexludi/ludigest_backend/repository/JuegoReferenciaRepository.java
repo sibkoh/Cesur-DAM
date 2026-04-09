@@ -1,5 +1,6 @@
 package com.lexludi.ludigest_backend.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,7 @@ public interface JuegoReferenciaRepository extends JpaRepository<JuegoReferencia
     // Buscamos un juego por su ID unico de la BGG para evitar duplicados
     // Usamos Optional para gestionar de forma elegante si el juego no existe todavia
     Optional<JuegoReferencia> findByIdBgg(Long idBgg);
+    
+ // Busca juegos donde el título contenga la palabra clave (ignorando mayúsculas/minúsculas)
+    List<JuegoReferencia> findByTituloContainingIgnoreCase(String titulo);
 }

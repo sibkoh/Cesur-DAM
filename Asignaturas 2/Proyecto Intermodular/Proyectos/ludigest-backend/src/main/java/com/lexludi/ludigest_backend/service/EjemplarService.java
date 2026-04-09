@@ -31,4 +31,8 @@ public class EjemplarService {
     public List<Ejemplar> obtenerPorJuegoId(Long juegoId) {
         return ejemplarRepository.findByJuegoReferenciaId(juegoId);
     }
+ // Añade este método en tu EjemplarService
+    public List<Ejemplar> buscarEjemplares(String query) {
+        return ejemplarRepository.buscarPorCodigoOTitulo(query);
+    }
 }

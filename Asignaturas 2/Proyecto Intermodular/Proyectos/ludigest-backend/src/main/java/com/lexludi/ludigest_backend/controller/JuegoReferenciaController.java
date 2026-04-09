@@ -64,6 +64,13 @@ public class JuegoReferenciaController {
         // Llamada limpia y directa
         return bggSyncService.importarJuegoDesdeBgg(request.bggId());
     }
+    
+ // GET a http://localhost:8081/api/juegos/buscar?query={texto}
+    // Busca en la base de datos teórica por título
+    @GetMapping("/buscar")
+    public List<JuegoReferencia> buscarJuegosLocales(@RequestParam String query) {
+        return juegoReferenciaService.buscarPorTitulo(query);
+    }
 
     // Pequeño DTO interno para mapear la petición del Front
     public record ImportRequest(Long bggId) {}

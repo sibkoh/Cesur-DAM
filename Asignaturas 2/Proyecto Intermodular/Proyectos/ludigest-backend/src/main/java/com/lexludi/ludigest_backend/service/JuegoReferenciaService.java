@@ -33,4 +33,9 @@ public class JuegoReferenciaService {
         return juegoReferenciaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Error: Juego no encontrado con ID " + id));
     }
+    
+ // Método para buscar por título
+    public List<JuegoReferencia> buscarPorTitulo(String query) {
+        return juegoReferenciaRepository.findByTituloContainingIgnoreCase(query);
+    }
 }
