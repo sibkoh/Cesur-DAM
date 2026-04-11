@@ -1,0 +1,30 @@
+sequenceDiagram
+    autonumber
+    actor Admin as Administrador
+    participant Front as JavaFX (Frontend)
+    participant Back as Spring Boot (API REST)
+    participant DB as MySQL (Base de Datos)
+    participant BGG as API BoardGameGeek
+
+    Admin->>Front: Introduce ID (ej: 13) y pulsa "Importar"
+    Front->>Back: HTTP GET /api/bgg/importar/13
+    activate Back
+    
+    Back->>DB: Consulta: ¿Existe ID 13 en BD?
+    DB-->>Back: Null (No existe)
+    
+    Note over Back, BGG: Inicio del proceso de "Heavy Scraping"
+    Back->>BGG: HTTP GET /xmlapi2/thing?id=13
+    activate BGG
+    BGG-->>Back: Respuesta XML con datos en bruto
+    deactivate BGG
+    
+    Back->>Back: Parsea XML a entidad JuegoReferencia
+    
+    Back->>DB: INSERT INTO juegos_referencia (...)
+    DB-->>Back: OK (Datos persistidos)
+    
+    Back-->>Front: HTTP 200 OK (JSON del Juego)
+    deactivate Back
+    
+    Front-->>Admin: Actualiza Interfaz: Muestra Tarjeta y Portada

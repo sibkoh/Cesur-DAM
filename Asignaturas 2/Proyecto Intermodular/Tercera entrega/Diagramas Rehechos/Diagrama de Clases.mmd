@@ -1,0 +1,64 @@
+classDiagram
+    direction TB
+
+    class Usuario {
+        +Long id
+        +String username
+        +String password
+        +String rol
+        +String nombre
+        +String apellidos
+        +String apodo
+        +String email
+        +String telefono
+        +Boolean activo
+        +LocalDate fechaAlta
+        +Boolean tieneLlave
+        +String tipoCuota
+    }
+
+    class JuegoReferencia {
+        +Long id
+        +Long idBgg
+        +String titulo
+        +String urlImagen
+        +Integer minJugadores
+        +Integer maxJugadores
+        +Integer duracionMinutos
+        +Double puntuacionBgg
+        +String jugadoresRecomendados
+        +String categoria
+        +Double dureza
+        +String mecanicas
+        +Integer anoPublicacion
+        +String autor
+        +String descripcion
+    }
+
+    class Ejemplar {
+        +Long id
+        +String codigoLocal
+        +String balda
+        +LocalDate fechaAdquisicion
+        +String estado
+        +String anotaciones
+        +Boolean enVenta
+    }
+
+    class Prestamo {
+        +Long id
+        +LocalDate fechaPrestamo
+        +LocalDate fechaLimite
+        +LocalDate fechaDevolucion
+        +Boolean activo
+        +String anotaciones
+    }
+
+    %% Relaciones Exactas del Código Java
+    JuegoReferencia "1" *-- "N" Ejemplar : posee (juego_referencia_id)
+    Usuario "1" o-- "N" Ejemplar : prestadoA (usuario_id temporal)
+    
+    Usuario "1" *-- "N" Prestamo : realiza (Historial)
+    Ejemplar "1" *-- "N" Prestamo : registrado_en (Historial)
+
+    note for Ejemplar "El Ejemplar vincula la copia física\ncon la ficha teórica de la BGG\ny con el Usuario que lo tiene actualmente."

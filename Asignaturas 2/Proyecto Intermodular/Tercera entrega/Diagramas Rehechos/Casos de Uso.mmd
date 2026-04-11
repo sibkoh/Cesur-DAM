@@ -1,0 +1,40 @@
+flowchart LR
+    %% Actores
+    Socio((Socio))
+    Admin((Administrador))
+
+    %% Herencia de roles (El Admin puede hacer lo mismo que el Socio)
+    Admin -. "Hereda permisos" .-> Socio
+
+    %% Subsistema: LudiGest
+    subgraph LudiGest [Sistema LudiGest]
+        direction TB
+        
+        %% Casos de uso generales (Socio)
+        UC_Catalogo([Consultar Catálogo Híbrido])
+        UC_Filtros([Aplicar Filtros Reactivos en Memoria])
+        UC_Detalles([Ver Ficha BGG y Estado Físico])
+        
+        %% Casos de uso específicos (Admin)
+        UC_BGG([Importar Ficha desde BGG API])
+        UC_Ejemplar([Registrar/Editar Ejemplar Físico])
+        UC_Prestamos([Gestionar Historial de Préstamos])
+        UC_Usuarios([Gestionar Socios y Permisos de Acceso])
+    end
+
+    %% Conexiones Socio
+    Socio --> UC_Catalogo
+    Socio --> UC_Filtros
+    Socio --> UC_Detalles
+
+    %% Conexiones Admin
+    Admin --> UC_BGG
+    Admin --> UC_Ejemplar
+    Admin --> UC_Prestamos
+    Admin --> UC_Usuarios
+
+    %% Estilos CSS para el diagrama (Vibrant Dark Theme)
+    classDef actor fill:#2d2d2d,stroke:#ff6b6b,stroke-width:2px,color:#fff;
+    classDef usecase fill:#4a4e69,stroke:#9a8c98,stroke-width:2px,color:#fff;
+    class Socio,Admin actor;
+    class UC_Catalogo,UC_Filtros,UC_Detalles,UC_BGG,UC_Ejemplar,UC_Prestamos,UC_Usuarios usecase;
