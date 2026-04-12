@@ -1,0 +1,14 @@
+Como principal el azul, secundario el verde y el amarillo para algunos detalles, no lo uses mucho
+
+Prueba estos azules:
+rgb (135,206,235)
+rgb (70,130,180)
+
+Y de verdes estos:
+rgb (60,179,113)
+rgb (46,139,87)
+rgb (107,142,35)
+
+Y amarillos:
+rgb (240,230,140)
+rgb (255,255,224)

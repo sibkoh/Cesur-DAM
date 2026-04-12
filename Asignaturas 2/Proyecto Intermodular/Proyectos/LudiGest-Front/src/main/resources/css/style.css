@@ -1,38 +1,40 @@
 /* ========================================================
-   TEMA LUDOTECA VIBRANTE (Morados, Lilas y Naranja Coral)
+   TEMA "OCÉANO Y CORAL" (Eye-Friendly UI)
+   Basado en la paleta sugerida: Azules y Verdes suaves + Acentos Coral
    ======================================================== */
 
-/* 1. FONDO PRINCIPAL GLOBAL (Reemplaza el blanco y el azul oscuro triste) */
+/* 1. FONDO PRINCIPAL GLOBAL (Azul/Morado muy oscuro y relajante) */
 .root {
-    /* Degradado morado alegre y moderno */
-    -fx-background-color: linear-gradient(to bottom right, #4a2c73, #2b1845); 
+    /* Un tono pizarra con un ligerísimo toque morado oscuro. No cansa la vista. */
+    -fx-background-color: #1f2233; 
     -fx-font-family: "Segoe UI", "Verdana", sans-serif;
 }
 
-/* Forzar que los ScrollPane (que por defecto son blancos) sean transparentes y dejen ver el morado */
 .scroll-pane, .scroll-pane > .viewport {
     -fx-background-color: transparent;
 }
 
 /* --- ETIQUETAS Y TEXTOS --- */
 .label-filtro-min {
-    -fx-text-fill: #cbb5e3; /* Lila clarito, muy legible */
+    /* El azul claro sugerido: rgb(135,206,235) - Sky Blue */
+    -fx-text-fill: #87ceeb; 
     -fx-font-size: 11px;
     -fx-font-weight: bold;
 }
 .titulo-principal, .label-titulo, .label-seccion {
-    -fx-text-fill: #ffffff;
+    /* El amarillo suave sugerido para títulos: rgb(255,255,224) - Light Yellow */
+    -fx-text-fill: #ffffe0;
     -fx-font-weight: bold;
 }
 .titulo-principal { -fx-font-size: 22px; }
 .label-titulo { -fx-font-size: 24px; }
 .label-seccion { -fx-font-size: 18px; }
 
-.label { -fx-text-fill: #e6dcf5; } /* Textos normales en lila casi blanco */
+.label { -fx-text-fill: #e0e0e0; } /* Gris muy claro, mejor que blanco puro para la fatiga */
 .label-bold { -fx-text-fill: #ffffff; -fx-font-weight: bold; }
-.label-subtitulo { -fx-text-fill: #b39ddb; -fx-font-size: 14px; }
+.label-subtitulo { -fx-text-fill: #87ceeb; -fx-font-size: 14px; }
 
-/* --- PANELES (Un lila/morado un poco más claro que el fondo) --- */
+/* --- PANELES (Estructura en azul acero) --- */
 .split-pane { -fx-background-color: transparent; }
 .split-pane *.split-pane-divider {
     -fx-background-color: transparent;
@@ -40,148 +42,172 @@
 }
 
 .panel-izquierdo, .panel-derecho, .contenido-tab, .panel-interno {
-    -fx-background-color: #553585; /* Morado alegre y vivo */
-    -fx-background-radius: 15;
+    /* El azul principal de tu amiga, pero oscurecido para fondos: derivado de rgb(70,130,180) */
+    -fx-background-color: #2b3245; 
+    -fx-background-radius: 12; /* Curvas más suaves, no tan extremas */
 }
 
 /* --- TARJETAS DE JUEGO (CARDS) --- */
 .card-ejemplar {
-    -fx-background-color: #65419c; /* Destaca sobre el panel */
-    -fx-background-radius: 15;
+    /* El azul principal sugerido: rgb(70,130,180) - Steel Blue */
+    -fx-background-color: #4682b4; 
+    -fx-background-radius: 10;
     -fx-padding: 12;
     -fx-border-color: transparent;
-    -fx-border-radius: 15;
+    -fx-border-radius: 10;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 4);
 }
 .card-ejemplar:hover {
-    -fx-background-color: #764eb3;
-    -fx-border-color: #ff7a45; /* Borde naranja al pasar el ratón */
+    -fx-background-color: #5394c9;
+    /* Mantenemos tu core naranja para el borde, pero suavizado */
+    -fx-border-color: #e07a48; 
     -fx-translate-y: -2;
 }
 
-/* --- INPUTS Y COMBOBOXES (Más claros y legibles) --- */
+/* --- INPUTS Y COMBOBOXES --- */
 .text-field, .combo-box, .text-area {
-    /* Lila intermedio: hace contraste pero no es un agujero negro */
-    -fx-background-color: #724da8; 
-    -fx-text-fill: #ffffff; /* Texto que escribe el usuario: Blanco puro */
-    -fx-border-color: #8c67c4;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
+    /* Fondo oscuro neutro para que se lea bien el texto */
+    -fx-background-color: #171926; 
+    -fx-text-fill: #ffffff; 
+    -fx-border-color: #4682b4; /* Borde en azul acero */
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
     -fx-padding: 8;
 }
-/* TEXTO DE FONDO (Prompt text) mucho más claro */
 .text-field:default, .text-area:default {
-    -fx-prompt-text-fill: #d5c2f0; 
+    -fx-prompt-text-fill: #7a8299; 
 }
-.text-area .content { -fx-background-color: #724da8; }
+.text-area .content { -fx-background-color: #171926; }
 
 .text-field:focused, .text-area:focused {
-    -fx-border-color: #ff7a45; /* Foco naranja brillante */
+    /* El amarillo suave sugerido al hacer clic: rgb(240,230,140) */
+    -fx-border-color: #f0e68c; 
 }
 .combo-box .label { -fx-text-fill: #ffffff; }
 .combo-box-popup .list-view {
-    -fx-background-color: #553585;
-    -fx-border-color: #8c67c4;
+    -fx-background-color: #2b3245;
+    -fx-border-color: #4682b4;
 }
 .combo-box-popup .list-cell {
     -fx-text-fill: #ffffff;
     -fx-background-color: transparent;
 }
 .combo-box-popup .list-cell:hover {
-    -fx-background-color: #ff7a45;
+    -fx-background-color: #4682b4;
 }
 
-/* --- BOTONES: TODOS NARANJAS ESTILO PÍLDORA POR DEFECTO --- */
+/* --- BOTONES: EL CORE NARANJA SUAVIZADO Y AZUL --- */
 .button {
-    -fx-background-radius: 25;
+    -fx-background-radius: 8; /* Redondeado normal, menos "juguete" */
     -fx-font-weight: bold;
-    -fx-padding: 8 20;
+    -fx-padding: 8 18;
     -fx-cursor: hand;
-    /* Degradado Naranja Coral aplicado a todos los botones */
-    -fx-background-color: linear-gradient(to right, #ff8c42, #ff5757);
-    -fx-text-fill: #ffffff;
-}
-.button:hover {
-    -fx-background-color: linear-gradient(to right, #ffa366, #ff7070);
-    -fx-effect: dropshadow(gaussian, rgba(255,140,66,0.4), 10, 0, 0, 0);
 }
 
-/* Botón secundario por si necesitas uno que no destaque tanto */
+/* El botón principal: Mantenemos tu Naranja, pero en tonos "Terra Cotta/Coral" que no dañan la vista */
+.btn-accent {
+    -fx-background-color: linear-gradient(to right, #d46b45, #c25732);
+    -fx-text-fill: #ffffff;
+}
+.btn-accent:hover {
+    -fx-background-color: linear-gradient(to right, #e07a48, #d4653b);
+}
+
+/* Botones del menú lateral: Azul Acero de tu amiga */
 .btn-secondary {
-    -fx-background-color: #8c67c4;
-}
-.btn-secondary:hover { -fx-background-color: #a382d6; }
-
-/* --- TABS (PESTAÑAS) CORREGIDAS PARA LEERSE BIEN --- */
-.tab-pane .tab-header-background { -fx-background-color: transparent; }
-.tab-pane .tab {
-    -fx-background-color: #4a2c73;
-    -fx-background-radius: 10 10 0 0;
-    -fx-padding: 5 15;
-}
-/* ¡MAGIA AQUÍ! Forzamos el texto de las pestañas a ser BLANCO y negrita */
-.tab-pane .tab .tab-label {
+    -fx-background-color: #4682b4; 
     -fx-text-fill: #ffffff;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
+    -fx-transition: -fx-text-fill 0.2s; /* Pequeña transición suave */
 }
-.tab-pane .tab:selected {
-    -fx-background-color: #553585;
-    -fx-border-color: #ff7a45 transparent transparent transparent;
-    -fx-border-width: 3 0 0 0;
+.btn-secondary:hover { 
+    -fx-background-color: #559bd6; 
+    /* ¡Toque amarillo en el texto al pasar el ratón! */
+    -fx-text-fill: #f0e68c; 
 }
 
-/* --- TABLAS (GESTIÓN DE SOCIOS) ADAPTADAS AL TEMA --- */
+/* --- TABLAS (GESTIÓN DE SOCIOS) --- */
 .table-view {
     -fx-background-color: transparent;
-    -fx-border-color: #8c67c4;
+    -fx-border-color: #4682b4;
     -fx-border-radius: 5;
 }
 .table-view .column-header-background {
-    -fx-background-color: #4a2c73;
+    -fx-background-color: #1f2233;
 }
 .table-view .column-header {
     -fx-background-color: transparent;
 }
 .table-view .column-header .label {
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #87ceeb;
     -fx-font-weight: bold;
 }
 .table-view .table-row-cell {
-    -fx-background-color: #553585;
-    -fx-table-cell-border-color: #4a2c73;
+    -fx-background-color: #2b3245;
+    -fx-table-cell-border-color: #1f2233;
 }
 .table-view .table-row-cell:odd {
-    -fx-background-color: #65419c; /* Filas alternas */
+    -fx-background-color: #333b52;
 }
 .table-view .table-cell {
     -fx-text-fill: #ffffff;
 }
 .table-view .table-row-cell:selected {
-    -fx-background-color: #ff7a45; /* Fila seleccionada en naranja */
+    -fx-background-color: #4682b4;
     -fx-text-fill: #ffffff;
 }
 
-/* --- BADGES DE ESTADO --- */
+/* --- BADGES DE ESTADO (SEMÁNTICA RECUPERADA Y RELAJADA) --- */
 .badge-estado {
-    -fx-padding: 4 12;
-    -fx-background-radius: 20;
+    -fx-padding: 4 10;
+    -fx-background-radius: 6;
     -fx-font-size: 11px;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
 }
-.badge-disponible { -fx-background-color: #00d084; } 
-.badge-reservado  { -fx-background-color: #ffb142; } 
-.badge-prestado   { -fx-background-color: #ff5252; } 
-.badge-cuarentena { -fx-background-color: #ff7a45; } 
-.badge-mantenimiento { -fx-background-color: #4a2c73; -fx-border-color: #ffffff; -fx-border-radius: 20;}
 
-/* --- SCROLLBARS LIMPIOS --- */
+/* Verde relajado (Sea Green de tu amiga) para Disponible */
+.badge-disponible { -fx-background-color: #3cb371; } 
+
+/* Amarillo tostado / Mostaza para Reservado (Alerta suave) */
+.badge-reservado  { -fx-background-color: #d2a638; } 
+
+/* Rojo teja / Coral oscuro para Prestado (Ocupado) */
+.badge-prestado   { -fx-background-color: #c25732; } 
+
+/* Morado desaturado para Cuarentena (Mantenemos tu esencia) */
+.badge-cuarentena { -fx-background-color: #7b6b94; } 
+
+/* Gris Pizarra para Mantenimiento */
+.badge-mantenimiento { -fx-background-color: #4a5c6e; }
+
+/* --- TABS (PESTAÑAS) --- */
+.tab-pane .tab-header-background { -fx-background-color: transparent; }
+.tab-pane .tab {
+    -fx-background-color: #1f2233;
+    -fx-background-radius: 6 6 0 0;
+    -fx-padding: 6 15;
+}
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #a0a0a0;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: #2b3245;
+    /* Subrayado amarillo suave para la pestaña seleccionada */
+    -fx-border-color: #f0e68c transparent transparent transparent; 
+    -fx-border-width: 3 0 0 0;
+}
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+}
+
+/* --- SCROLLBARS --- */
 .scroll-bar:vertical, .scroll-bar:horizontal {
     -fx-background-color: transparent;
 }
 .scroll-bar .thumb {
-    -fx-background-color: #8c67c4;
+    -fx-background-color: #4682b4;
     -fx-background-radius: 10;
 }
