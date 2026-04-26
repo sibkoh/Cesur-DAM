@@ -85,6 +85,11 @@
     -fx-border-color: #f0e68c; 
 }
 .combo-box .label { -fx-text-fill: #ffffff; }
+
+/* Esto cambia el color del texto de la selección actual (ComboBox cerrado) */
+.combo-box > .list-cell {
+    -fx-text-fill: #ffffff; 
+}
 .combo-box-popup .list-view {
     -fx-background-color: #2b3245;
     -fx-border-color: #4682b4;

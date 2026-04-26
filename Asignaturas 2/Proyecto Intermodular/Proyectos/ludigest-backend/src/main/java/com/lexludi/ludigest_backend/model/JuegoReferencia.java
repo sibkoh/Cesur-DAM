@@ -58,7 +58,7 @@ public class JuegoReferencia {
     private String jugadoresRecomendados;
 
     // Categoria principal del juego (ej: Strategy, Family, etc.)
-    @Column(length = 100)
+    @Column(columnDefinition = "TEXT")
     private String categoria;
 
     // Dureza o peso del juego (complejidad)
@@ -68,7 +68,7 @@ public class JuegoReferencia {
 
     // Mecanicas principales del juego (ej: Colocacion de trabajadores, Draft, etc.)
     // Opcional, para no chocar con los datos existentes
-    @Column(length = 255)
+    @Column(columnDefinition = "TEXT")
     private String mecanicas;
 
     // Ano en el que el juego fue lanzado al mercado (sin ene por convencion de codigo)
