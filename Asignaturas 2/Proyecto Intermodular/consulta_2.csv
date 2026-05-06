@@ -1,0 +1,5 @@
+Tabla_Origen,Columna_Foranea,Tabla_Destino,Columna_Destino
+ejemplares,usuario_id,usuarios,id
+ejemplares,juego_referencia_id,juegos_referencia,id
+prestamos,ejemplar_id,ejemplares,id
+prestamos,usuario_id,usuarios,id
