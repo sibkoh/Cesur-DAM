@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_curso" model="ir.actions.report">
+        <field name="name">Imprimir Ficha del Curso</field>
+        <field name="model">univ.curso</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">univ_gestion_academica.report_curso_template</field>
+        <field name="report_file">univ_gestion_academica.report_curso_template</field>
+        <field name="binding_model_id" ref="model_univ_curso"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_curso_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Ficha Académica: <span t-field="doc.name"/></h2>
+                        
+                        <div><strong>Fecha de Inicio:</strong> <span t-field="doc.fecha_inicio"/></div>
+                        <div><strong>Fecha de Fin:</strong> <span t-field="doc.fecha_fin"/></div>
+                        
+                        <h4 style="margin-top: 20px;">Plan de Estudios (Asignaturas)</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Asignatura</th>
+                                    <th>Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.asignatura_ids" t-as="asig">
+                                    <td><span t-field="asig.name"/></td>
+                                    <td><span t-field="asig.description"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

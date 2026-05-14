@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_univ_curso,access_univ_curso,model_univ_curso,base.group_user,1,1,1,1
+access_univ_asignatura,access_univ_asignatura,model_univ_asignatura,base.group_user,1,1,1,1

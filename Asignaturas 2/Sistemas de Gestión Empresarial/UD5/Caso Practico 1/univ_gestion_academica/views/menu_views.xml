@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_univ_curso" model="ir.actions.act_window">
+        <field name="name">Cursos</field>
+        <field name="res_model">univ.curso</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_univ_asignatura" model="ir.actions.act_window">
+        <field name="name">Asignaturas</field>
+        <field name="res_model">univ.asignatura</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_univ_root" name="Universidad" sequence="10"/>
+    
+    <menuitem id="menu_univ_gestion" name="Gestión Académica" parent="menu_univ_root" sequence="10"/>
+    
+    <menuitem id="menu_cursos" name="Cursos Activos" parent="menu_univ_gestion" action="action_univ_curso" sequence="1"/>
+    <menuitem id="menu_asignaturas" name="Catálogo de Asignaturas" parent="menu_univ_gestion" action="action_univ_asignatura" sequence="2"/>
+</odoo>

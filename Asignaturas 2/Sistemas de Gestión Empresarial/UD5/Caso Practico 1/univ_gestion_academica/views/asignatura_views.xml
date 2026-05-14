@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_asignatura_list" model="ir.ui.view">
+        <field name="name">univ.asignatura.list</field>
+        <field name="model">univ.asignatura</field>
+        <field name="arch" type="xml">
+            <list string="Listado de Asignaturas">
+                <field name="name"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_asignatura_form" model="ir.ui.view">
+        <field name="name">univ.asignatura.form</field>
+        <field name="model">univ.asignatura</field>
+        <field name="arch" type="xml">
+            <form string="Ficha de Asignatura">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

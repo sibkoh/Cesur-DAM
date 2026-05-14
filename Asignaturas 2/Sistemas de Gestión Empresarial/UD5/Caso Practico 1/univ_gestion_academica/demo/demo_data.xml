@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="demo_asignatura_bbdd" model="univ.asignatura">
+            <field name="name">Bases de Datos</field>
+            <field name="description">Introducción a bases de datos relacionales y lenguaje SQL.</field>
+        </record>
+        
+        <record id="demo_asignatura_prog" model="univ.asignatura">
+            <field name="name">Programación</field>
+            <field name="description">Fundamentos de programación orientada a objetos y estructuras de datos.</field>
+        </record>
+
+     <record id="demo_curso_dam" model="univ.curso">
+            <field name="name">Ciclo Superior DAM</field>
+            <field name="description"><![CDATA[<p><strong>Desarrollo de Aplicaciones Multiplataforma</strong>. Programa oficial de formación profesional superior.</p>]]></field>
+            <field name="fecha_inicio">2026-09-15</field>
+            <field name="fecha_fin">2027-06-20</field>
+            
+            <field name="asignatura_ids" eval="[(6, 0, [ref('demo_asignatura_bbdd'), ref('demo_asignatura_prog')])]"/>
+        </record>
+    </data>
+</odoo>
