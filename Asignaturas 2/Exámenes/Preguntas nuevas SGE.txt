@@ -1,0 +1,26 @@
+RA4
+- ¿Con qué herramienta podríamos realizar el seguimiento y auditoria de los usuarios de Odoo? PdAgmin
+- ¿Cuál es una ventaja clave de usar un ERP? Mayor eficiencia y coherencia en la información
+- ¿Qué es el "data governance" (Gobernanza de datos)? La gestión de la disponibilidad, integridad y seguridad de los datos
+-¿Qué es la "Capacidad de respuesta" en el contexto ERP-CRM? La capacidad del sistema para adaptarse a las necesidades cambiantes del negocio
+- ¿Qué es la escalabilidad en un sistema ERP-CRM? La capacidad de un sistema para manejar un crecimiento en el volumen de trabajo o usuarios
+- ¿Qué es la personalización en un sistema ERP-CRM? Ajustar el software para que se adapte a las -necesidades específicas de la empresa
+- ¿Qué es un "workflow" en un ERP? Un proceso automatizado que gestiona las tareas y procesos de negocio
+-¿Qué es un almacén de datos en tiempo real? Un almacén de datos que se actualiza contínuamente a medida que los datos llegan
+- ¿Qué es auditoria en el contexto ERP-CRM? Un proceso para verificar la integridad y exactitud de los datos
+- ¿Qué es una migración de datos en la implantación de un ERP? El proceso de transferir datos de un sistema antiguo a uno nuevo
+- El lenguaje JavaScript ¿Se usa en Odoo? Si, en las vistas
+
+
+RA5
+-¿Cómo se define una función en Python? def nombre_funcion (parametros)
+-¿Con qué comando imprimimos líneas por consola en Python? print()
+- ¿Cuál de lo siguientes es un beneficio de utilizar componentes reutilizables en el desarrollo software? Mejorar la eficiencia y reduce el tiempo de desarrollo 
+- ¿Cuál es la principal funcion de un ORM (Object.Relational Mapping) en el desarrollo de componentes para un ERP? Mapear objetos de la aplicacion a una base de datos relacional
+- ¿Cuando utilizao Python cuál  es el símbolo de carácter genérico dentro de la definición de un parámetro? %g
+- ¿Odoo permite crear nuevos modulos? Si, usando el comando odoo-bin
+- ¿Podemos crear un modulo de odoo con otro lenguaje que no sea Python? No, solo con Python
+- ¿Qué es la integración continua en el desarrollo de componentes? Una practica de desarrollo software en la que el codigo se integra frecuentemente en un repositorio compartido.
+- ¿Qué hace el comando odoo-bin scaffold? Crea un modulo vacio
+- Cuando tenemos un mensaje de error debido al desarrollo, el fichero concreto donde se ha produido el error viene dado en: el fichero donde se produjo el error
+- El comando de consola odoo-bin scaffold ¿Crea un nuevo modulo en Odoo? Si, crea un modulo vacio
